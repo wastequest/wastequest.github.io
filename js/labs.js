@@ -652,6 +652,7 @@ WQ.registerPage("lab",{mount(el,{args}){
   WQ.$$("input[data-k]",el).forEach(c=>c.onchange=()=>{const a=st[c.dataset.k],n=+c.dataset.i,j=a.indexOf(n);
    if(c.checked&&j<0)a.push(n);else if(!c.checked&&j>=0)a.splice(j,1);WQ.store.setJSON(key,st);counts();});
   const vid=WQ.$("#lbVid video",el);
+  if(vid)vid.addEventListener("play",()=>WQ.track("video/"+l.id),{once:true});
   if(vid)vid.addEventListener("error",()=>{WQ.$("#lbVid",el).outerHTML=`<p class="note warn">🎬 ${X(T.vidMissing)}</p>`;});
   WQ.$("#lbMade",el).onclick=()=>{if(WQ.award(key)){WQ.beep(true);render();}};
   WQ.$("#lbPrint",el).onclick=()=>{autoPrint=true;WQ.go(`lab/${l.id}/print`);};

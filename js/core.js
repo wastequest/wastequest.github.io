@@ -58,15 +58,21 @@ const WQ = (() => {
   W.has = id => !!W.earned()[id];
   W.award = id => {
     const e = W.earned(); if (e[id]) return false;
-    e[id] = new Date().toISOString(); store.setJSON("badges", e);
+    e[id] = new Date().toISOString(); store.setJSON("badges", e); W.track("badge/" + id);
     const b = W.badges[id]; if (b) W.toast(`${b.icon} ${W.t(S.newBadge)} ${W.t(b.name)}`);
     W.confetti(); return true;
   };
-  W.best = (key, score) => { const k = "best-" + key, b = Math.max(score ?? 0, +(store.get(k) || 0)); if (score != null) store.set(k, b); return b; };
+  W.best = (key, score) => { const k = "best-" + key, b = Math.max(score ?? 0, +(store.get(k) || 0)); if (score != null) { store.set(k, b); W.track("finish/" + key); } return b; };
+  /* usage counter: GoatCounter (script tag in index.html). No cookies, no names; counts only page opens + events below. */
+  const tq = [], viewKey = () => (location.hash.replace(/^#\/?/, "") || "home").split("/").slice(0, 2).join("/");
+  W.track = (path, page) => { const c = page ? { path, title: path } : { path, event: true }, g = window.goatcounter;
+    if (g && g.count) g.count(c); else if (tq.length < 50) tq.push(c); };
+  W.flushTrack = () => { while (tq.length) window.goatcounter.count(tq.shift()); };
 
   /* ---------- feedback ---------- */
   let ac;
-  W.beep = ok => { try { ac = ac || new AudioContext(); const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime; o.type = "triangle";
+  W.beep = ok => { const v = viewKey(); if (!/^(cert|lab)\b/.test(v)) W.track(`answer/${v}/${ok ? "right" : "wrong"}`);
+    try { ac = ac || new AudioContext(); const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime; o.type = "triangle";
     (ok ? [660, 880] : [220, 180]).forEach((f, i) => o.frequency.setValueAtTime(f, t + i * .09));
     g.gain.setValueAtTime(.15, t); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.connect(g).connect(ac.destination); o.start(); o.stop(t + .26); } catch (e) {} };
   W.confetti = () => { for (let i = 0; i < 40; i++) { const c = document.createElement("div"); c.className = "confetti"; c.textContent = ["♻️","⭐","🌱","🎉"][i % 4];
@@ -97,7 +103,7 @@ const WQ = (() => {
     cleanup = typeof r === "function" ? r : null;
     $("#backBtn").hidden = view === "home";
     W.$$(".navlinks a").forEach(a => a.classList.toggle("on", a.dataset.v === view || (a.dataset.v === "games" && view === "game") || (a.dataset.v === "labs" && view === "lab")));
-    if (!relang) scrollTo(0, 0);
+    if (!relang) { scrollTo(0, 0); W.track("/" + viewKey(), true); }
     document.title = "WasteQuest";
   };
   W.back = () => { const v = (location.hash.replace(/^#\/?/, "").split("/")[0]); if (v === "game") W.go("games"); else if (v === "lab") W.go("labs"); else W.go("home"); };
@@ -108,7 +114,7 @@ const WQ = (() => {
     W.$$("[data-lang]").forEach(b => b.setAttribute("aria-pressed", b.dataset.lang === W.lang));
     W.$$("[data-s]").forEach(e => e.textContent = W.t(S[e.dataset.s]));
   };
-  W.setLang = l => { W.lang = l; store.set("lang", l); paintChrome(); W.route(); };
+  W.setLang = l => { W.lang = l; store.set("lang", l); W.track("lang/" + l); paintChrome(); W.route(); };
   W.setAud = a => { W.aud = a; store.set("aud", a); W.route(); };
 
   /* ---------- home ---------- */
@@ -144,7 +150,7 @@ const WQ = (() => {
     W.$$("[data-lang]").forEach(b => b.onclick = () => W.setLang(b.dataset.lang));
     $("#backBtn").onclick = W.back;
     window.addEventListener("hashchange", W.route);
-    paintChrome(); W.route();
+    paintChrome(); W.route(); W.track("lang/" + W.lang);
   };
   return W;
 })();

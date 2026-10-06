@@ -402,7 +402,7 @@ function openHostPeer(h, tries) {
   const to = setTimeout(() => { if (mine() && !h.code) hostFail("net"); }, 15000);
   peer.on("open", () => {
     if (!mine()) return; clearTimeout(to);
-    if (!h.code) { h.code = code; h.phase = "lobby"; renderHost(); keepAwake(); h.pingT = setInterval(hostPing, 3000); }
+    if (!h.code) { h.code = code; h.phase = "lobby"; renderHost(); keepAwake(); WQ.track("class/host"); h.pingT = setInterval(hostPing, 3000); }
   });
   peer.on("connection", c => { if (mine()) hostConn(c); });
   peer.on("error", err => {
@@ -600,7 +600,7 @@ function connect() {
   peer.on("open", () => {
     if (!mine()) return;
     const c = peer.connect(PFX + J.code, { reliable: true, serialization: "json" }); J.conn = c;
-    c.on("open", () => { if (!mine()) return; clearTimeout(J.openT); J.everOpen = true; J.tries = 0; J.last = Date.now(); c.send({ type: "hello", pid: J.pid, name: J.name, lang: WQ.lang }); });
+    c.on("open", () => { if (!mine()) return; clearTimeout(J.openT); if (!J.everOpen) WQ.track("class/join"); J.everOpen = true; J.tries = 0; J.last = Date.now(); c.send({ type: "hello", pid: J.pid, name: J.name, lang: WQ.lang }); });
     c.on("data", d => { if (mine()) onJoinData(d); });
     c.on("close", () => { if (mine()) jFail("close"); });
     c.on("error", () => { if (mine()) jFail("conn"); });

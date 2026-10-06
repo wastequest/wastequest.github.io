@@ -311,7 +311,7 @@ function questView(el, id, relang) {
     S.setJSON("cert-last-" + id, { pct, right, n, date });
     const prev = S.getJSON("cert-pass-" + id, null);
     if (pct >= t.pass && (!prev || pct > prev.pct)) S.setJSON("cert-pass-" + id, { pct, date });
-    WQ.beep(pct >= t.pass); if (pct >= t.pass) WQ.confetti();
+    WQ.beep(pct >= t.pass); WQ.track(`cert-test/${id}/${pct >= t.pass ? "pass" : "fail"}`); if (pct >= t.pass) WQ.confetti();
     results(); scrollTo(0, 0);
   };
   const results = () => {
@@ -368,8 +368,8 @@ function getView(el, id) {
     const pv = document.createElement("div"); pv.className = "cr-printable cr-prev"; pv.style.marginTop = "16px";
     pv.innerHTML = `<img alt="${WQ.esc(`${WQ.t(C[WQ.lang].title)}: ${d.name}, ${WQ.t(t.short)}, ${d.pct}%`)}" src="${url}">`;
     el.appendChild(pv);
-    box.querySelector("#crDl").onclick = () => { const a = document.createElement("a"); a.href = url; a.download = `WasteQuest-${id}-${d.name.replace(/[^\w]+/g, "_").slice(0, 40)}.png`; document.body.appendChild(a); a.click(); a.remove(); };
-    box.querySelector("#crPr").onclick = () => printOnly("size:A4 landscape;margin:0");
+    box.querySelector("#crDl").onclick = () => { WQ.track("certificate/download/" + id); const a = document.createElement("a"); a.href = url; a.download = `WasteQuest-${id}-${d.name.replace(/[^\w]+/g, "_").slice(0, 40)}.png`; document.body.appendChild(a); a.click(); a.remove(); };
+    box.querySelector("#crPr").onclick = () => WQ.track("certificate/print/" + id) || printOnly("size:A4 landscape;margin:0");
     box.querySelector("#crEd").onclick = () => { pv.remove(); form(); };
   };
   if (S.get("cert-name")) show(); else form();
