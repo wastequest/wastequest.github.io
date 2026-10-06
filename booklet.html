@@ -69,7 +69,7 @@ a{color:inherit;text-decoration:none}
   const t = WQ.t, el = document.getElementById("bk");
   const L = {
     sub:{en:"Waste-to-Wealth (W2W) Educational Module",bm:"Modul Pendidikan Sisa kepada Kekayaan (W2W)"},
-    tag:{en:"Interactive website · Games & virtual labs · 10 hands-on activities · Class quiz · Micro-credential",bm:"Laman web interaktif · Permainan & makmal maya · 10 aktiviti amali · Kuiz kelas · Mikro-kredensial"},
+    tag:{en:"Interactive website · Games & virtual labs · 15 hands-on activities · Class quiz · Micro-credential",bm:"Laman web interaktif · Permainan & makmal maya · 15 aktiviti amali · Kuiz kelas · Mikro-kredensial"},
     by:{en:"Prepared by",bm:"Disediakan oleh"}, ed:{en:"Facilitator booklet · 2026 edition",bm:"Buku panduan fasilitator · Edisi 2026"},
     open:{en:"Open the website",bm:"Buka laman web"},
     toc:{en:"Contents",bm:"Kandungan"},
@@ -83,14 +83,14 @@ a{color:inherit;text-decoration:none}
     howT:{en:`<table class="tbl"><tr><th>Section</th><th>What learners do</th></tr>
       <tr><td>📘 Learn</td><td>Seven short interactive chapters with quick checks.</td></tr>
       <tr><td>🎮 Games & Simulations</td><td>Sorting, matching, puzzles, quizzes and five virtual labs. Each earns a badge.</td></tr>
-      <tr><td>🧪 Hands-on Labs</td><td>Ten step-by-step activities with materials, safety notes, science, videos and printable worksheets.</td></tr>
+      <tr><td>🧪 Hands-on Labs</td><td>Fifteen step-by-step activities with materials, safety notes, science, videos and printable worksheets.</td></tr>
       <tr><td>📱 Class Battle</td><td>The teacher hosts a live quiz on the projector; students join with a code on their phones. Team mode works without phones.</td></tr>
       <tr><td>🏅 Certificate</td><td>Three tracks: Junior Eco-Hero, Zero-Waste Champion and Waste-to-Wealth Practitioner (proposed micro-credential).</td></tr>
       <tr><td>🧑‍🏫 Teacher Hub</td><td>Session plans, micro-credential framework, rubrics and safety guidance.</td></tr></table>`,
       bm:`<table class="tbl"><tr><th>Bahagian</th><th>Apa yang pelajar lakukan</th></tr>
       <tr><td>📘 Belajar</td><td>Tujuh bab interaktif ringkas dengan semakan pantas.</td></tr>
       <tr><td>🎮 Permainan & Simulasi</td><td>Mengasing, memadan, teka-teki, kuiz dan lima makmal maya. Setiap satu memberi lencana.</td></tr>
-      <tr><td>🧪 Makmal Amali</td><td>Sepuluh aktiviti langkah demi langkah dengan bahan, nota keselamatan, sains, video dan lembaran kerja boleh cetak.</td></tr>
+      <tr><td>🧪 Makmal Amali</td><td>Lima belas aktiviti langkah demi langkah dengan bahan, nota keselamatan, sains, video dan lembaran kerja boleh cetak.</td></tr>
       <tr><td>📱 Pertandingan Kelas</td><td>Guru menganjurkan kuiz langsung di projektor; murid menyertai dengan kod di telefon. Mod pasukan berfungsi tanpa telefon.</td></tr>
       <tr><td>🏅 Sijil</td><td>Tiga laluan: Wira Eko Junior, Juara Sifar Sisa dan Pengamal Sisa kepada Kekayaan (cadangan mikro-kredensial).</td></tr>
       <tr><td>🧑‍🏫 Hab Guru</td><td>Rancangan sesi, rangka kerja mikro-kredensial, rubrik dan panduan keselamatan.</td></tr></table>`},
@@ -115,7 +115,7 @@ a{color:inherit;text-decoration:none}
   html += sec(1, `<div id="bkLearn"></div>`);
   html += sec(2, `<p>${t(L.scan)}</p><h2 class="section-t">${t(L.games)}</h2><div class="bk-games">${games.filter(g => g.kind === "game").map(gameCard).join("")}</div>
     <h2 class="section-t">${t(L.sims)}</h2><div class="bk-games">${games.filter(g => g.kind === "sim").map(gameCard).join("")}</div>`);
-  html += sec(3, `<div id="bkLabs"></div>`);
+  html += sec(3, `<div id="bkLabs"></div><div id="bkZph" class="bk-lab"></div>`);
   html += sec(4, `<div id="bkTeacher"></div>`);
   html += sec(5, `<div class="bk-qs">${WQ.questions.map((q, i) => `<div class="bk-q"><b>${i + 1}.</b> [${q.tracks.map(x => tracks[x]).join("")}] ${WQ.esc(t(q.q))}<br>${q.a.map((a, j) => `<span class="${j === q.c ? "ans" : ""}">${"ABCD"[j]}. ${WQ.esc(t(a))}</span>`).join(" &nbsp; ")}</div>`).join("")}</div>
     <p class="small muted">K = kids · T = teens · A = adults</p>`);
@@ -124,6 +124,7 @@ a{color:inherit;text-decoration:none}
   const fill = (id, fn) => { const box = document.getElementById(id); try { if (fn) fn(box); else box.innerHTML = `<p class="todo">${t(L.missing)}</p>`; } catch (e) { box.innerHTML = `<p class="todo">${t(L.missing)} (${WQ.esc(e.message)})</p>`; } };
   fill("bkLearn", WQ.renderLearnPrint);
   fill("bkTeacher", WQ.renderTeacherPrint);
+  fill("bkZph", WQ.renderZphPrint);
   fill("bkLabs", WQ.renderLabPrint && (box => WQ.labs.forEach((lab, i) => { const d = document.createElement("div"); if (i) d.className = "bk-lab"; box.appendChild(d); WQ.renderLabPrint(d, lab.id); })));
   if (window.QRCode) document.querySelectorAll("[data-qr]").forEach(q => new QRCode(q, { text: q.dataset.qr, width: 256, height: 256, correctLevel: QRCode.CorrectLevel.M }));
 })();

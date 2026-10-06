@@ -47,7 +47,12 @@ const LABS = {
   enzyme: { i: "🍊", w: { en: "Fruit and vegetable peels", bm: "Kulit buah dan sayur" }, p: { en: "Eco-enzyme cleaner", bm: "Pembersih eko-enzim" } },
   ecobrick: { i: "🧱", w: { en: "Soft plastic wrappers", bm: "Pembalut plastik lembut" }, p: { en: "Ecobricks", bm: "Bata eko" } },
   compost: { i: "🌱", w: { en: "Food and garden waste", bm: "Sisa makanan dan taman" }, p: { en: "Compost", bm: "Kompos" } },
-  bioplastic: { i: "🌽", w: { en: "Plant starch (instead of plastic)", bm: "Kanji tumbuhan (ganti plastik)" }, p: { en: "Bioplastic pot", bm: "Pasu bioplastik" } }
+  bioplastic: { i: "🌽", w: { en: "Plant starch (instead of plastic)", bm: "Kanji tumbuhan (ganti plastik)" }, p: { en: "Bioplastic pot", bm: "Pasu bioplastik" } },
+  vgarden: { i: "🪴", w: { en: "Plastic bottles and compost", bm: "Botol plastik dan kompos" }, p: { en: "Vertical garden", bm: "Taman menegak" } },
+  hydro: { i: "🥬", w: { en: "Plastic bottles", bm: "Botol plastik" }, p: { en: "Hydroponic vegetables", bm: "Sayur hidroponik" } },
+  fused: { i: "☂️", w: { en: "Plastic bags and straws", bm: "Beg plastik dan straw" }, p: { en: "Bags and a mini umbrella", bm: "Beg dan payung mini" } },
+  lifebuoy: { i: "🛟", w: { en: "Bubble wrap", bm: "Balutan gelembung" }, p: { en: "Float ring model", bm: "Model gelang pelampung" } },
+  sleepbag: { i: "🛌", w: { en: "Bubble wrap and old cloth", bm: "Balutan gelembung dan kain lama" }, p: { en: "3-in-1 sleeping bag", bm: "Beg tidur 3-dalam-1" } }
 };
 const labName = id => { const L = (WQ.labs || []).find(l => l.id === id); return L && (L.title || L.name) ? t(L.title || L.name) : t(LABS[id].p); };
 const labChip = id => `<a class="ln-chip" href="#/lab/${id}">${LABS[id].i} ${E(labName(id))}</a>`;
@@ -242,8 +247,9 @@ const CH = [
      <h3>${t({ en: "Three kinds of benefit", bm: "Tiga jenis manfaat" })} ${pr ? "" : `<span class="small muted">(${t({ en: "tap a card to flip it", bm: "tekan kad untuk terbalikkan" })})</span>`}</h3>
      <div class="ln-flips">${PILLARS.map((p, i) => pr ? `<div class="ln-pcard" style="border-color:${p.c}"><h4>${p.i} ${E(t(p.n))}</h4><ul>${p.b.map(b => `<li>${E(t(b))}</li>`).join("")}</ul></div>`
        : `<button class="ln-flip ${flips[i] ? "on" : ""}" data-f="${i}" aria-pressed="${!!flips[i]}"><span class="in"><span class="f" style="background:${p.c}"><span class="big">${p.i}</span>${E(t(p.n))}</span><span class="b" style="border-color:${p.c}"><b>${p.i} ${E(t(p.n))}</b>${p.b.map(b => `<span class="li">${E(t(b))}</span>`).join("")}</span></span></button>`).join("")}</div>
-     <h3>${t({ en: "From waste to wealth: our 10 labs", bm: "Daripada sisa kepada kekayaan: 10 makmal kami" })}</h3>
+     <h3>${t({ en: `From waste to wealth: our ${Object.keys(LABS).length} labs`, bm: `Daripada sisa kepada kekayaan: ${Object.keys(LABS).length} makmal kami` })}</h3>
      <div class="ln-labs">${Object.keys(LABS).map(id => `<a class="ln-lab" href="#/lab/${id}"><span class="w">${E(t(LABS[id].w))}</span><span class="ar" aria-hidden="true">➜</span><span class="p">${LABS[id].i} ${E(labName(id))}</span></a>`).join("")}</div>
+     ${pr ? "" : `<p class="small">🦸 <a href="#/zph">${t({ en: "Meet the student projects behind five of these labs: Zero-Plastic Hero 2024", bm: "Kenali projek pelajar di sebalik lima makmal ini: Zero-Plastic Hero 2024" })} →</a></p>`}
      ${sciBox(t({ en: "<p>Behind each product is real science: microbes turn food waste into compost (<a href='#/game/compost'>compost sim</a>); fermentation makes eco-enzyme acidic (<a href='#/game/enzyme'>eco-enzyme sim</a>); plant pigments called anthocyanins change colour with pH (<a href='#/game/ph'>pH lab</a>); glycerol acts as a plasticiser to make starch bioplastic flexible.</p>",
        bm: "<p>Di sebalik setiap produk ada sains sebenar: mikrob menukar sisa makanan menjadi kompos (<a href='#/game/compost'>simulasi kompos</a>); penapaian menjadikan eko-enzim berasid (<a href='#/game/enzyme'>simulasi eko-enzim</a>); pigmen tumbuhan yang dipanggil antosianin berubah warna mengikut pH (<a href='#/game/ph'>makmal pH</a>); gliserol bertindak sebagai pemplastik untuk menjadikan bioplastik kanji lentur.</p>" }))}
      ${bizBox(t({ en: "<p>Green entrepreneurship starts with cheap inputs. UPM ENG3104 student teams (2024) estimated a starch bioplastic pot at about RM0.84 in materials and a tote bag from used plastic bags at about RM4.66 (student estimates, not market prices). Test your own pricing in <a href='#/game/cash'>Waste to Cash</a>. A credible W2W business also needs a safe process, a steady waste supply, quality control and honest environmental claims.</p>",

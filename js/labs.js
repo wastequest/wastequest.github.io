@@ -1,4 +1,4 @@
-/* Hands-on Labs: 10 real activity guides (from the 2025 ENG3104 posters, corrected) + labs gallery, single lab page,
+/* Hands-on Labs: 15 real activity guides (10 from the 2025 ENG3104 posters, corrected; 5 from the Zero-Plastic Hero 2024 projects) + labs gallery, single lab page,
    printable worksheet (#/lab/<id>/print) and WQ.renderLabPrint(el, id) for the PDF booklet.
    Poster transcriptions and every correction: assets/labs/_poster_notes.md
 // SOURCES:
@@ -9,6 +9,13 @@
 //  - Eco-enzyme 1:3:10 product pH about 3.5–4: e.g. Jurnal Distilat (Polinema) eco-enzyme studies, https://jurnal.polinema.ac.id/index.php/distilat/article/download/4195/3419/18731
 //  - NaOH SAP value of palm olein 0.138 g/g: soapmakingforum / soap-calculator tables, https://soapmakingforum.com/threads/palm-olein-vs-palm-oil-sap-value.40032
 //  - Eudrilus eugeniae optimum about 25–30 °C, efficient tropical composting worm: FAO / USM TLSR 19(2) 2008, https://ejournal.usm.my/tlsr/article/download/tlsr_vol19-no-2-2008_6/pdf/1044
+//  - Kratky non-circulating hydroponics: B.A. Kratky (2009), "Three non-circulating hydroponic methods for growing lettuce", Acta Horticulturae 843:65-72
+//  - LDPE melts about 105-115 °C, HDPE about 130-137 °C; PVC gives off hydrogen chloride when heated: Britannica "polyethylene", "polyvinyl chloride"
+//  - Lifebuoy must support 14.5 kg of iron in fresh water for 24 h: IMO Life-Saving Appliances (LSA) Code, ch. II 2.1.1
+//  - Thermal conductivity: still air about 0.026 W/m·K, concrete about 1 W/m·K (engineering tables, e.g. engineeringtoolbox.com)
+//  - Flood rules (stay out of floodwater, call 999) and "Reach or throw, don't go": NADMA / Bomba; Royal Life Saving Society
+//  - Money plant (Epipremnum) toxic to cats and dogs: ASPCA toxic plant list
+//  - Zero-Plastic Hero 2024 projects, figures and links: "Zero-Plastic Hero by ChemE (Presentation).pptx" slides 6-7 and the groups' Padlet/Drive/YouTube pages (ZPH below)
 //  - Student figures (48 g:96 g candle, pet-food cost table, G1 RM51/pot, G10 RM0.84/pot): the posters and research/eng3104_and_videos.md
 */
 (() => {
@@ -16,6 +23,20 @@ const L=(en,bm)=>({en,bm}), H=(en,bm)=>({h:{en,bm}});
 const S=(en,bm,xen,xbm)=>xen?{en,bm,x:{en:xen,bm:xbm}}:{en,bm};
 const D=(en,bm)=>({en,bm,lv:"danger"}), W=(en,bm)=>({en,bm,lv:"warn"});
 const P=(src,en,bm)=>({src,cap:{en,bm}});
+/* Zero-Plastic Hero by ChemE 2024: the 10 projects' own pages (slide 6 of the programme deck) */
+const ZPH={
+ g8:"https://padlet.com/2112526/eng-3104-the-engineer-and-society-ug4uatp02b23b28r/wish/zV61Q6lY5qJGWO98",
+ g8yt:"https://youtu.be/SPpa7bFrc9E",
+ ecoviva:"https://youtu.be/zX8zafcs7lY",
+ g4tote:"https://padlet.com/21114410/the-engineer-and-society-group-4-g2cxzsbllscpvbbw/wish/x5m7aoJm980YWkAV",
+ g9:"https://padlet.com/zoehuiwen1208/eng3104-log-book-group-9-l41upkj5c99x9g55/wish/j40PQDB41KgJWvXB",
+ sleepbag:"https://padlet.com/21114410/the-engineer-and-society-group-4-g2cxzsbllscpvbbw/wish/goElQyLmVkgwa3yY",
+ sleepvid:"https://drive.google.com/file/d/1qkQWFfZNvxYPrlJ0hFkOVvDESaf0bR3g/view",
+ hydro:"https://drive.google.com/file/d/1hBBR-KKBpISjVeWals2vDUaf-lfvy8_R/view",
+ umbrella:"https://drive.google.com/file/d/1GQTBpVMTBzsL70X5KbG6TKr4nNHUywHN/view",
+ lifebuoy:"https://drive.google.com/file/d/1GhuDHQx6ZjJk0AegA-IBj9G4pu63PUfE/view",
+ biopots:"https://padlet.com/21242020/eng3104-the-engineer-and-society-zco6hqg3jj0qs3et/wish/wKmOZ5JA11D7WzMA"
+};
 
 const LABS=[
 /* ---------------------------------------------------------------- 1 CANDLE */
@@ -435,12 +456,15 @@ void loop() {
  teach:L("Agree on ONE bottle size for the whole school so the bricks fit together. A 1.5 L brick takes several sessions: let pupils take bottles home. Keep a class log of the total plastic packed (kg).","Tetapkan SATU saiz botol untuk seluruh sekolah supaya bata sepadan. Bata 1.5 L mengambil beberapa sesi: benarkan murid membawa botol pulang. Simpan rekod kelas jumlah plastik yang dipadatkan (kg)."),
  ext:[L("Class total: add up the mass of all the eco-bricks. How many plastic bags is that? (Weigh 10 bags to find the mass of one.)","Jumlah kelas: tambah jisim semua eko-bata. Berapa beg plastik itu? (Timbang 10 beg untuk mengetahui jisim sebiji.)"),
   L("Design: sketch a bench made of 1.5 L eco-bricks. How many bricks do you need? How much plastic would it lock away?","Reka bentuk: lakar bangku daripada eko-bata 1.5 L. Berapa bata diperlukan? Berapa banyak plastik dapat disimpan?"),
+  L("Check a real design: the 2024 Group 8 stool used 21 bottles of 1.5 L and 800 g of plastic in total. What was the density of each brick? Does it meet the 0.33 g/mL minimum? How much plastic would 21 proper bricks hold?","Semak reka bentuk sebenar: bangku Kumpulan 8 2024 menggunakan 21 botol 1.5 L dan 800 g plastik secara keseluruhan. Berapakah ketumpatan setiap bata? Adakah ia mencapai minimum 0.33 g/mL? Berapa banyak plastik yang boleh disimpan oleh 21 bata yang betul?"),
+  L("Cost it like an engineer: Group 8 spent RM 10.50 on glue sticks and tape for each stool, plus a measuring tape (RM 12) and a glue gun (RM 8) bought once. They planned to sell at RM 25. What is the profit on the first stool? On the tenth?","Kira kos seperti jurutera: Kumpulan 8 membelanjakan RM 10.50 untuk gam silikon dan pita bagi setiap bangku, serta pita pengukur (RM 12) dan pistol gam (RM 8) yang dibeli sekali. Mereka merancang menjual pada RM 25. Berapakah untung bangku pertama? Bangku kesepuluh?"),
   L("Bag test: load your woven bag with books until it fails. Record the mass. Where did it break, and how could the design be stronger?","Ujian beg: isi beg anyaman dengan buku sehingga rosak. Catat jisimnya. Di mana ia koyak, dan bagaimana reka bentuknya boleh diperkuat?")],
  refl:[L("Which plastics in your home are hardest to recycle?","Plastik mana di rumah anda yang paling sukar dikitar semula?"),
   L("Is an eco-brick recycling? Why or why not?","Adakah eko-bata dikira kitar semula? Mengapa?"),
   L("How could your school use less soft plastic in the first place?","Bagaimana sekolah anda boleh mengurangkan penggunaan plastik lembut dari awal?")],
- posters:[P("assets/labs/ecobrick-poster-1.jpg","\"Turn Trash into Treasure\": eco-bricks and bags (Group 8)","\"Turn Trash into Treasure\": eko-bata dan beg (Kumpulan 8)"),P("assets/labs/ecobrick-poster-2.jpg","\"Plastic is Valuable\": wrapper tote and bubble-wrap sleeping bag (Group 4)","\"Plastic is Valuable\": beg tote pembalut dan beg tidur balutan gelembung (Kumpulan 4)")],
- credit:L("Original posters: UPM ENG3104 student groups (Group 8; Group 4 \"Plastic is Valuable\")","Poster asal: kumpulan pelajar ENG3104 UPM (Kumpulan 8; Kumpulan 4 \"Plastic is Valuable\")")},
+ posters:[P("assets/labs/ecobrick-poster-1.jpg","\"Turn Trash into Treasure\": eco-bricks and bags (Group 8)","\"Turn Trash into Treasure\": eko-bata dan beg (Kumpulan 8)"),P("assets/labs/ecobrick-poster-2.jpg","\"Plastic is Valuable\": wrapper tote and bubble-wrap sleeping bag (Group 4)","\"Plastic is Valuable\": beg tote pembalut dan beg tidur balutan gelembung (Kumpulan 4)"),P("assets/zph/ecobricks.jpg","Eco-brick stool and pillar at Zero-Plastic Hero 2024","Bangku dan tiang eko-bata di Zero-Plastic Hero 2024"),P("assets/zph/ecobrick-sketch.jpg","2024 Group 8: stool sketch (21 × 1.5 L bottles)","Kumpulan 8 2024: lakaran bangku (21 × botol 1.5 L)"),P("assets/zph/ecobrick-cost.jpg","2024 Group 8: costing the stool","Kumpulan 8 2024: pengiraan kos bangku"),P("assets/zph/ecobags.jpg","Bags made from plastic waste at Zero-Plastic Hero 2024","Beg daripada sisa plastik di Zero-Plastic Hero 2024")],
+ links:[[ZPH.g8,"2024 Group 8 project page: eco-brick furniture (Padlet)","Halaman projek Kumpulan 8 2024: perabot eko-bata (Padlet)"],[ZPH.g8yt,"\"Ecobrick Furniture\" video by 2024 Group 8 (YouTube)","Video \"Ecobrick Furniture\" oleh Kumpulan 8 2024 (YouTube)"],[ZPH.g4tote,"2024 Group 4 project page: tote bags (Padlet)","Halaman projek Kumpulan 4 2024: beg tote (Padlet)"]],
+ credit:L("Original posters: UPM ENG3104 student groups (Group 8; Group 4 \"Plastic is Valuable\"). Furniture photos: 2024 Group 8 (Zero-Plastic Hero 2024).","Poster asal: kumpulan pelajar ENG3104 UPM (Kumpulan 8; Kumpulan 4 \"Plastic is Valuable\"). Foto perabot: Kumpulan 8 2024 (Zero-Plastic Hero 2024).")},
 
 /* ---------------------------------------------------------------- 9 COMPOST */
 {id:"compost",icon:"🪱",min:7,mins:45,diff:2,sup:"light",heat:false,sdgs:[2,12,13,15],video:"1SOScJJ9-HIPY8lE52Z-aZTCm7TPebikd",
@@ -538,7 +562,234 @@ void loop() {
  refl:[L("Is \"made from plants\" the same as \"breaks down in nature\"?","Adakah \"dibuat daripada tumbuhan\" sama dengan \"terurai secara semula jadi\"?"),
   L("What would you use your bioplastic for, and what should it never be used for?","Untuk apa anda akan gunakan bioplastik anda, dan untuk apa ia tidak patut digunakan?"),
   L("How could you make it stronger or more water-resistant?","Bagaimana anda boleh menjadikannya lebih kuat atau lebih tahan air?")],
- posters:[],credit:L("Idea: UPM ENG3104 2024 Group 10 (PLASTREE)","Idea: Kumpulan 10 ENG3104 UPM 2024 (PLASTREE)")}
+ posters:[P("assets/zph/biopots.jpg","Bio-pots shown at Zero-Plastic Hero 2024 (Group 10, PLASTREE)","Bio-pasu dipamerkan di Zero-Plastic Hero 2024 (Kumpulan 10, PLASTREE)")],
+ links:[[ZPH.biopots,"PLASTREE (Group 10) project page: \"The making of bioplastic!\" video","Halaman projek PLASTREE (Kumpulan 10): video \"The making of bioplastic!\""]],
+ credit:L("Idea: UPM ENG3104 2024 Group 10 (PLASTREE)","Idea: Kumpulan 10 ENG3104 UPM 2024 (PLASTREE)")},
+
+/* ================================================================ ZERO-PLASTIC HERO 2024 LABS (11–15) */
+/* ---------------------------------------------------------------- 11 VERTICAL GARDEN */
+{id:"vgarden",icon:"🪴",min:7,mins:60,diff:1,sup:"close",heat:false,sdgs:[2,11,12,13,15],video:"self",
+ badge:{icon:"🪴",name:L("Green Wall Gardener","Pekebun Dinding Hijau")},
+ title:L("Bottle Vertical Garden","Taman Menegak Botol"),
+ hook:L("Hang a garden of plastic bottles on a wall or fence: water the top one and it drips down to the rest.","Gantung taman botol plastik pada dinding atau pagar: siram botol paling atas dan air menitis ke botol di bawahnya."),
+ time:L("60 min to build, then water a little every day","60 min untuk membina, kemudian siram sedikit setiap hari"),
+ cost:L("Almost free: used bottles and string; you may need to buy soil and seeds.","Hampir percuma: botol terpakai dan tali; mungkin perlu membeli tanah dan benih."),costTodo:"confirm RM price of a bag of soil and a seed packet",
+ waste:L("1.5 L PET bottles; compost from food waste","Botol PET 1.5 L; kompos daripada sisa makanan"),product:L("A hanging vertical garden and mini bottle pots","Taman menegak gantung dan pasu botol mini"),
+ why:{env:L("Each bottle gets a second life before recycling, and plants on walls cool hot surfaces and give insects food.","Setiap botol mendapat hayat kedua sebelum dikitar semula, dan tumbuhan pada dinding menyejukkan permukaan panas serta memberi makanan kepada serangga."),
+  econ:L("Grow kangkung, herbs or cuttings to use or sell, in a space too small for a normal garden.","Tanam kangkung, herba atau keratan untuk digunakan atau dijual, di ruang yang terlalu kecil untuk kebun biasa."),
+  soc:L("A green wall makes a school corner or flat balcony nicer, and mini pots make easy gifts (the 2024 G1 team gave pots to SMK Convent Kajang pupils).","Dinding hijau menceriakan sudut sekolah atau balkoni rumah pangsa, dan pasu mini menjadi hadiah mudah (pasukan G1 2024 memberi pasu kepada murid SMK Convent Kajang).")},
+ mats:[L("4–6 clear 1.5 L bottles with caps, washed, labels off","4–6 botol jernih 1.5 L bertutup, dibasuh, label ditanggalkan"),
+  L("Strong string or nylon cord, and a frame, fence or grille to hang from","Tali kuat atau tali nilon, dan rangka, pagar atau gril untuk menggantung"),
+  L("Soil mixed with compost (see the Compost lab)","Tanah dicampur kompos (lihat makmal Kompos)"),
+  L("Plants: leafy seedlings (e.g. kangkung), herb cuttings, or money plant cuttings","Tumbuhan: anak benih sayur berdaun (cth. kangkung), keratan herba, atau keratan pokok duit-duit"),
+  L("Craft knife or strong scissors (adult only), a skewer, tape and a marker","Pisau kraf atau gunting kuat (orang dewasa sahaja), lidi sate, pita dan pen penanda")],
+ steps:[S("Lay a bottle on its side. Draw a window about 15 cm × 6 cm on the top side.","Baringkan botol. Lukis tingkap kira-kira 15 cm × 6 cm di bahagian atasnya."),
+  S("ADULT: cut out the window and tape the cut edges so they are not sharp.","ORANG DEWASA: potong tingkap itu dan lekatkan pita pada tepi yang dipotong supaya tidak tajam."),
+  S("ADULT: poke 3–4 small drainage holes on the bottom side with a skewer.","ORANG DEWASA: tebuk 3–4 lubang saliran kecil di bahagian bawah dengan lidi sate.","Without holes, water collects at the bottom and the roots rot because they cannot get air.","Tanpa lubang, air bertakung di dasar dan akar reput kerana tidak mendapat udara."),
+  S("Tie string around both ends (near the neck and the base) to make a hanger. Do the same for every bottle.","Ikat tali di kedua-dua hujung (dekat leher dan dasar) untuk dijadikan penyangkut. Buat sama untuk setiap botol."),
+  S("Hang the bottles one below another, about 25 cm apart, so water dripping from one falls into the next.","Gantung botol satu di bawah yang lain, kira-kira 25 cm jarak, supaya air yang menitis jatuh ke botol seterusnya."),
+  S("Fill each bottle two-thirds full with the soil and compost mix.","Isi setiap botol dua pertiga penuh dengan campuran tanah dan kompos."),
+  S("Plant your seedlings or cuttings and press the soil gently around them.","Tanam anak benih atau keratan dan tekan tanah perlahan-lahan di sekelilingnya."),
+  S("Water the top bottle slowly and watch it trickle down. Place the garden where it gets a few hours of sun.","Siram botol paling atas perlahan-lahan dan perhatikan air mengalir ke bawah. Letakkan taman di tempat yang mendapat cahaya matahari beberapa jam."),
+  S("Mini pots: cut the bottom 8 cm off spare bottles, poke holes, fill and plant. Tie a ribbon on for a gift.","Pasu mini: potong 8 cm bahagian bawah botol lebihan, tebuk lubang, isi dan tanam. Ikat reben untuk dijadikan hadiah.","The G1 team also built an Arduino soil sensor and pump to water the garden automatically: see the Smart Watering lab.","Pasukan G1 juga membina sensor tanah Arduino dan pam untuk menyiram taman secara automatik: lihat makmal Penyiraman Pintar.")],
+ safety:[W("Cut plastic edges are sharp: an adult cuts, then tape the edges.","Tepi plastik yang dipotong tajam: orang dewasa memotong, kemudian lekatkan pita pada tepinya."),
+  W("Wet soil is heavy. Tie the bottles to a strong frame, not above where people walk or sit.","Tanah basah berat. Ikat botol pada rangka yang kuat, bukan di atas laluan atau tempat orang duduk."),
+  W("No standing water: Aedes mosquitoes can breed in a cap or tray in about a week. Check and empty them weekly.","Tiada air bertakung: nyamuk Aedes boleh membiak dalam penutup botol atau dulang dalam kira-kira seminggu. Periksa dan kosongkan setiap minggu."),
+  W("Money plant is for looking at only: it is poisonous to eat and harmful to cats and dogs. Wash hands after gardening.","Pokok duit-duit hanya untuk hiasan: ia beracun jika dimakan dan berbahaya kepada kucing dan anjing. Basuh tangan selepas berkebun.")],
+ sci:{kids:L("Plants need light, water, air and food from the soil. Water always flows down, so one watering at the top feeds every bottle below.","Tumbuhan memerlukan cahaya, air, udara dan makanan daripada tanah. Air sentiasa mengalir ke bawah, jadi sekali siram di atas memberi air kepada setiap botol di bawah."),
+  teens:L("Gravity moves water down the column; drainage holes stop waterlogging, because roots need oxygen for respiration. Leaves lose water by transpiration, which also cools the air around them. Growing upwards gives more plants per square metre of floor.","Graviti menggerakkan air ke bawah turus; lubang saliran mengelakkan tanah tepu air kerana akar memerlukan oksigen untuk respirasi. Daun kehilangan air melalui transpirasi, yang turut menyejukkan udara di sekelilingnya. Menanam secara menegak memberi lebih banyak tumbuhan bagi setiap meter persegi lantai."),
+  adults:L("Green walls reduce surface temperatures and support urban biodiversity, and reusing PET keeps it in use longer before recycling. Sunlight slowly breaks down PET, so expect to replace bottles after some time outdoors, and recycle the old ones.","Dinding hijau mengurangkan suhu permukaan dan menyokong biodiversiti bandar, dan penggunaan semula PET memanjangkan hayatnya sebelum dikitar semula. Cahaya matahari perlahan-lahan merosakkan PET, jadi botol perlu diganti selepas beberapa lama di luar dan botol lama dikitar semula.")},
+ teach:L("Prepare the cut bottles before class. Pupils fill, plant and hang. Make a watering rota and a weekly mosquito check. Pair it with the Compost lab for the soil and the Smart Watering lab for older pupils.","Sediakan botol yang telah dipotong sebelum kelas. Murid mengisi, menanam dan menggantung. Buat jadual menyiram dan semakan nyamuk mingguan. Gabungkan dengan makmal Kompos untuk tanah dan makmal Penyiraman Pintar untuk murid yang lebih tua."),
+ ext:[L("Measure: how many mL of water do you pour at the top, and how many mL drip out of the bottom bottle? Where did the rest go?","Ukur: berapa mL air dituang di atas, dan berapa mL menitis keluar dari botol paling bawah? Ke mana perginya selebihnya?"),
+  L("Grow the same seedling in a bottle and in the ground. Measure the height every 3 days for 3 weeks and draw a graph.","Tanam anak benih yang sama dalam botol dan di tanah. Ukur ketinggian setiap 3 hari selama 3 minggu dan lukis graf."),
+  L("Count how many bottles a class garden of 20 bottles saves from the bin in a year if you replace them once.","Kira berapa botol yang diselamatkan daripada tong sampah oleh taman kelas 20 botol dalam setahun jika diganti sekali.")],
+ refl:[L("Where at home or school could a bottle garden go?","Di mana di rumah atau sekolah taman botol boleh diletakkan?"),
+  L("Is reusing a bottle better than recycling it? Why?","Adakah mengguna semula botol lebih baik daripada mengitar semulanya? Mengapa?"),
+  L("What would you grow, and who would you give it to?","Apakah yang akan anda tanam, dan kepada siapa anda akan memberinya?")],
+ posters:[P("assets/zph/vgarden-1.jpg","Seedlings in mini bottle pots (G1 Eco-Elevate)","Anak benih dalam pasu botol mini (G1 Eco-Elevate)"),P("assets/zph/vgarden-2.jpg","Money plant cuttings ready to give away","Keratan pokok duit-duit sedia untuk diberi")],
+ credit:L("Project: UPM ENG3104 2024 Group 1 \"Eco-Elevate: Plastic's Green Revolution in Vertical Garden\" (Zero-Plastic Hero 2024). Video and photos: the group.","Projek: Kumpulan 1 ENG3104 UPM 2024 \"Eco-Elevate: Plastic's Green Revolution in Vertical Garden\" (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut.")},
+
+/* ---------------------------------------------------------------- 12 HYDROPONICS */
+{id:"hydro",icon:"🥬",min:9,mins:60,diff:2,sup:"close",heat:false,sdgs:[2,6,11,12],video:"self",
+ badge:{icon:"🥬",name:L("Water Farmer","Petani Air")},
+ title:L("Bottle Hydroponics","Hidroponik Botol"),
+ hook:L("Grow leafy vegetables in water, with no soil and no pump, inside a cut plastic bottle.","Tanam sayur berdaun di dalam air, tanpa tanah dan tanpa pam, di dalam botol plastik yang dipotong."),
+ time:L("60 min to set up; about 4–6 weeks to harvest","60 min untuk menyediakan; kira-kira 4–6 minggu untuk dituai"),
+ cost:L("Bottles are free; hydroponic nutrient (AB mix) and seeds are bought.","Botol percuma; nutrien hidroponik (baja AB) dan benih perlu dibeli."),costTodo:"confirm RM price of AB mix and seeds",
+ waste:L("1.5 L PET bottles and caps; scrap wood and bubble wrap for the shelter","Botol PET 1.5 L dan penutupnya; kayu buangan dan balutan gelembung untuk teduhan"),product:L("A soil-free vegetable pot and a mini rain shelter","Pasu sayur tanpa tanah dan teduhan hujan mini"),
+ why:{env:L("Bottles get reused, and a hydroponic pot with no pump uses no electricity. Plants take only the water they need.","Botol diguna semula, dan pasu hidroponik tanpa pam tidak menggunakan elektrik. Tumbuhan hanya mengambil air yang diperlukan."),
+  econ:L("Fresh sawi or lettuce at home or in the school canteen, grown on a wall or a corridor with no garden land.","Sawi atau salad segar di rumah atau kantin sekolah, ditanam di dinding atau koridor tanpa tanah kebun."),
+  soc:L("Flats and schools without land can still grow food. The 2024 G3 team designed a \"rain shelter house\" so the bottles keep working in the rainy season.","Rumah pangsa dan sekolah tanpa tanah masih boleh menanam makanan. Pasukan G3 2024 mereka bentuk \"rumah perlindungan hujan\" supaya botol terus berfungsi pada musim hujan.")},
+ mats:[H("Bottle pot","Pasu botol"),
+  L("1 clear 1.5 L bottle per plant, washed","1 botol jernih 1.5 L bagi setiap pokok, dibasuh"),
+  L("Seeds of a leafy vegetable (sawi, lettuce or kangkung) and a kitchen sponge cut into 2 cm cubes","Benih sayur berdaun (sawi, salad atau kangkung) dan span dapur dipotong menjadi kiub 2 cm"),
+  L("Hydroponic nutrient A and B (AB mix) and a measuring syringe or spoon","Nutrien hidroponik A dan B (baja AB) dan picagari atau sudu penyukat"),
+  L("Black paper, foil or old cloth to cover the bottle; tape","Kertas hitam, kerajang atau kain lama untuk membalut botol; pita"),
+  L("Craft knife (adult only) and a marker","Pisau kraf (orang dewasa sahaja) dan pen penanda"),
+  H("Rain shelter (G3 design, optional)","Teduhan hujan (reka bentuk G3, pilihan)"),
+  L("Scrap wood strips, nails and hammer; extra bottles; stapler; clear tape; bubble wrap","Jalur kayu buangan, paku dan tukul; botol tambahan; stapler; pita jernih; balutan gelembung")],
+ steps:[H("Bottle pot (Kratky method)","Pasu botol (kaedah Kratky)"),
+  S("Sow 1–2 seeds on each wet sponge cube. Keep them damp in a tray until roots and 2 small leaves appear (about a week).","Semai 1–2 biji benih pada setiap kiub span basah. Pastikan lembap dalam dulang sehingga akar dan 2 daun kecil muncul (kira-kira seminggu)."),
+  S("ADULT: cut the bottle around one-third from the top. Tape the cut edges.","ORANG DEWASA: potong botol kira-kira satu pertiga dari atas. Lekatkan pita pada tepi yang dipotong."),
+  S("Wrap the bottom part in black paper or foil, leaving a thin window to check the water level.","Balut bahagian bawah dengan kertas hitam atau kerajang, tinggalkan tingkap kecil untuk melihat paras air.","Light makes green algae grow in the water. Algae steal nutrients and oxygen from the roots.","Cahaya menyebabkan alga hijau tumbuh dalam air. Alga mencuri nutrien dan oksigen daripada akar."),
+  S("ADULT: mix the AB nutrient into water exactly as the label says. Add A and B to the water separately, never to each other.","ORANG DEWASA: campurkan nutrien AB ke dalam air tepat seperti pada label. Masukkan A dan B ke dalam air secara berasingan, jangan dicampur sesama sendiri."),
+  S("Pour the nutrient water into the bottom part. Turn the top part upside down (no cap) and sit it in the bottom like a funnel.","Tuang air nutrien ke bahagian bawah. Terbalikkan bahagian atas (tanpa penutup) dan letakkan di dalam bahagian bawah seperti corong."),
+  S("Push the sponge with the seedling into the bottle neck so its base just touches the water.","Tolak span bersama anak benih ke dalam leher botol supaya dasarnya hanya menyentuh air."),
+  S("Tape around the joint so no light, rain or mosquitoes can get in. Label the bottle \"Not for drinking\".","Lekatkan pita di sekeliling sambungan supaya cahaya, hujan atau nyamuk tidak boleh masuk. Labelkan botol \"Bukan untuk diminum\"."),
+  S("Keep it in bright light but out of the rain. Do not refill to the top: as the roots grow, the water level drops and leaves an air gap.","Letakkan di tempat terang tetapi terlindung daripada hujan. Jangan isi semula sehingga penuh: apabila akar membesar, paras air turun dan meninggalkan ruang udara.","The top roots breathe from the air gap and the lower roots drink. If the water gets very low, top up only to about half.","Akar atas bernafas daripada ruang udara dan akar bawah menyerap air. Jika air terlalu rendah, tambah hanya sehingga kira-kira separuh."),
+  S("Harvest the leaves in about 4–6 weeks. Pour leftover nutrient water onto garden plants, not into a drain.","Tuai daun dalam kira-kira 4–6 minggu. Tuang baki air nutrien pada tanaman kebun, bukan ke dalam longkang."),
+  H("Rain shelter house (G3 2024)","Rumah perlindungan hujan (G3 2024)"),
+  S("Build a small wooden frame to fit the bottles you collected. Nail each bottle cap to the wood, then screw the bottle into its cap so it stays steady.","Bina rangka kayu kecil mengikut saiz botol yang dikumpul. Pakukan setiap penutup botol pada kayu, kemudian pulas botol ke dalam penutupnya supaya kukuh."),
+  S("For the roof, ADULT cuts the top and bottom off bottles and slits them open. Flatten, staple them together and tape the joins so rain cannot leak through.","Untuk bumbung, ORANG DEWASA memotong bahagian atas dan bawah botol serta membelahnya. Leperkan, stapler bersama dan lekatkan pita pada sambungan supaya hujan tidak bocor.","The G3 team used bubble wrap to fill gaps and save cost, and fixed the roof without glue.","Pasukan G3 menggunakan balutan gelembung untuk menutup celah dan menjimatkan kos, serta memasang bumbung tanpa gam.")],
+ safety:[W("Nutrient salts: an adult measures them. Do not drink or taste, wash hands after, and keep the packets away from small children.","Garam nutrien: orang dewasa yang menyukat. Jangan minum atau rasa, basuh tangan selepas itu dan jauhkan paket daripada kanak-kanak kecil."),
+  W("Still water can breed Aedes mosquitoes in about a week. Seal every gap with tape and check for wrigglers weekly. If you see any, empty the bottle and start again.","Air yang tidak bergerak boleh membiakkan nyamuk Aedes dalam kira-kira seminggu. Tutup setiap celah dengan pita dan periksa jentik-jentik setiap minggu. Jika ada, kosongkan botol dan mulakan semula."),
+  W("Cut bottle edges, nails and hammers: adults cut and hammer, learners wear covered shoes.","Tepi botol yang dipotong, paku dan tukul: orang dewasa memotong dan mengetuk, peserta memakai kasut bertutup.")],
+ sci:{kids:L("Plants do not need soil. They need water, light, air and plant food. In hydroponics, the plant food is already mixed in the water.","Tumbuhan tidak memerlukan tanah. Ia memerlukan air, cahaya, udara dan makanan tumbuhan. Dalam hidroponik, makanan tumbuhan sudah dicampur dalam air."),
+  teens:L("Roots take up nutrients as dissolved ions: nitrogen for leaves, phosphorus for roots, potassium for overall health, plus small amounts of others. Roots also need oxygen. In the Kratky method the water level falls as the plant drinks, so an air gap opens for the upper roots, with no pump needed.","Akar menyerap nutrien sebagai ion terlarut: nitrogen untuk daun, fosforus untuk akar, kalium untuk kesihatan keseluruhan, serta sedikit unsur lain. Akar juga memerlukan oksigen. Dalam kaedah Kratky, paras air turun apabila tumbuhan minum, jadi ruang udara terbuka untuk akar atas tanpa memerlukan pam."),
+  adults:L("Non-circulating (Kratky) hydroponics was developed at the University of Hawaii for low-cost growing without electricity. It suits schools and flats, but nutrient solutions are fertiliser: spent solution should go on plants, not into drains, where it feeds algae blooms.","Hidroponik tanpa edaran (Kratky) dibangunkan di University of Hawaii untuk penanaman kos rendah tanpa elektrik. Ia sesuai untuk sekolah dan rumah pangsa, tetapi larutan nutrien ialah baja: larutan terpakai patut dituang pada tumbuhan, bukan ke longkang yang akan menyuburkan alga.")},
+ teach:L("Sow the sponges a week before the lesson so pupils start with seedlings. One bottle per pair is enough. Keep a class table of the water level and leaf count each week.","Semai span seminggu sebelum pelajaran supaya murid bermula dengan anak benih. Satu botol bagi setiap pasangan sudah memadai. Simpan jadual kelas bagi paras air dan bilangan daun setiap minggu."),
+ ext:[L("Grow two bottles: one wrapped in black paper, one clear. After two weeks, which has more algae? Which plant is bigger?","Tanam dua botol: satu dibalut kertas hitam, satu jernih. Selepas dua minggu, yang manakah lebih banyak alga? Pokok mana lebih besar?"),
+  L("Mark the water level every 2 days. How many mL does one plant drink a day?","Tanda paras air setiap 2 hari. Berapa mL air yang diminum oleh satu pokok sehari?"),
+  L("Design a rain shelter for 10 bottles on your school wall. Sketch it with measurements and list the waste materials you would use.","Reka teduhan hujan untuk 10 botol di dinding sekolah anda. Lakar dengan ukuran dan senaraikan bahan sisa yang akan digunakan.")],
+ refl:[L("Why might hydroponics help people who live in flats?","Mengapakah hidroponik boleh membantu orang yang tinggal di rumah pangsa?"),
+  L("What would happen to the roots if the bottle was filled to the top all the time?","Apakah yang akan berlaku kepada akar jika botol sentiasa diisi penuh?"),
+  L("Why did the G3 team need a roof over their bottles?","Mengapakah pasukan G3 memerlukan bumbung di atas botol mereka?")],
+ posters:[P("assets/zph/hydro-1.jpg","The G3 rain shelter house prototype","Prototaip rumah perlindungan hujan G3")],
+ links:[[ZPH.hydro,"G3 Team 1 \"Hydroponics in Rain Shelter House (RPH)\" build video (Google Drive)","Video pembinaan G3 Pasukan 1 \"Hydroponics in Rain Shelter House (RPH)\" (Google Drive)"]],
+ credit:L("Project: UPM ENG3104 2024 Group 3, Team 1 \"Hydroponics in Rain Shelter House (RPH)\" (Zero-Plastic Hero 2024). Video and photo: the group.","Projek: Kumpulan 3 ENG3104 UPM 2024, Pasukan 1 \"Hydroponics in Rain Shelter House (RPH)\" (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut.")},
+
+/* ---------------------------------------------------------------- 13 FUSED PLASTIC */
+{id:"fused",icon:"☂️",min:9,mins:90,diff:2,sup:"adult",heat:true,sdgs:[12,14],video:"self",
+ badge:{icon:"☂️",name:L("Plastic Tailor","Tukang Jahit Plastik")},
+ title:L("Fused-Plastic Bags & Mini Umbrella","Beg & Payung Mini Plastik Cantum"),
+ hook:L("Iron used plastic bags (between baking paper) into a tough new fabric, then make a drawstring bag, a tote or a working mini umbrella.","Seterika beg plastik terpakai (di antara kertas pembakar) menjadi fabrik baharu yang kuat, kemudian hasilkan beg serut, beg tote atau payung mini yang berfungsi."),
+ time:L("90 min (the umbrella takes a second session)","90 min (payung memerlukan sesi kedua)"),
+ cost:L("Almost free: used bags and straws; baking paper, thread and string.","Hampir percuma: beg dan straw terpakai; kertas pembakar, benang dan tali."),costTodo:"confirm RM price of a roll of baking paper",
+ waste:L("Thin plastic carrier bags (marked 2 HDPE or 4 LDPE); plastic straws","Beg plastik nipis (bertanda 2 HDPE atau 4 LDPE); straw plastik"),product:L("Fused plastic fabric: drawstring bag, tote bag, mini umbrella","Fabrik plastik cantum: beg serut, beg tote, payung mini"),
+ why:{env:L("Carrier bags are light, blow into drains and are rarely recycled. Fusing them turns many weak bags into one strong, waterproof sheet.","Beg plastik ringan, mudah diterbangkan ke longkang dan jarang dikitar semula. Mencantumnya menukar banyak beg yang lemah menjadi satu kepingan yang kuat dan kalis air."),
+  econ:L("Waterproof pouches and totes from free waste can be sold at school fairs.","Kantung dan beg tote kalis air daripada sisa percuma boleh dijual di karnival sekolah."),
+  soc:L("Sewing and designing build real skills, and each bag carries a message about plastic.","Menjahit dan mereka bentuk membina kemahiran sebenar, dan setiap beg membawa mesej tentang plastik.")},
+ mats:[L("5–10 used carrier bags, clean and dry (check the symbol: 2 or 4 only)","5–10 beg plastik terpakai, bersih dan kering (semak simbol: 2 atau 4 sahaja)"),
+  L("Baking (parchment) paper, a clothes iron and an ironing board or towel-covered table","Kertas pembakar, seterika dan papan seterika atau meja beralas tuala"),
+  L("Scissors, ruler and marker","Gunting, pembaris dan pen penanda"),
+  L("Needle and thread or a sewing machine; buttons","Jarum dan benang atau mesin jahit; butang"),
+  L("For the umbrella: about 10 plastic straws","Untuk payung: kira-kira 10 straw plastik")],
+ steps:[H("Make the fabric (ADULT irons)","Hasilkan fabrik (ORANG DEWASA menyeterika)"),
+  S("Cut off the handles and the bottom seam of each bag, then cut down one side so it opens into a flat sheet.","Potong pemegang dan jahitan bawah setiap beg, kemudian gunting satu sisi supaya terbuka menjadi kepingan rata."),
+  S("Stack 4–6 layers of bag on baking paper and cover with another sheet of baking paper. Plastic must never touch the iron.","Susun 4–6 lapisan beg di atas kertas pembakar dan tutup dengan sehelai lagi kertas pembakar. Plastik tidak boleh menyentuh seterika."),
+  S("ADULT: iron on a low-medium setting with no steam, keeping the iron moving for 15–20 seconds. Turn over and repeat.","ORANG DEWASA: seterika pada suhu rendah-sederhana tanpa wap, gerakkan seterika selama 15–20 saat. Terbalikkan dan ulang.","Too cool and the layers will not join (as the Eco-Viva team found); too hot and it shrinks, gets holes and smells. Stop if it smokes.","Terlalu sejuk, lapisan tidak bercantum (seperti yang didapati pasukan Eco-Viva); terlalu panas, ia mengecut, berlubang dan berbau. Berhenti jika berasap."),
+  S("Let it cool, then peel off the paper. The bags have shrunk into one stiff, waterproof sheet.","Biarkan sejuk, kemudian tanggalkan kertas. Beg-beg itu telah mengecut menjadi satu kepingan yang keras dan kalis air."),
+  H("Drawstring bag (Eco-Viva Bag team)","Beg serut (pasukan Eco-Viva Bag)"),
+  S("Measure, mark and trim the fabric to two equal rectangles.","Ukur, tanda dan potong fabrik menjadi dua segi empat tepat yang sama besar."),
+  S("Fold 2 cm over at the top edge, cover with baking paper and ADULT irons the fold to seal a tunnel. Then seal the sides and bottom the same way, or sew them.","Lipat 2 cm di tepi atas, tutup dengan kertas pembakar dan ORANG DEWASA menyeterika lipatan untuk menjadi terowong. Kemudian kedapkan sisi dan bawah dengan cara yang sama, atau jahit."),
+  S("Make a plastic-bag cord: fold a bag 3 times, cut strips two fingers wide, open them out and cut in a zig-zag to get one long strip. Thread it through the tunnel and knot.","Buat tali beg plastik: lipat beg 3 kali, gunting jalur selebar dua jari, buka dan gunting secara zig-zag untuk mendapat satu jalur panjang. Masukkan ke dalam terowong dan simpul."),
+  H("Tote bag (Group 7)","Beg tote (Kumpulan 7)"),
+  S("Cut fabric pieces to the size you want (front, back, base, two handles). Sew them together by hand or machine and add a button.","Potong kepingan fabrik mengikut saiz yang dikehendaki (depan, belakang, dasar, dua pemegang). Jahit dengan tangan atau mesin dan pasang butang."),
+  H("Mini umbrella (Group 7)","Payung mini (Kumpulan 7)"),
+  S("ADULT irons straws flat between baking paper to make stiff strips. Cut each strip in half for 2 ribs, or in quarters for 4 stretchers.","ORANG DEWASA menyeterika straw sehingga leper di antara kertas pembakar untuk menghasilkan jalur keras. Potong setiap jalur dua untuk 2 rusuk, atau empat untuk 4 penyokong."),
+  S("Bundle 4 straws as the shaft. Make 2 small holes at the ends of each rib and stretcher.","Ikat 4 straw sebagai batang. Buat 2 lubang kecil di hujung setiap rusuk dan penyokong."),
+  S("Sew the stretchers to a short straw sleeve (the runner) with needle and thread, and the ribs to the top of the shaft. Add a stopper so the runner locks open.","Jahit penyokong pada lengan straw pendek (peluncur) dengan jarum dan benang, dan rusuk pada bahagian atas batang. Tambah penahan supaya peluncur terkunci apabila dibuka."),
+  S("Open and close it to test, then cut a circle of fused fabric as the canopy and stitch it to the rib tips.","Buka dan tutup untuk menguji, kemudian gunting bulatan fabrik cantum sebagai kanopi dan jahit pada hujung rusuk.")],
+ safety:[D("ADULT ONLY for all ironing. Open windows or use a fan, keep the iron on low-medium, always use baking paper on both sides, and stop at once if there is smoke or a sharp smell.","ORANG DEWASA SAHAJA untuk semua kerja menyeterika. Buka tingkap atau guna kipas, kekalkan seterika pada suhu rendah-sederhana, sentiasa guna kertas pembakar di kedua-dua belah, dan berhenti serta-merta jika berasap atau berbau tajam."),
+  D("Use only bags marked 2 (HDPE) or 4 (LDPE). Never heat PVC (3), foil-lined wrappers or bags with metal print: they can give off toxic fumes.","Guna beg bertanda 2 (HDPE) atau 4 (LDPE) sahaja. Jangan panaskan PVC (3), pembalut berlapik kerajang atau beg bercetak logam: ia boleh membebaskan wasap toksik."),
+  W("Hot plastic sticks to skin and burns. Let it cool before touching.","Plastik panas melekat pada kulit dan melecurkan. Biarkan sejuk sebelum disentuh."),
+  W("Needles and scissors: count needles before and after, and keep fingers clear of the sewing-machine needle.","Jarum dan gunting: kira jarum sebelum dan selepas, dan jauhkan jari daripada jarum mesin jahit.")],
+ sci:{kids:L("Some plastics go soft when they get warm. When the soft layers press together and cool down, they stick and become one strong sheet.","Sesetengah plastik menjadi lembut apabila panas. Apabila lapisan yang lembut ditekan bersama dan disejukkan, ia melekat dan menjadi satu kepingan yang kuat."),
+  teens:L("Polyethylene is a thermoplastic: long chain molecules that slide past each other when warm. Under the iron, chains at the surfaces mix across the layers, and on cooling they lock together. LDPE softens and melts at a lower temperature than HDPE, which is why a low-medium iron is enough and a hot iron burns holes.","Polietilena ialah termoplastik: molekul rantai panjang yang boleh menggelongsor apabila panas. Di bawah seterika, rantai di permukaan bercampur merentasi lapisan, dan apabila sejuk ia terkunci bersama. LDPE melembut dan melebur pada suhu lebih rendah berbanding HDPE, sebab itu seterika rendah-sederhana sudah memadai dan seterika panas membakar lubang."),
+  adults:L("Fusing is upcycling by heat, so the controls matter: thin PE melts at roughly 115–135 °C, well below the temperature at which it decomposes, but PVC releases hydrogen chloride when heated and printed or foil layers can release other fumes. Ventilate, keep temperatures low and sort by resin code first. Once fused and sewn, the product can still go back into PE recycling at end of life if no other materials are attached.","Pencantuman ialah kitar naik menggunakan haba, jadi kawalan penting: PE nipis melebur pada kira-kira 115–135 °C, jauh di bawah suhu penguraiannya, tetapi PVC membebaskan hidrogen klorida apabila dipanaskan dan lapisan bercetak atau kerajang boleh membebaskan wasap lain. Pastikan pengudaraan, kekalkan suhu rendah dan asingkan mengikut kod resin terlebih dahulu. Selepas dicantum dan dijahit, produk masih boleh dikitar semula sebagai PE pada akhir hayat jika tiada bahan lain dilekatkan.")},
+ teach:L("The adult runs one ironing station by an open window; groups queue with their stacked bags and baking paper. Others cut, design and sew. Make the fabric in session 1 and the umbrella in session 2.","Orang dewasa mengendalikan satu stesen seterika di tepi tingkap yang terbuka; kumpulan beratur dengan beg yang telah disusun dan kertas pembakar. Yang lain menggunting, mereka bentuk dan menjahit. Hasilkan fabrik dalam sesi 1 dan payung dalam sesi 2."),
+ ext:[L("Strength test: hang a bag of 1 layer, 4 layers and 8 layers from a hook and add water bottles until each tears. Plot layers vs. load.","Ujian kekuatan: gantung beg 1 lapisan, 4 lapisan dan 8 lapisan pada cangkuk dan tambah botol air sehingga setiap satu koyak. Plot lapisan lawan beban."),
+  L("Waterproof test: pour 100 mL of water into your drawstring bag. Does any leak out in 5 minutes? Where?","Ujian kalis air: tuang 100 mL air ke dalam beg serut anda. Adakah air bocor dalam 5 minit? Di mana?"),
+  L("Count how many carrier bags went into your product. How many would your whole class save in a term?","Kira berapa beg plastik digunakan untuk produk anda. Berapa banyak yang dapat diselamatkan oleh seluruh kelas dalam satu penggal?")],
+ refl:[L("Why must plastic never touch the iron directly?","Mengapakah plastik tidak boleh menyentuh seterika secara terus?"),
+  L("Is a fused-plastic bag better than refusing the carrier bag in the first place?","Adakah beg plastik cantum lebih baik daripada menolak beg plastik dari awal?"),
+  L("What else could you make from the fabric?","Apa lagi yang boleh dibuat daripada fabrik ini?")],
+ posters:[P("assets/zph/fused-umbrella.jpg","Group 7's mini umbrella frame made from ironed straws","Rangka payung mini Kumpulan 7 daripada straw yang diseterika"),P("assets/zph/fused-tote.jpg","Group 7's fused-plastic tote bag","Beg tote plastik cantum Kumpulan 7"),P("assets/zph/fused-pouch.jpg","A finished pouch with a button","Kantung siap dengan butang"),P("assets/zph/fused-drawstring.jpg","Eco-Viva Bag: inserting the drawstring","Eco-Viva Bag: memasukkan tali serut"),P("assets/zph/fused-plarn.jpg","Eco-Viva Bag: cutting zig-zag plastic strips","Eco-Viva Bag: menggunting jalur plastik zig-zag")],
+ links:[[ZPH.umbrella,"Group 7 \"Production of Plastic Umbrella\" and tote bag video (Google Drive)","Video Kumpulan 7 \"Production of Plastic Umbrella\" dan beg tote (Google Drive)"],[ZPH.ecoviva,"\"Eco Viva Bag\" step-by-step video (YouTube)","Video langkah demi langkah \"Eco Viva Bag\" (YouTube)"]],
+ credit:L("Projects: UPM ENG3104 2024 Group 7 (umbrella and tote bag) and the Eco-Viva Bag team (Zero-Plastic Hero 2024). Video and photos: the groups.","Projek: Kumpulan 7 ENG3104 UPM 2024 (payung dan beg tote) dan pasukan Eco-Viva Bag (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut.")},
+
+/* ---------------------------------------------------------------- 14 LIFEBUOY */
+{id:"lifebuoy",icon:"🛟",min:7,mins:45,diff:1,sup:"close",heat:false,sdgs:[11,13,14],video:"self",
+ badge:{icon:"🛟",name:L("Float Engineer","Jurutera Pelampung")},
+ title:L("Bubble-Wrap Float Ring (Model)","Gelang Pelampung Balutan Gelembung (Model)"),
+ hook:L("Roll parcel bubble wrap into a ring that floats, then test how much weight it can hold up in a basin.","Gulung balutan gelembung bungkusan menjadi gelang yang terapung, kemudian uji berapa banyak berat yang boleh ditampungnya dalam besen."),
+ time:L("45 min","45 min"),
+ cost:L("Free: parcel bubble wrap, a scrap of tarpaulin or a plastic bag, and tape.","Percuma: balutan gelembung bungkusan, sisa kanvas plastik atau beg plastik, dan pita."),
+ waste:L("Bubble wrap from parcels; old PE tarpaulin or plastic bags","Balutan gelembung daripada bungkusan; kanvas PE atau beg plastik lama"),product:L("A model float ring for a buoyancy experiment","Model gelang pelampung untuk eksperimen keapungan"),
+ why:{env:L("Online shopping produces lots of bubble wrap and plastic film. Kept in use, it stays out of drains, where plastic blocks water flow and makes flash floods worse.","Membeli-belah dalam talian menghasilkan banyak balutan gelembung dan filem plastik. Jika terus digunakan, ia tidak masuk ke longkang, tempat plastik menyekat aliran air dan memburukkan banjir kilat."),
+  econ:L("Free materials make a full science experiment on floating and sinking.","Bahan percuma menghasilkan eksperimen sains lengkap tentang terapung dan tenggelam."),
+  soc:L("Floods are Malaysia's most common natural disaster. Building a model opens a talk about flood safety: what to do, and what never to do.","Banjir ialah bencana alam paling kerap di Malaysia. Membina model membuka perbincangan tentang keselamatan banjir: apa yang perlu dibuat, dan apa yang tidak boleh sekali-kali dibuat.")},
+ table:{head:[L("Students' full-size design","Reka bentuk saiz penuh pelajar"),L("Value","Nilai")],
+  rows:[[L("For a child up to","Untuk kanak-kanak sehingga"),"30 kg"],[L("Inner radius","Jejari dalam"),"0.25 m"],[L("Outer radius","Jejari luar"),"0.57 m"],[L("Tube radius","Jejari tiub"),"0.16 m"],[L("Volume","Isi padu"),"≈ 0.2 m³"]],
+  note:L("From the 2024 lifebuoy team's slides. A model, not a tested safety device.","Daripada slaid pasukan pelampung 2024. Model, bukan alat keselamatan yang diuji.")},
+ mats:[L("A long piece of bubble wrap (about 1 m × 30 cm for a model)","Sehelai balutan gelembung panjang (kira-kira 1 m × 30 cm untuk model)"),
+  L("Wide tape (packing or duct tape)","Pita lebar (pita bungkusan atau pita duct)"),
+  L("An old PE tarpaulin scrap or 2 plastic bags for the cover","Sisa kanvas PE lama atau 2 beg plastik untuk penutup"),
+  L("A basin or big tub of water, and weights: 500 mL water bottles, coins or marbles","Besen atau tab besar berisi air, dan pemberat: botol air 500 mL, syiling atau guli"),
+  L("Kitchen scale and ruler","Penimbang dapur dan pembaris")],
+ steps:[S("Lay 3 layers of bubble wrap on top of each other and tape them together into one thick sheet.","Susun 3 lapisan balutan gelembung dan lekatkan dengan pita menjadi satu kepingan tebal."),
+  S("Roll the sheet tightly into a long tube and tape along its length.","Gulung kepingan itu dengan ketat menjadi tiub panjang dan lekatkan pita sepanjangnya."),
+  S("Bend the tube into a ring and tape the two ends firmly together.","Bengkokkan tiub menjadi gelang dan lekatkan kedua-dua hujungnya dengan kuat."),
+  S("Cover the ring with strips of tarpaulin or plastic bag and tape them down. This is your waterproof skin.","Balut gelang dengan jalur kanvas atau beg plastik dan lekatkan dengan pita. Ini ialah kulit kalis air."),
+  S("Weigh the ring. Measure its outer and inner diameter and the thickness of the tube.","Timbang gelang. Ukur diameter luar dan dalam serta ketebalan tiub."),
+  S("Float it in the basin. Add weights one at a time until water reaches the top of the ring. Record the total mass it held.","Apungkan dalam besen. Tambah pemberat satu demi satu sehingga air sampai ke bahagian atas gelang. Catat jumlah jisim yang ditampung.","1 litre of water has a mass of 1 kg. A ring that can push aside 2 litres of water can hold up about 2 kg, minus its own mass.","1 liter air berjisim 1 kg. Gelang yang boleh menolak 2 liter air boleh menampung kira-kira 2 kg, tolak jisimnya sendiri.")],
+ safety:[D("This is a learning model, NOT a life-saving device. Never use it for swimming, in a flood or for a rescue. Only certified lifejackets and lifebuoys are safe.","Ini ialah model pembelajaran, BUKAN alat menyelamat nyawa. Jangan sekali-kali gunakannya untuk berenang, semasa banjir atau untuk menyelamat. Hanya jaket keselamatan dan pelampung yang diperakui selamat."),
+  D("In a flood: stay out of the water, move to higher ground and call 999. If someone is in the water, REACH or THROW, don't GO in.","Semasa banjir: jauhi air, berpindah ke tempat tinggi dan hubungi 999. Jika seseorang di dalam air, HULUR atau BALING, jangan TERJUN."),
+  W("An adult stays by the basin the whole time: young children can drown in a few centimetres of water. Empty it after use.","Orang dewasa berada di tepi besen sepanjang masa: kanak-kanak kecil boleh lemas dalam air beberapa sentimeter. Kosongkan selepas digunakan."),
+  W("Keep bubble wrap and plastic bags away from babies and toddlers (suffocation).","Jauhkan balutan gelembung dan beg plastik daripada bayi dan kanak-kanak kecil (lemas).")],
+ sci:{kids:L("Things float when they are light for their size. Bubble wrap is mostly air, so the ring pushes water out of the way and the water pushes back up.","Benda terapung apabila ringan bagi saiznya. Balutan gelembung kebanyakannya udara, jadi gelang menolak air ke tepi dan air menolak semula ke atas."),
+  teens:L("Archimedes' principle: the upward force equals the weight of water pushed aside. A ring is a torus, with volume V = 2π²Rr², where R is the distance to the centre of the tube and r is the tube radius. Each litre under water gives about 1 kg of lift. For the students' design (R = 0.41 m, r = 0.16 m), V ≈ 0.2 m³ = 200 L.","Prinsip Archimedes: daya ke atas sama dengan berat air yang ditolak. Gelang ialah torus, dengan isi padu V = 2π²Rr², R ialah jarak ke pusat tiub dan r ialah jejari tiub. Setiap liter di bawah air memberi kira-kira 1 kg daya angkat. Bagi reka bentuk pelajar (R = 0.41 m, r = 0.16 m), V ≈ 0.2 m³ = 200 L."),
+  adults:L("Volume is not the only test of a life-saving device. A certified ship's lifebuoy (IMO Life-Saving Appliances Code) must hold up at least 14.5 kg of iron in fresh water for 24 hours, survive a drop into water and resist fire, oil and sunlight. Bubbles can burst and seams can leak, which is why DIY floats stay as models. The real lesson is prevention: plastic kept out of drains reduces flood risk.","Isi padu bukan satu-satunya ujian bagi alat menyelamat nyawa. Pelampung kapal yang diperakui (Kod Peralatan Menyelamat Nyawa IMO) mesti menampung sekurang-kurangnya 14.5 kg besi dalam air tawar selama 24 jam, tahan dijatuhkan ke dalam air dan tahan api, minyak serta cahaya matahari. Gelembung boleh pecah dan sambungan boleh bocor, sebab itu pelampung DIY kekal sebagai model. Pengajaran sebenar ialah pencegahan: plastik yang dijauhkan dari longkang mengurangkan risiko banjir.")},
+ teach:L("Run it as a fair test: groups change one thing (layers, tube thickness or ring size) and compare the mass held. Finish with the flood safety rules and \"Reach or throw, don't go\".","Jalankan sebagai ujian adil: kumpulan mengubah satu perkara (bilangan lapisan, ketebalan tiub atau saiz gelang) dan bandingkan jisim yang ditampung. Akhiri dengan peraturan keselamatan banjir dan \"Hulur atau baling, jangan terjun\"."),
+ ext:[L("Use V = 2π²Rr² to predict how much your model should hold. Compare with your test. Why are they different?","Guna V = 2π²Rr² untuk meramal berapa banyak model anda patut tampung. Bandingkan dengan ujian anda. Mengapa berbeza?"),
+  L("Check the students' numbers: with R = 0.41 m and r = 0.16 m, what volume do you get?","Semak nombor pelajar: dengan R = 0.41 m dan r = 0.16 m, berapakah isi padu yang anda dapat?"),
+  L("Make a poster for your neighbourhood: \"Keep plastic out of drains\" and the flood safety rules.","Buat poster untuk kejiranan anda: \"Jauhkan plastik dari longkang\" dan peraturan keselamatan banjir.")],
+ refl:[L("Why is a home-made float not safe for a real flood?","Mengapakah pelampung buatan sendiri tidak selamat untuk banjir sebenar?"),
+  L("How does plastic in drains make floods worse?","Bagaimanakah plastik dalam longkang memburukkan banjir?"),
+  L("What would you do if you saw someone in floodwater?","Apakah yang akan anda lakukan jika melihat seseorang di dalam air banjir?")],
+ posters:[P("assets/zph/lifebuoy-steps.jpg","Their 4 steps: layer, roll, join, cover","4 langkah mereka: lapis, gulung, sambung, balut"),P("assets/zph/lifebuoy-1.jpg","The students' full-size prototype, covered in red PE tarpaulin","Prototaip saiz penuh pelajar, dibalut kanvas PE merah")],
+ links:[[ZPH.lifebuoy,"Lifebuoy team video (Google Drive, Malay narration)","Video pasukan pelampung (Google Drive, narasi BM)"]],
+ credit:L("Project: \"Second Life Plastic: Lifebuoy for Children in Emergency\", UPM ENG3104 2024 (Zero-Plastic Hero 2024). Video and photos: the group.","Projek: \"Second Life Plastic: Lifebuoy for Children in Emergency\", ENG3104 UPM 2024 (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut."),credTodo:"which ENG3104 group number made the lifebuoy"},
+
+/* ---------------------------------------------------------------- 15 SLEEPING BAG */
+{id:"sleepbag",icon:"🛌",min:10,mins:120,diff:2,sup:"close",heat:false,sdgs:[1,3,11,12],video:null,vurl:ZPH.sleepvid,
+ badge:{icon:"🛌",name:L("Warm Hearts Maker","Pembuat Hati Hangat")},
+ title:L("3-in-1 Bubble-Wrap Sleeping Bag","Beg Tidur 3-dalam-1 Balutan Gelembung"),
+ hook:L("Sew squares of bubble wrap and old cloth into a mat that becomes a blanket or a buttoned sleeping bag.","Jahit petak balutan gelembung dan kain lama menjadi tikar yang boleh dijadikan selimut atau beg tidur berbutang."),
+ time:L("About 2 hours, over 2–3 sessions","Kira-kira 2 jam, dalam 2–3 sesi"),
+ cost:L("Almost free: bubble wrap from parcels and old cloth; thread and buttons.","Hampir percuma: balutan gelembung bungkusan dan kain lama; benang dan butang."),
+ waste:L("Parcel bubble wrap; old bedsheets, curtains or T-shirts","Balutan gelembung bungkusan; cadar, langsir atau baju-T lama"),product:L("A 3-in-1 mat, blanket and sleeping bag","Tikar, selimut dan beg tidur 3-dalam-1"),
+ why:{env:L("Bubble wrap from online shopping is light, bulky and rarely recycled. Here it gets a long second life with old cloth that would also be thrown away.","Balutan gelembung daripada membeli-belah dalam talian ringan, besar dan jarang dikitar semula. Di sini ia mendapat hayat kedua yang panjang bersama kain lama yang juga akan dibuang."),
+  econ:L("Two free waste streams make a useful product for camping, school trips or flood relief centres.","Dua aliran sisa percuma menghasilkan produk berguna untuk perkhemahan, lawatan sekolah atau pusat pemindahan banjir."),
+  soc:L("The 2024 G4 team designed it for people sleeping rough on cold, hard floors: a gift that shows care.","Pasukan G4 2024 mereka bentuknya untuk golongan yang tidur di lantai yang sejuk dan keras: hadiah yang menunjukkan keprihatinan.")},
+ mats:[L("Bubble wrap, enough for 18 squares of 30 cm × 30 cm","Balutan gelembung, cukup untuk 18 petak 30 cm × 30 cm"),
+  L("Old cloth (bedsheet, curtain or T-shirts) for 18 matching squares","Kain lama (cadar, langsir atau baju-T) untuk 18 petak yang sepadan"),
+  L("Ruler, marker, scissors and pins","Pembaris, pen penanda, gunting dan pin"),
+  L("Big needle and strong thread, or a sewing machine","Jarum besar dan benang kuat, atau mesin jahit"),
+  L("About 10 buttons","Kira-kira 10 butang")],
+ steps:[S("Cut 18 squares of bubble wrap and 18 squares of cloth, each 30 cm × 30 cm.","Gunting 18 petak balutan gelembung dan 18 petak kain, setiap satu 30 cm × 30 cm."),
+  S("Pin a cloth square onto each bubble-wrap square, bubbles facing in.","Pinkan petak kain pada setiap petak balutan gelembung, gelembung menghadap ke dalam."),
+  S("Sew the pairs into 6 rows of 3 squares.","Jahit pasangan petak menjadi 6 baris, setiap baris 3 petak."),
+  S("Sew the 6 rows together into one sheet, about 90 cm × 180 cm.","Jahit 6 baris itu menjadi satu kepingan, kira-kira 90 cm × 180 cm.","The G4 team made theirs about 100 cm × 180 cm: big enough for an adult to lie on.","Pasukan G4 membuat kira-kira 100 cm × 180 cm: cukup besar untuk orang dewasa berbaring."),
+  S("Fold a strip of cloth over the edges and sew it down so no bubble wrap sticks out.","Lipat jalur kain di tepi dan jahit supaya tiada balutan gelembung terkeluar."),
+  S("Sew buttons along one long side and the bottom. Cut small button holes (or sew loops) on the matching edges.","Jahit butang di sepanjang satu sisi panjang dan bahagian bawah. Buat lubang butang kecil (atau jahit gelung) di tepi yang sepadan."),
+  S("Test all 3 ways: open flat as a mat (bubble side down), wrap as a blanket, or fold in half and button up as a sleeping bag.","Uji ketiga-tiga cara: buka rata sebagai tikar (bahagian gelembung ke bawah), balut sebagai selimut, atau lipat dua dan butangkan sebagai beg tidur.","The G4 team's next idea: velcro instead of buttons, so it is quicker to change.","Idea seterusnya pasukan G4: velcro sebagai ganti butang, supaya lebih cepat ditukar.")],
+ safety:[D("Plastic over the face can stop breathing. Never let babies or toddlers use or play with it, and never cover the face.","Plastik di muka boleh menghentikan pernafasan. Jangan biarkan bayi atau kanak-kanak kecil menggunakan atau bermain dengannya, dan jangan tutup muka."),
+  W("Plastic burns and melts easily: keep it away from candles, mosquito coils and stoves.","Plastik mudah terbakar dan cair: jauhkan daripada lilin, ubat nyamuk lingkar dan dapur."),
+  W("Needles and pins: count them before and after. Keep fingers clear of a sewing-machine needle.","Jarum dan pin: kira sebelum dan selepas. Jauhkan jari daripada jarum mesin jahit.")],
+ sci:{kids:L("A cold floor pulls heat out of your body. The air in the bubbles is very bad at carrying heat, so it keeps you warm, like a puffy jacket.","Lantai yang sejuk menarik haba keluar dari badan. Udara dalam gelembung sangat lemah membawa haba, jadi ia memastikan anda hangat, seperti jaket kembung."),
+  teens:L("Heat moves by conduction, convection and radiation. Lying on a floor loses heat mainly by conduction. Still air conducts heat about 40 times less well than concrete, and sealed bubbles stop the air moving (no convection), so the bubble layer is a good insulator. The plastic also blocks damp from the ground.","Haba bergerak melalui konduksi, perolakan dan sinaran. Berbaring di lantai kehilangan haba terutamanya melalui konduksi. Udara pegun mengkonduksi haba kira-kira 40 kali lebih lemah daripada konkrit, dan gelembung tertutup menghalang udara bergerak (tiada perolakan), jadi lapisan gelembung ialah penebat yang baik. Plastik juga menghalang lembapan dari tanah."),
+  adults:L("This combines two hard-to-recycle streams, LDPE film and mixed textiles, into a long-life product. Plastic does not breathe, so sweat can condense inside: the cloth layer faces the body. Design questions for a real relief product: washability, fire behaviour and how it is collected at end of life.","Ini menggabungkan dua aliran yang sukar dikitar semula, filem LDPE dan tekstil campuran, menjadi produk tahan lama. Plastik tidak telap udara, jadi peluh boleh terkondensasi di dalam: lapisan kain menghadap badan. Soalan reka bentuk bagi produk bantuan sebenar: boleh dibasuh, sifat terhadap api dan cara dikutip pada akhir hayat.")},
+ teach:L("Split the class: cutters, pinners and sewers. Hand-sewing suits ages 10+; a teacher or older pupils use the machine. Two classes can make one bag each for a local shelter or relief centre (ask them first what they need).","Bahagikan kelas: penggunting, pengepin dan penjahit. Jahitan tangan sesuai untuk umur 10+; guru atau murid yang lebih tua menggunakan mesin. Dua kelas boleh membuat satu beg setiap satu untuk rumah perlindungan atau pusat bantuan tempatan (tanya dahulu apa yang mereka perlukan)."),
+ ext:[L("Warmth test: put a cup of warm water on a square of bubble wrap and another on plain cloth on a cold floor. Measure the temperature every 5 minutes. Which cools faster?","Ujian kehangatan: letakkan secawan air suam di atas petak balutan gelembung dan secawan lagi di atas kain biasa di lantai sejuk. Ukur suhu setiap 5 minit. Yang mana lebih cepat sejuk?"),
+  L("Area maths: how many 30 cm squares do you need for a 100 cm × 180 cm bag? (Remember the seams.)","Matematik luas: berapa petak 30 cm diperlukan untuk beg 100 cm × 180 cm? (Ingat jahitan.)"),
+  L("Research plastic-bag sleeping mats crocheted from strips of hundreds of bags (the G4 team's inspiration). Compare time and materials with your bag.","Kaji tikar tidur daripada jalur ratusan beg plastik yang dikait (inspirasi pasukan G4). Bandingkan masa dan bahan dengan beg anda.")],
+ refl:[L("Who in your community could use this, and how would you ask them?","Siapakah dalam komuniti anda yang boleh menggunakannya, dan bagaimana anda akan bertanya kepada mereka?"),
+  L("Why is still air a good insulator?","Mengapakah udara pegun ialah penebat yang baik?"),
+  L("What other waste could you use instead of bubble wrap?","Apakah sisa lain yang boleh digunakan selain balutan gelembung?")],
+ posters:[P("assets/zph/sleepingbag.jpg","The rolled-up bubble-wrap sleeping bag at Zero-Plastic Hero 2024","Beg tidur balutan gelembung yang digulung di Zero-Plastic Hero 2024"),P("assets/zph/sleep-sew.jpg","Sewing the 30 cm squares","Menjahit petak 30 cm"),P("assets/zph/sleep-mat.jpg","Opened out as a mat","Dibuka sebagai tikar"),P("assets/labs/ecobrick-poster-2.jpg","G4 poster \"Plastic is Valuable\"","Poster G4 \"Plastic is Valuable\"")],
+ links:[[ZPH.sleepbag,"Group 4 project page: bubble-wrap sleeping bag (Padlet)","Halaman projek Kumpulan 4: beg tidur balutan gelembung (Padlet)"],[ZPH.sleepvid,"Group 4 video (Google Drive)","Video Kumpulan 4 (Google Drive)"]],
+ credit:L("Project: UPM ENG3104 2024 Group 4 \"Transformation of Used Plastic Bags and Bubble Wraps into Tote Bags and Sleeping Bags\" (Zero-Plastic Hero 2024). Photos: the group.","Projek: Kumpulan 4 ENG3104 UPM 2024 \"Transformation of Used Plastic Bags and Bubble Wraps into Tote Bags and Sleeping Bags\" (Zero-Plastic Hero 2024). Foto: kumpulan tersebut.")}
 ];
 
 /* ================================================================= UI */
@@ -561,9 +812,12 @@ soon:L("Video coming soon","Video akan datang"),
  mats:L("You need","Anda perlukan"),steps:L("Steps","Langkah-langkah"),safety:L("Safety first","Keselamatan dahulu"),
  sci:L("The science","Sainsnya"),lvl:{kids:L("Kids level","Tahap kanak-kanak"),teens:L("Teens level","Tahap remaja"),adults:L("Adults level","Tahap dewasa")},
  lvlHint:L("Change the level on the Home page: \"Who's playing?\"","Tukar tahap di halaman Utama: \"Siapa yang bermain?\""),
- teach:L("Teacher tip","Tip guru"),ext:L("Challenge","Cabaran"),refl:L("Think about it","Fikirkan"),posters:L("Original posters","Poster asal"),
+ teach:L("Teacher tip","Tip guru"),ext:L("Challenge","Cabaran"),refl:L("Think about it","Fikirkan"),posters:L("Photos & posters","Foto & poster"),
  credit:L("Original poster: UPM ENG3104 student group (2025)","Poster asal: kumpulan pelajar ENG3104 UPM (2025)"),
  code:L("Arduino sketch","Lakaran Arduino"),
+ links:L("Student project pages","Halaman projek pelajar"),zphAll:L("See all 10 Zero-Plastic Hero 2024 projects","Lihat kesemua 10 projek Zero-Plastic Hero 2024"),
+ vExt:L("Watch the students' video (Google Drive)","Tonton video pelajar (Google Drive)"),
+ vExtN:L("Their video uses stock clips and music, so it is linked, not copied here. Needs internet.","Video mereka menggunakan klip dan muzik stok, jadi ia dipautkan, bukan disalin di sini. Perlu internet."),
  madeIt:L("I made it!","Saya berjaya buat!"),earned:L("Badge earned","Lencana diperoleh"),madeOn:L("You made this on","Anda membuatnya pada"),
  print:L("Print worksheet","Cetak lembaran kerja"),reset:L("Clear ticks","Kosongkan tanda"),
  prev:L("Previous lab","Makmal sebelum"),next:L("Next lab","Makmal seterusnya"),allLabs:L("All labs","Semua makmal"),
@@ -587,7 +841,9 @@ const tagList=(l,cls="tag")=>[
  ...l.sdgs.map(n=>`<span class="${cls} lb-sdg">SDG ${n}</span>`)].join(" ");
 const costH=l=>X(l.cost)+(l.costTodo?` <span class="todo">TODO: ${E(l.costTodo)}</span>`:"");
 const noteH=s=>`<div class="note ${s.lv}">${s.lv==="danger"?"⛔":"⚠️"} ${X(s)}</div>`;
-const credit=l=>X(l.credit||T.credit);
+const credit=l=>X(l.credit||T.credit)+(l.credTodo?` <span class="todo">TODO: ${E(l.credTodo)}</span>`:"");
+const ext=(u,txt)=>`<a href="${E(u)}" target="_blank" rel="noopener">${txt}</a>`;
+const linksH=l=>l.links?`<h3 class="lb-lh">🔗 ${X(T.links)}</h3><ul class="lb-links">${l.links.map(([u,en,bm])=>`<li>${ext(u,X({en,bm}))}</li>`).join("")}</ul><p class="small"><a href="#/zph">🦸 ${X(T.zphAll)} →</a></p>`:"";
 const tbl=l=>l.table?`<div class="tablewrap lb-tbl"><table class="tbl"><thead><tr>${l.table.head.map(h=>`<th>${X(h)}</th>`).join("")}</tr></thead><tbody>${l.table.rows.map(r=>`<tr>${r.map(c=>`<td>${X(c)}</td>`).join("")}</tr>`).join("")}</tbody></table><p class="small muted">${X(l.table.note)}</p></div>`:"";
 
 LABS.forEach(l=>{ l.ages=l.min+"+"; WQ.labs.push(l);
@@ -604,6 +860,7 @@ WQ.registerPage("labs",{mount(el){
   el.innerHTML=WQ.head("🧪",T.labsT,T.labsS)+
    `<div class="progress lb-prog"><span class="pill">🏅 ${got}/${LABS.length} ${X(T.made)}</span><div class="meter"><i style="width:${got/LABS.length*100}%"></i></div></div>
    <p class="note warn small">${X(T.safeHint)}</p>
+   <a class="card zp-ban" href="#/zph"><span aria-hidden="true">🦸</span><span><b>${X(Z.banT)}</b><br><span class="small">${X(Z.banS)}</span></span><span aria-hidden="true">→</span></a>
    <div class="lb-filters">${seg("a",T.fAge,[["all",T.all],["79",T.a79],["1012",T.a1012],["13",T.a13]])}${seg("t",T.fTime,[["any",T.any],["45",T.t45],["90",T.t90]])}${seg("h",T.fHeat,[["any",T.any],["no",T.noHeat],["yes",T.heat]])}</div>
    <div class="grid">${show.map(l=>{const has=WQ.has("lab-"+l.id);return `<a class="card tile lb-card" href="#/lab/${l.id}">${has?`<span class="done" title="${X(T.earned)}">✅</span>`:""}<span class="ti" aria-hidden="true">${l.icon}</span><h3>${X(l.title)}</h3><p>${X(l.hook)}</p>
     <span class="lb-tags"><span class="tag">${X(T.ages)} ${l.min}+</span><span class="tag">⏱ ${l.mins} min</span>${l.heat?`<span class="tag red">🔥 ${X(T.heat)}</span>`:""}<span class="tag ${has?"go":""}">${has?"✅":"🏅"} ${X(l.badge.name)}</span></span></a>`;}).join("")||`<p class="card">${X(T.none)}</p>`}</div>`;
@@ -633,7 +890,7 @@ WQ.registerPage("lab",{mount(el,{args}){
   <section class="card"><dl class="lb-meta"><div><dt>${X(T.waste)}</dt><dd>${X(l.waste)}</dd></div><div><dt>${X(T.product)}</dt><dd>${X(l.product)}</dd></div><div><dt>${X(T.cost)}</dt><dd>${costH(l)}</dd></div></dl></section>
   <section class="card lb-sec"><h2>🌏 ${X(T.why)}</h2><div class="lb-why"><div><h3>🌍 ${X(T.env)}</h3><p>${X(l.why.env)}</p></div><div><h3>💰 ${X(T.econ)}</h3><p>${X(l.why.econ)}</p></div><div><h3>🤝 ${X(T.soc)}</h3><p>${X(l.why.soc)}</p></div></div></section>
   <section class="card lb-sec noprint"><h2>🎬 ${X(T.video)}</h2>${l.video?`<div class="lb-vid" id="lbVid"><video controls preload="none" playsinline poster="assets/videos/${l.id}.jpg" src="assets/videos/${l.id}.mp4" title="${X(l.title)}"></video></div>
-   <p class="small muted">${l.id==="litmus"?X(T.vidLitmus)+" ":""}${X(T.vidLocal)}</p>`:`<p>🎬 ${X(T.soon)} <span class="todo">TODO: add demo video</span></p>`}</section>
+   <p class="small muted">${l.id==="litmus"?X(T.vidLitmus)+" ":""}${X(T.vidLocal)}</p>`:l.vurl?`<p>▶️ ${ext(l.vurl,X(T.vExt))}</p><p class="small muted">${X(T.vExtN)}</p>`:`<p>🎬 ${X(T.soon)} <span class="todo">TODO: add demo video</span></p>`}</section>
   <section class="card lb-sec"><h2>🧺 ${X(T.mats)} <span class="lb-cnt muted" id="lbMc"></span></h2>${listH(l.mats,"m",st.m,x)}${tbl(l)}</section>
   <section class="card lb-sec"><h2>🪜 ${X(T.steps)} <span class="lb-cnt muted" id="lbSc"></span></h2>${listH(l.steps,"s",st.s,x)}
    ${l.code&&x?`<details class="lb-code"><summary>💻 ${X(T.code)}</summary><pre class="lb-pre">${E(l.code)}</pre></details>`:""}</section>
@@ -642,7 +899,7 @@ WQ.registerPage("lab",{mount(el,{args}){
   ${WQ.aud==="teacher"?`<section class="card lb-sec"><h2>🧑‍🏫 ${X(T.teach)}</h2><p>${X(l.teach)}</p></section>`:""}
   <section class="card lb-sec"><h2>🚀 ${X(T.ext)}</h2><ol>${l.ext.map(e=>`<li>${X(e)}</li>`).join("")}</ol></section>
   <section class="card lb-sec"><h2>💭 ${X(T.refl)}</h2><ul>${l.refl.map(e=>`<li>${X(e)}</li>`).join("")}</ul></section>
-  <section class="card lb-sec"><h2>🖼️ ${X(T.posters)}</h2>${l.posters.length?`<div class="lb-posters">${l.posters.map((p,j)=>`<button class="lb-thumb" data-p="${j}" aria-label="${X(T.open)}: ${X(p.cap)}"><img src="${p.src}" alt="" loading="lazy"><span>${X(p.cap)}</span></button>`).join("")}</div>`:""}<p class="small muted">${credit(l)}</p></section>
+  <section class="card lb-sec"><h2>🖼️ ${X(T.posters)}</h2>${l.posters.length?`<div class="lb-posters">${l.posters.map((p,j)=>`<button class="lb-thumb" data-p="${j}" aria-label="${X(T.open)}: ${X(p.cap)}"><img src="${p.src}" alt="" loading="lazy"><span>${X(p.cap)}</span></button>`).join("")}</div>`:""}<p class="small muted">${credit(l)}</p>${linksH(l)}</section>
   <div class="row noprint lb-actions"><button class="btn" id="lbMade"${when?" disabled":""}>${when?"✅ "+X(T.earned):"🎉 "+X(T.madeIt)}</button><button class="btn blue" id="lbPrint">🖨️ ${X(T.print)}</button><button class="btn alt" id="lbReset">↺ ${X(T.reset)}</button></div>
   <nav class="lb-nav noprint" aria-label="${X(T.allLabs)}">${prev?`<a class="btn alt" href="#/lab/${prev.id}">← ${X(T.prev)}: ${prev.icon}</a>`:"<span></span>"}<a class="btn alt" href="#/labs">🧪 ${X(T.allLabs)}</a>${next?`<a class="btn alt" href="#/lab/${next.id}">${X(T.next)}: ${next.icon} →</a>`:"<span></span>"}</nav>
   <dialog class="lb-dlg" id="lbDlg" aria-label="${X(T.posters)}"><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
@@ -686,6 +943,85 @@ function worksheet(el,l){
  if(autoPrint){autoPrint=false;const id=setTimeout(()=>print(),400);return()=>clearTimeout(id);}
 }
 
+/* ---------- Zero-Plastic Hero 2024 showcase: #/zph  (source: "Zero-Plastic Hero by ChemE (Presentation).pptx") */
+const Z={
+ t:L("Zero-Plastic Hero by ChemE 2024","Zero-Plastic Hero by ChemE 2024"),
+ s:L("10 waste-to-wealth projects by UPM chemical engineering students, shown to a secondary school. Five of them are now WasteQuest labs.","10 projek sisa kepada kekayaan oleh pelajar kejuruteraan kimia UPM, dipamerkan kepada sebuah sekolah menengah. Lima daripadanya kini makmal WasteQuest."),
+ banT:L("Zero-Plastic Hero 2024","Zero-Plastic Hero 2024"),banS:L("See the 10 student projects behind these labs, with their own videos and pages.","Lihat 10 projek pelajar di sebalik makmal ini, bersama video dan halaman mereka."),
+ what:L("The programme","Program"),
+ whatP:L("A SULAM (service-learning) programme of the UPM course ENG3104 Engineers and Society. Chemical engineering students built prototypes from plastic waste and showed school students how to separate, collect and recycle plastic, and how plastic waste can have real economic value.","Program SULAM (pembelajaran servis) bagi kursus UPM ENG3104 Jurutera dan Masyarakat. Pelajar kejuruteraan kimia membina prototaip daripada sisa plastik dan menunjukkan kepada murid sekolah cara mengasingkan, mengumpul dan mengitar semula plastik, serta bagaimana sisa plastik boleh mempunyai nilai ekonomi."),
+ where:L("Where","Tempat"),whereV:L("SMK Convent (M) Kajang, Selangor","SMK Convent (M) Kajang, Selangor"),
+ when:L("When","Bila"),whenV:L("13 June 2024, 1.30–4.30 pm","13 Jun 2024, 1.30–4.30 ptg"),
+ who:L("Organised by","Dianjurkan oleh"),whoV:L("UPM chemical engineering students, Faculty of Engineering","Pelajar kejuruteraan kimia UPM, Fakulti Kejuruteraan"),
+ impact:L("Impact","Impak"),
+ i1:L("pupils and teachers reached","murid dan guru dicapai"),i2:L("UPM students and lecturers","pelajar dan pensyarah UPM"),i3:L("prototypes and modules","prototaip dan modul"),
+ i4:L("JINM","JINM"),i5:L("IPs","IP"),
+ proj:L("The 10 projects","10 projek"),
+ lab:L("Try the lab","Cuba makmal"),
+ only:L("Showcase only: melting plastic gives off toxic fumes, so there is no WasteQuest lab for this. Try Eco-Bricks (no heat) instead.","Pameran sahaja: mencairkan plastik membebaskan wasap toksik, jadi tiada makmal WasteQuest untuk ini. Cuba Eko-Bata (tanpa haba)."),
+ sup:L("Advisor and supervisors","Penasihat dan penyelia"),
+ adv:L("Programme advisor","Penasihat program"),
+ thanks:L("Thank you to every ENG3104 2024 group, SMK Convent (M) Kajang, and the students who shared their videos and photos.","Terima kasih kepada setiap kumpulan ENG3104 2024, SMK Convent (M) Kajang, dan pelajar yang berkongsi video dan foto mereka."),
+ photo:L("Photos: the student groups. No photos of school pupils are shown.","Foto: kumpulan pelajar. Tiada foto murid sekolah dipaparkan.")
+};
+const ZG=n=>L("Group "+n,"Kumpulan "+n);
+const ZP=[
+ {i:"🧱",n:L("Eco-brick furniture","Perabot eko-bata"),g:ZG(8),img:"assets/zph/ecobricks.jpg",lab:"ecobrick",
+  d:L("Bottles packed hard with plastic, glued into a stool with a cushion. They costed it at RM 10.50 a stool.","Botol dipadatkan dengan plastik, dilekatkan menjadi bangku berkusyen. Kos dikira RM 10.50 sebuah bangku."),
+  ln:[[ZPH.g8,"Padlet"],[ZPH.g8yt,"YouTube"]]},
+ {i:"👜",n:L("Eco-Viva bag","Beg Eco-Viva"),g:L("Eco-Viva team","Pasukan Eco-Viva"),img:"assets/zph/fused-plarn.jpg",lab:"fused",
+  d:L("Plastic bags cut into zig-zag yarn and ironed into a drawstring bag.","Beg plastik digunting menjadi benang zig-zag dan diseterika menjadi beg serut."),
+  ln:[[ZPH.ecoviva,"YouTube"]]},
+ {i:"🛍️",n:L("Tote bags","Beg tote"),g:ZG(4),img:"assets/zph/ecobags.jpg",lab:"ecobrick",
+  d:L("Tough, water-resistant totes made from foil-lined plastic packaging.","Beg tote yang kuat dan kalis air daripada pembungkus plastik berlapik kerajang."),
+  ln:[[ZPH.g4tote,"Padlet"]]},
+ {i:"🟫",n:L("Coasters & tiles","Pelapik cawan & jubin"),g:ZG(9),img:"assets/zph/tiles.jpg",lab:null,
+  d:L("Plastic waste shaped into hexagon tiles and bottle-cap coasters.","Sisa plastik dibentuk menjadi jubin heksagon dan pelapik cawan daripada penutup botol."),
+  ln:[[ZPH.g9,"Padlet"]]},
+ {i:"🪴",n:L("Vertical garden","Taman menegak"),g:ZG(1),img:"assets/zph/vgarden-1.jpg",lab:"vgarden",
+  d:L("Hanging bottle planters on a frame, watered by an Arduino moisture sensor and pump.","Pasu botol tergantung pada rangka, disiram oleh sensor kelembapan dan pam Arduino."),
+  ln:[]},
+ {i:"🛌",n:L("Sleeping bags","Beg tidur"),g:ZG(4),img:"assets/zph/sleepingbag.jpg",lab:"sleepbag",
+  d:L("Bubble wrap and cloth squares sewn into a 3-in-1 mat, blanket and sleeping bag for homeless people.","Petak balutan gelembung dan kain dijahit menjadi tikar, selimut dan beg tidur 3-dalam-1 untuk golongan gelandangan."),
+  ln:[[ZPH.sleepbag,"Padlet"],[ZPH.sleepvid,"Google Drive"]]},
+ {i:"🥬",n:L("Hydroponics","Hidroponik"),g:ZG(3),img:"assets/zph/hydro-1.jpg",lab:"hydro",
+  d:L("Bottle hydroponics inside a mini rain shelter house with a roof of flattened bottles.","Hidroponik botol di dalam rumah perlindungan hujan mini berbumbung botol yang dileperkan."),
+  ln:[[ZPH.hydro,"Google Drive"]]},
+ {i:"☂️",n:L("Umbrella & tote bag","Payung & beg tote"),g:ZG(7),img:"assets/zph/fused-umbrella.jpg",lab:"fused",
+  d:L("Ironed plastic bags as fabric and ironed straws as ribs: a mini umbrella that opens and closes.","Beg plastik yang diseterika sebagai fabrik dan straw yang diseterika sebagai rusuk: payung mini yang boleh dibuka dan ditutup."),
+  ln:[[ZPH.umbrella,"Google Drive"]]},
+ {i:"🛟",n:L("Lifebuoy","Pelampung"),g:L("Lifebuoy team","Pasukan pelampung"),gTodo:"group number",img:"assets/zph/lifebuoy-1.jpg",lab:"lifebuoy",
+  d:L("Layers of bubble wrap rolled into a ring and covered with tarpaulin, sized for a 30 kg child. A model, not a safety device.","Lapisan balutan gelembung digulung menjadi gelang dan dibalut kanvas, bersaiz untuk kanak-kanak 30 kg. Model, bukan alat keselamatan."),
+  ln:[[ZPH.lifebuoy,"Google Drive"]]},
+ {i:"🌱",n:L("Bio-pots","Bio-pasu"),g:L("Group 10 (PLASTREE)","Kumpulan 10 (PLASTREE)"),img:"assets/zph/biopots.jpg",lab:"bioplastic",
+  d:L("Plant pots made from home-made bioplastic instead of plastic.","Pasu tanaman daripada bioplastik buatan sendiri sebagai ganti plastik."),
+  ln:[[ZPH.biopots,"Padlet"]]}
+];
+const ZSUP=["Prof. Madya Dr. Norhafizah Hj. Abdullah","Prof. Madya Dr. Salmiaton Ali","Prof. Madya Datin Ir. Dr. Siti Aslina Hussain","Prof. Madya Dr. Rozita Omar","Prof. Madya Ir. Dr. Shamsul Izhar Siajam","Dr. Nordin Hj. Sabli","Dr. Shafreeza Sobri","Dr. Nur Syakina Jamali","Dr. Mohamad Faiz Mukhtar Gunam Resul","Dr. Halimatun Sakdiah Zainuddin"];
+const ZADV="Prof. Ir. Dr. Wan Azlina Wan Abdul Karim Ghani";
+const zFacts=()=>`<dl class="lb-meta"><div><dt>${X(Z.where)}</dt><dd>${X(Z.whereV)}</dd></div><div><dt>${X(Z.when)}</dt><dd>${X(Z.whenV)}</dd></div><div><dt>${X(Z.who)}</dt><dd>${X(Z.whoV)}</dd></div><div><dt>SDG</dt><dd>4 · 12 · 13 · 14 · 15</dd></div></dl>`;
+const zNums=()=>[["400",Z.i1],["80",Z.i2],["10",Z.i3],["10",Z.i4],["5",Z.i5,1]].map(([n,c,todo])=>`<div class="zp-num"><b>${n}</b><span>${X(c)}${todo?` <span class="todo">TODO: what JINM and IP stand for</span>`:""}</span></div>`).join("");
+const zGroup=z=>X(z.g)+(z.gTodo?` <span class="todo">TODO: ${E(z.gTodo)}</span>`:"");
+WQ.registerPage("zph",{mount(el){
+ el.innerHTML=WQ.head("🦸",Z.t,Z.s)+`
+ <section class="card lb-sec"><h2>📣 ${X(Z.what)}</h2><p>${X(Z.whatP)}</p>${zFacts()}</section>
+ <section class="card lb-sec"><h2>📊 ${X(Z.impact)}</h2><div class="zp-nums">${zNums()}</div></section>
+ <h2 class="zp-h">🧪 ${X(Z.proj)}</h2>
+ <div class="zp-grid">${ZP.map((z,k)=>{const lab=z.lab&&get(z.lab);return `<article class="card zp-card"><img src="${z.img}" alt="${X(z.n)}" loading="lazy">
+  <h3><span aria-hidden="true">${z.i}</span> ${k+1}. ${X(z.n)}</h3><p class="small muted">${zGroup(z)} · ENG3104 2024</p><p>${X(z.d)}</p>
+  ${lab?`<a class="btn" href="#/lab/${lab.id}">${lab.icon} ${X(Z.lab)}: ${X(lab.title)}</a>`:`<p class="note danger small">⛔ ${X(Z.only)}</p>`}
+  ${z.ln.length?`<p class="small zp-ln">🔗 ${X(T.links)}: ${z.ln.map(([u,s])=>ext(u,E(s))).join(" · ")}</p>`:""}</article>`;}).join("")}</div>
+ <section class="card lb-sec"><h2>🧑‍🏫 ${X(Z.sup)}</h2><p><b>${X(Z.adv)}:</b> ${E(ZADV)}</p><ul class="zp-sup">${ZSUP.map(n=>`<li>${E(n)}</li>`).join("")}</ul>
+  <p class="small muted">${X(Z.thanks)} ${X(Z.photo)}</p></section>`;
+ WQ.$$("a[target=_blank]",el).forEach(a=>a.addEventListener("click",()=>WQ.track("zph-link/"+a.hostname)));
+}});
+WQ.renderZphPrint=el=>{ if(!el)return;
+ el.innerHTML=`<article class="lbp zpp"><h2 class="lbp-t">🦸 ${X(Z.t)}</h2><p class="lbp-hook">${X(Z.s)}</p>
+  <p>${X(Z.whatP)}</p>${zFacts()}<div class="zp-nums">${zNums()}</div>
+  <div class="zpp-grid">${ZP.map((z,k)=>{const lab=z.lab&&get(z.lab);return `<div class="zpp-c"><img src="${z.img}" alt="${X(z.n)}"><p><b>${k+1}. ${z.i} ${X(z.n)}</b> (${zGroup(z)})<br>${X(z.d)}<br>${lab?`<i>${X(Z.lab)}: ${X(lab.title)}</i>`:`⛔ ${X(Z.only)}`}${z.ln.length?`<br><span class="zpp-u">${z.ln.map(([u])=>E(u)).join("<br>")}</span>`:""}</p></div>`;}).join("")}</div>
+  <p><b>${X(Z.adv)}:</b> ${E(ZADV)}. <b>${X(Z.sup)}:</b> ${ZSUP.map(E).join("; ")}.</p><p class="small">${X(Z.thanks)}</p></article>`;
+};
+
 /* static A4 version for the PDF booklet */
 WQ.renderLabPrint=(el,id)=>{
  const l=get(id);if(!l||!el)return;let n=0;const p=l.posters[0];
@@ -703,11 +1039,30 @@ WQ.renderLabPrint=(el,id)=>{
   <h3>${X(T.teach)}</h3><p>${X(l.teach)}</p>
   <h3>${X(T.ext)}</h3><ol>${l.ext.map(e=>`<li>${X(e)}</li>`).join("")}</ol>
   <h3>${X(T.refl)}</h3><ul>${l.refl.map(e=>`<li>${X(e)}</li>`).join("")}</ul>
-  <p class="lbp-vid"><b>🎬 ${X(T.vid)}:</b> ${l.video?`wastequest.github.io/#/lab/${l.id}`:`${X(T.soon)} <span class="todo">TODO: add demo video</span>`}${p?"":` · ${credit(l)}`}</p>
+  <p class="lbp-vid"><b>🎬 ${X(T.vid)}:</b> ${l.video?`wastequest.github.io/#/lab/${l.id}`:l.vurl?E(l.vurl):`${X(T.soon)} <span class="todo">TODO: add demo video</span>`}${p?"":` · ${credit(l)}`}</p>
+  ${l.links?`<p class="lbp-vid"><b>🔗 ${X(T.links)}:</b> ${l.links.map(([u,en,bm])=>`${X({en,bm})}: ${E(u)}`).join(" · ")}</p>`:""}
  </article>`;
 };
 
 WQ.css("labs",`
+.zp-ban{display:flex;gap:14px;align-items:center;margin:0 0 14px;text-decoration:none;color:inherit;border:3px solid var(--grass)}
+.zp-ban>span:first-child{font-size:2.2rem}.zp-ban>span:last-child{margin-left:auto;font-size:1.6rem;font-weight:800}
+.lb-lh{font-size:1.1rem;margin-top:14px}
+.lb-links{margin:4px 0;padding-left:20px;overflow-wrap:anywhere}.lb-links li+li{margin-top:4px}
+.zp-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.zp-num{background:var(--soft);border-radius:16px;padding:10px 14px;display:flex;flex-direction:column}
+.zp-num b{font-family:"Baloo 2",sans-serif;font-size:2rem;line-height:1.1;color:var(--grass-d)}
+.zp-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));margin-bottom:16px}
+.card.zp-card{margin:0;display:flex;flex-direction:column;gap:6px}
+.zp-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--soft)}
+.zp-card h3{font-size:1.2rem;margin:4px 0 0}.zp-card p{margin:0}.zp-card .btn{align-self:flex-start;margin-top:auto}
+.zp-ln{overflow-wrap:anywhere}
+.zp-h{margin:22px 0 10px}
+.zp-sup{columns:2 220px;padding-left:20px}
+.lbp-vid{overflow-wrap:anywhere}
+.zpp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:10px 0}
+.zpp-c{display:flex;gap:8px;break-inside:avoid;font-size:.82rem}.zpp-c img{width:34%;aspect-ratio:1;object-fit:cover;border-radius:6px;flex:none}.zpp-c p{margin:0}
+.zpp-u{font-size:.7rem;overflow-wrap:anywhere;color:#555}
 .lb-prog{margin:-4px 0 12px}
 .card.lb-card{margin-top:0}
 .lb-filters{display:flex;flex-wrap:wrap;gap:10px 22px;margin:12px 0 16px}
