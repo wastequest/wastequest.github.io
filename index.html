@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WasteQuest</title>
+<meta name="robots" content="noindex"><!-- remove once Dr Wan Azlina approves public listing -->
+<meta name="description" content="WasteQuest: an interactive Waste-to-Wealth educational module by Universiti Putra Malaysia. Games, virtual labs, hands-on activities, class quizzes and a micro-credential.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%235cbf4a'/%3E%3Cpath d='M32 14l7 11h-5v8h-4v-8h-5zM18 40l5-11 3 4-4 7h8v4H17zM46 40l-13 0v-4h9l-4-7 4-3z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#/home" aria-label="WasteQuest home">
+    <svg width="38" height="38" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#5cbf4a"/><path d="M32 14l7 11h-5v8h-4v-8h-5zM18 40l5-11 3 4-4 7h8v4H17zM46 40l-13 0v-4h9l-4-7 4-3z" fill="#fff"/></svg>
+    Waste<b>Quest</b>
+  </a>
+  <nav class="navlinks" aria-label="Sections">
+    <a href="#/learn" data-v="learn" data-s="learn">Learn</a><a href="#/games" data-v="games" data-s="gamesN">Games</a><a href="#/labs" data-v="labs" data-s="labsN">Labs</a><a href="#/class" data-v="class" data-s="classN">Class</a><a href="#/cert" data-v="cert" data-s="certN">Certificate</a><a href="#/teacher" data-v="teacher" data-s="teacherN">Teachers</a>
+  </nav>
+  <span class="spacer"></span>
+  <button class="back" id="backBtn" hidden data-s="back">← Back</button>
+  <div class="seg" role="group" aria-label="Language">
+    <button data-lang="en" aria-pressed="true">EN</button>
+    <button data-lang="bm" aria-pressed="false">BM</button>
+  </div>
+</header>
+<main id="view" aria-live="polite"></main>
+<footer><img src="assets/logos-upm.jpeg" alt="Universiti Putra Malaysia · Putra · Fakulti Kejuruteraan"><span data-s="foot"></span></footer>
+<div class="toastbox" id="toastbox" aria-live="polite"></div>
+
+<!-- build:scripts (build.py inlines the scripts between these markers) -->
+<script src="js/core.js"></script>
+<script src="js/data/questions.js"></script>
+<script src="js/games/sort.js"></script>
+<script src="js/games/match.js"></script>
+<script src="js/games/words.js"></script>
+<script src="js/games/myth.js"></script>
+<script src="js/games/quiz.js"></script>
+<script src="js/sims/ph.js"></script>
+<script src="js/sims/compost.js"></script>
+<script src="js/sims/enzyme.js"></script>
+<script src="js/sims/cash.js"></script>
+<script src="js/sims/footprint.js"></script>
+<script src="js/labs.js"></script>
+<script src="js/learn.js"></script>
+<script src="js/teacher.js"></script>
+<script src="js/class.js"></script>
+<script src="js/cert.js"></script>
+<!-- /build:scripts -->
+<script>WQ.start();</script>
+</body>
+</html>
