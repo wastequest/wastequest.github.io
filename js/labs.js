@@ -29,6 +29,8 @@ const S=(en,bm,xen,xbm)=>xen?{en,bm,x:{en:xen,bm:xbm}}:{en,bm};
 const D=(en,bm)=>({en,bm,lv:"danger"}), W=(en,bm)=>({en,bm,lv:"warn"});
 const P=(src,en,bm)=>({src,cap:{en,bm}});
 
+// labs with the 2026 narrated video (assets/videos/v2/<id>_<en|bm>.mp4 + <id>.jpg); add ids as new renders land
+const V2=new Set("candle petfood treasure litmus odour watering enzyme ecobrick compost bioplastic hydro".split(" "));
 const LABS=[
 /* ---------------------------------------------------------------- 1 CANDLE */
 {id:"candle",icon:"🕯️",min:10,mins:60,diff:2,sup:"adult",heat:true,sdgs:[6,12,13],video:"1dHTYvQAr7l-fZWAZLZ1TFl_Dmsw00Bt-",
@@ -876,7 +878,8 @@ WQ.registerPage("lab",{mount(el,{args}){
   ${when?`<p class="note ok">🏅 ${X(T.madeOn)} ${E(new Date(when).toLocaleDateString(WQ.lang==="bm"?"ms-MY":"en-GB",{day:"numeric",month:"long",year:"numeric"}))}. ${l.badge.icon} ${X(l.badge.name)}</p>`:""}
   <section class="card"><dl class="lb-meta"><div><dt>${X(T.waste)}</dt><dd>${X(l.waste)}</dd></div><div><dt>${X(T.product)}</dt><dd>${X(l.product)}</dd></div><div><dt>${X(T.cost)}</dt><dd>${costH(l)}</dd></div></dl></section>
   <section class="card lb-sec"><h2>🌏 ${X(T.why)}</h2><div class="lb-why"><div><h3>🌍 ${X(T.env)}</h3><p>${X(l.why.env)}</p></div><div><h3>💰 ${X(T.econ)}</h3><p>${X(l.why.econ)}</p></div><div><h3>🤝 ${X(T.soc)}</h3><p>${X(l.why.soc)}</p></div></div></section>
-  <section class="card lb-sec noprint"><h2>🎬 ${X(T.video)}</h2>${l.video?`<div class="lb-vid" id="lbVid"><video controls preload="none" playsinline poster="assets/videos/${l.id}.jpg" src="assets/videos/${l.id}.mp4" title="${X(l.title)}"></video></div>
+  <section class="card lb-sec noprint"><h2>🎬 ${X(T.video)}</h2>${V2.has(l.id)?`<div class="lb-vid" id="lbVid"><video controls preload="none" playsinline poster="assets/videos/v2/${l.id}.jpg" src="assets/videos/v2/${l.id}_${WQ.lang==="bm"?"bm":"en"}.mp4" title="${X(l.title)}"></video></div>
+   <p class="small muted">${X(T.vidLocal)}</p>`:l.video?`<div class="lb-vid" id="lbVid"><video controls preload="none" playsinline poster="assets/videos/${l.id}.jpg" src="assets/videos/${l.id}.mp4" title="${X(l.title)}"></video></div>
    <p class="small muted">${l.id==="litmus"?X(T.vidLitmus)+" ":""}${X(T.vidLocal)}</p>`:`<p>🎬 <b>${X(T.soon)}</b></p><p class="small muted">${X(T.soonN)}</p>`}</section>
   <section class="card lb-sec"><h2>🧺 ${X(T.mats)} <span class="lb-cnt muted" id="lbMc"></span></h2>${listH(l.mats,"m",st.m,x)}${tbl(l)}</section>
   <section class="card lb-sec"><h2>🪜 ${X(T.steps)} <span class="lb-cnt muted" id="lbSc"></span></h2>${listH(l.steps,"s",st.s,x)}
@@ -951,7 +954,7 @@ WQ.renderLabPrint=(el,id)=>{
   <h3>${X(T.teach)}</h3><p>${X(l.teach)}</p>
   <h3>${X(T.ext)}</h3><ol>${l.ext.map(e=>`<li>${X(e)}</li>`).join("")}</ol>
   <h3>${X(T.refl)}</h3><ul>${l.refl.map(e=>`<li>${X(e)}</li>`).join("")}</ul>
-  <p class="lbp-vid"><b>🎬 ${X(T.vid)}:</b> ${l.video?`wastequest.github.io/#/lab/${l.id}`:X(T.soon)}${p?"":` · ${credit(l)}`}</p>
+  <p class="lbp-vid"><b>🎬 ${X(T.vid)}:</b> ${l.video||V2.has(l.id)?`wastequest.github.io/#/lab/${l.id}`:X(T.soon)}${p?"":` · ${credit(l)}`}</p>
  </article>`;
 };
 
