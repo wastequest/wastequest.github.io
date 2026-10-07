@@ -7,7 +7,7 @@ Poster images saved as `<labId>-poster-<n>.jpg` (page crops, ≤1400 px wide). T
 ---
 
 ## p12 — ECO-CANDLES (poster in BM: "Cara-cara membuat lilin beraroma") → `candle-poster-1.jpg`
-Second panel on the page is only a "SESI UJI MINDA!!" quiz title card (not extracted). The page links to the 2025 Group 1 slides (Drive 1o-QwGE-_RYoej8pzT_NQlLCq25-OuKC1).
+Second panel on the page is only a "SESI UJI MINDA!!" quiz title card (not extracted).
 1. Tapis minyak masak terpakai untuk membuang kekotoran dengan menggunakan kertas turas. (Filter used cooking oil through filter paper.)
 2. Timbang 48 g minyak yang telah ditapis. (Weigh 48 g filtered oil.)
 3. Timbang 96 g lilin parafin. (Weigh 96 g paraffin wax.)
@@ -86,7 +86,7 @@ Methodology: (1) ratio fruit peel : brown sugar : water = 3 kg : 1 kg : 10 kg, m
 - **[fix]** Fermentation time: standard practice is 3 months; "1 month" product is immature. Honest claims added (mild acidic cleaner, pH ≈ 3.5–4 in studies; not a disinfectant, not a drink, not proven to clean rivers).
 
 ## p19 — ECO-BRICKS & ECO-BAG → `ecobrick-poster-1.jpg` (Group 8), `ecobrick-poster-2.jpg` (Group 4)
-Left (heading "ECH3104 Engineers & Society, Group 8 Project Presentation" — **[fix]** course code is ENG3104): "Turn Trash into Treasure!" Group members (as legible): Sureintharaan Nathan, Jitiya Bhashiny, Ghithan Shanmugam, Hawa Adani binti Azlan, Ain Nujma binti Mazuki. Benefits: help the planet; get creative (tote bags and ecobricks); build skills. "Turn plastic trash into fun bags & eco bricks! Let's be plastic heroes." SDG icons 14, 11, 12, 13, 15.
+Left (heading "ECH3104 Engineers & Society, Group 8 Project Presentation" — **[fix]** course code is ENG3104): "Turn Trash into Treasure!" (Student names on the poster are not reproduced.) Benefits: help the planet; get creative (tote bags and ecobricks); build skills. "Turn plastic trash into fun bags & eco bricks! Let's be plastic heroes." SDG icons 14, 11, 12, 13, 15.
 Right (Group 4, "Plastic is Valuable" — same as the 2024 G4 proposal): tote bag from foil-lined plastic (durability, unique visual appeal, water resistance); sleeping bag from bubble wrap (portability, insulation, light & compact, comfort); learning outcomes incl. helping homeless people with giveaway products.
 - No ecobrick method or weight target on the poster. labs.js adds the Global Ecobrick Alliance minimum density 0.33 g/mL (600 mL ≥ 200 g; 1.5 L ≥ 500 g) and the honest limit (ecobricks store plastic, they do not recycle it; not load-bearing; keep out of sun and heat).
 - Wrapper-weave tote method taken from the 2024 G4 proposal (16 × 6 cm rectangles, fold and interlock).

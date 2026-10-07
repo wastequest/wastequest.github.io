@@ -5,38 +5,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>WasteQuest Booklet</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Pixelify+Sans:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/app.css">
 <style>
+/* v2 pixel look: panels #f9e6cf, 3px #1a1932 border, square corners, hard offset shadow; Pixelify for headings/labels only */
+:root{--px-ink:#1a1932;--px-panel:#f9e6cf;--px-sky:#0098dc;--px-green:#5ac54f;--px-greend:#1e6f50;--px-yellow:#ffeb57;--px-pink:#f68187}
 @page{size:A4;margin:14mm 14mm 16mm}
-body{background:#fff;font-size:10.5pt;line-height:1.45}
+html,body{background:#fff}
+body{font-family:Nunito,system-ui,sans-serif;font-size:10.5pt;line-height:1.45;color:var(--px-ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
 main{max-width:182mm;padding:0}
+h1,h2,h3,.section-t,.bk-toc li,.bk-q b,th{font-family:"Pixelify Sans",Nunito,sans-serif;font-weight:600;letter-spacing:.2px}
 .bk-sec{break-before:page}
-.bk-sec>h1{font-size:24pt;color:var(--grass-d);border-bottom:4px solid var(--grass);padding-bottom:4px;margin:0 0 10px}
-.bk-cover{height:262mm;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,#bfe9ff,#e9f8ff 55%,#eafbe4);border-radius:18px;padding:16mm 14mm;break-after:page}
-.bk-cover h1{font-size:44pt;line-height:1;margin:6mm 0 2mm}
-.bk-cover h1 b{color:var(--grass-d)}
-.bk-cover .sub{font-family:"Baloo 2";font-size:18pt;color:var(--ink)}
+.bk-sec>h1{font-size:22pt;color:#fff;background:var(--px-greend);border:3px solid var(--px-ink);box-shadow:4px 4px 0 rgba(26,25,50,.35);padding:2mm 4mm;margin:0 0 5mm}
+.section-t{border-bottom:3px solid var(--px-ink);padding-bottom:1mm}
+.bk-cover{height:262mm;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(180deg,#8fd3ff 0,#bfe9ff 45%,var(--px-panel) 45.2%,var(--px-panel) 100%);border:3px solid var(--px-ink);box-shadow:4px 4px 0 rgba(26,25,50,.35);border-radius:0;padding:16mm 14mm;break-after:page}
+.bk-cover h1{font-size:46pt;line-height:1;margin:6mm 0 2mm;color:var(--px-ink)}
+.bk-cover h1 b{color:var(--px-greend);font-weight:700}
+.bk-cover .sub{font-family:"Pixelify Sans",Nunito,sans-serif;font-size:17pt;color:var(--px-ink)}
 .bk-cover .mascot{width:42mm;animation:none}
 .bk-cover .auth{font-size:10pt}
-.bk-cover img.logos{height:16mm;border-radius:6px;background:#fff;padding:2mm}
-.bk-cover img.sdg{height:14mm}
-.bk-toc li{font-family:"Baloo 2";font-size:14pt;margin:3mm 0}
+.bk-cover img.logos{height:16mm;border:3px solid var(--px-ink);border-radius:0;background:#fff;padding:2mm}
+.bk-cover img.sdg{height:14mm;border:2px solid var(--px-ink)}
+.bk-toc li{font-size:14pt;margin:3mm 0}
 .bk-games{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
-.bk-game{border:1px solid var(--line);border-radius:10px;padding:3mm;display:flex;gap:3mm;align-items:center;break-inside:avoid}
+.bk-game{background:var(--px-panel);border:3px solid var(--px-ink);border-radius:0;box-shadow:3px 3px 0 rgba(26,25,50,.35);padding:3mm;display:flex;gap:3mm;align-items:center;break-inside:avoid}
 .bk-game .gi{font-size:22pt}
-.bk-game h3{font-size:12pt}
-.bk-game p{margin:0;font-size:9pt;color:var(--muted)}
-.bk-qr{flex:none;width:22mm;height:22mm}
+.bk-game h3{font-size:12pt;margin:0 0 1mm}
+.bk-game p{margin:0;font-size:9pt;color:#3d3b5c}
+.bk-qr{flex:none;width:22mm;height:22mm;background:#fff}
 .bk-qr img,.bk-qr canvas{width:22mm!important;height:22mm!important}
 .bk-lab{break-before:page}
 .bk-q{break-inside:avoid;margin:0 0 2.2mm;font-size:8.6pt}
 .bk-qs{columns:2;column-gap:7mm}
-.bk-q b{font-family:"Baloo 2"}
-.bk-q .ans{color:var(--grass-d);font-weight:800}
-.card{box-shadow:none;border:1px solid var(--line)}
+.bk-q .ans{color:var(--px-greend);font-weight:800;text-decoration:underline}
+.card,.note{border:3px solid var(--px-ink)!important;border-radius:0!important;box-shadow:3px 3px 0 rgba(26,25,50,.35)!important}
+.card{background:var(--px-panel)}
+.tbl,table{border-collapse:collapse}
+.tbl th,.tbl td{border:2px solid var(--px-ink)}
+.tbl th{background:var(--px-panel)}
+img{border-radius:0!important}
 a{color:inherit;text-decoration:none}
-@media screen{body{background:#e9eef3}main{background:#fff;margin:20px auto;padding:14mm;box-shadow:var(--shadow)}}
+@media screen{body{background:#5ac54f}main{background:#fff;margin:20px auto;padding:14mm;border:3px solid var(--px-ink);box-shadow:6px 6px 0 rgba(26,25,50,.35)}}
+@media print{.card,.note,.bk-game,.bk-cover,.bk-sec>h1{box-shadow:none!important}h1,h2,h3,h4{break-after:avoid;page-break-after:avoid}}
 </style>
 </head>
 <body>
@@ -69,12 +79,12 @@ a{color:inherit;text-decoration:none}
   const t = WQ.t, el = document.getElementById("bk");
   const L = {
     sub:{en:"Waste-to-Wealth (W2W) Educational Module",bm:"Modul Pendidikan Sisa kepada Kekayaan (W2W)"},
-    tag:{en:"Interactive website · Games & virtual labs · 15 hands-on activities · Class quiz · Micro-credential",bm:"Laman web interaktif · Permainan & makmal maya · 15 aktiviti amali · Kuiz kelas · Mikro-kredensial"},
+    tag:{en:"Interactive website · Games & virtual labs · 15 hands-on activities · Class quiz · Certificates",bm:"Laman web interaktif · Permainan & makmal maya · 15 aktiviti amali · Kuiz kelas · Sijil"},
     by:{en:"Prepared by",bm:"Disediakan oleh"}, ed:{en:"Facilitator booklet · 2026 edition",bm:"Buku panduan fasilitator · Edisi 2026"},
     open:{en:"Open the website",bm:"Buka laman web"},
     toc:{en:"Contents",bm:"Kandungan"},
     s:[{en:"About WasteQuest",bm:"Tentang WasteQuest"},{en:"Learn: Waste-to-Wealth",bm:"Belajar: Sisa kepada Kekayaan"},{en:"Games & Simulations",bm:"Permainan & Simulasi"},
-       {en:"Hands-on Labs",bm:"Makmal Amali"},{en:"Teacher Guide & Micro-credential",bm:"Panduan Guru & Mikro-kredensial"},{en:"Appendix: Question Bank & Answers",bm:"Lampiran: Bank Soalan & Jawapan"}],
+       {en:"Hands-on Labs",bm:"Makmal Amali"},{en:"Teacher Guide & Certificates",bm:"Panduan Guru & Sijil"},{en:"Appendix: Question Bank & Answers",bm:"Lampiran: Bank Soalan & Jawapan"}],
     about:{en:`<p>WasteQuest turns the journey of waste, from the bin to a valuable new product, into a quest. Learners play games, run virtual science labs, make real products from waste in hands-on activities, compete in live class quizzes and earn badges and a certificate.</p>
       <p>It serves four groups: <b>children 7–12</b>, <b>teenagers 13–17</b>, <b>adults</b> (university, community and ESG training) and <b>teachers/facilitators</b>. Every page is available in English and Bahasa Melayu and works on phones, tablets and classroom projectors, online or as a single offline file.</p>`,
       bm:`<p>WasteQuest menjadikan perjalanan sisa, daripada tong sampah hingga menjadi produk baharu yang bernilai, sebagai satu misi. Pelajar bermain permainan, menjalankan makmal sains maya, menghasilkan produk sebenar daripada sisa melalui aktiviti amali, bertanding dalam kuiz kelas secara langsung dan memperoleh lencana serta sijil.</p>
@@ -85,15 +95,15 @@ a{color:inherit;text-decoration:none}
       <tr><td>🎮 Games & Simulations</td><td>Sorting, matching, puzzles, quizzes and five virtual labs. Each earns a badge.</td></tr>
       <tr><td>🧪 Hands-on Labs</td><td>Fifteen step-by-step activities with materials, safety notes, science, videos and printable worksheets.</td></tr>
       <tr><td>📱 Class Battle</td><td>The teacher hosts a live quiz on the projector; students join with a code on their phones. Team mode works without phones.</td></tr>
-      <tr><td>🏅 Certificate</td><td>Three tracks: Junior Eco-Hero, Zero-Waste Champion and Waste-to-Wealth Practitioner (proposed micro-credential).</td></tr>
-      <tr><td>🧑‍🏫 Teacher Hub</td><td>Session plans, micro-credential framework, rubrics and safety guidance.</td></tr></table>`,
+      <tr><td>🏅 Certificate</td><td>Three tracks: Junior Eco-Hero, Zero-Waste Champion and Waste-to-Wealth Practitioner (non-credit Certificate of Completion).</td></tr>
+      <tr><td>🧑‍🏫 Teacher Hub</td><td>Session plans, certificate design, rubrics and safety guidance.</td></tr></table>`,
       bm:`<table class="tbl"><tr><th>Bahagian</th><th>Apa yang pelajar lakukan</th></tr>
       <tr><td>📘 Belajar</td><td>Tujuh bab interaktif ringkas dengan semakan pantas.</td></tr>
       <tr><td>🎮 Permainan & Simulasi</td><td>Mengasing, memadan, teka-teki, kuiz dan lima makmal maya. Setiap satu memberi lencana.</td></tr>
       <tr><td>🧪 Makmal Amali</td><td>Lima belas aktiviti langkah demi langkah dengan bahan, nota keselamatan, sains, video dan lembaran kerja boleh cetak.</td></tr>
       <tr><td>📱 Pertandingan Kelas</td><td>Guru menganjurkan kuiz langsung di projektor; murid menyertai dengan kod di telefon. Mod pasukan berfungsi tanpa telefon.</td></tr>
-      <tr><td>🏅 Sijil</td><td>Tiga laluan: Wira Eko Junior, Juara Sifar Sisa dan Pengamal Sisa kepada Kekayaan (cadangan mikro-kredensial).</td></tr>
-      <tr><td>🧑‍🏫 Hab Guru</td><td>Rancangan sesi, rangka kerja mikro-kredensial, rubrik dan panduan keselamatan.</td></tr></table>`},
+      <tr><td>🏅 Sijil</td><td>Tiga laluan: Wira Eko Junior, Juara Sifar Sisa dan Pengamal Sisa kepada Kekayaan (Sijil Penyempurnaan tanpa kredit).</td></tr>
+      <tr><td>🧑‍🏫 Hab Guru</td><td>Rancangan sesi, reka bentuk sijil, rubrik dan panduan keselamatan.</td></tr></table>`},
     scan:{en:"Scan a code to open that game directly.",bm:"Imbas kod untuk membuka permainan itu terus."},
     games:{en:"Games",bm:"Permainan"}, sims:{en:"Simulations",bm:"Simulasi"},
     missing:{en:"Section not available yet.",bm:"Bahagian belum tersedia."},
@@ -115,7 +125,7 @@ a{color:inherit;text-decoration:none}
   html += sec(1, `<div id="bkLearn"></div>`);
   html += sec(2, `<p>${t(L.scan)}</p><h2 class="section-t">${t(L.games)}</h2><div class="bk-games">${games.filter(g => g.kind === "game").map(gameCard).join("")}</div>
     <h2 class="section-t">${t(L.sims)}</h2><div class="bk-games">${games.filter(g => g.kind === "sim").map(gameCard).join("")}</div>`);
-  html += sec(3, `<div id="bkLabs"></div><div id="bkZph" class="bk-lab"></div>`);
+  html += sec(3, `<div id="bkLabs"></div>`);
   html += sec(4, `<div id="bkTeacher"></div>`);
   html += sec(5, `<div class="bk-qs">${WQ.questions.map((q, i) => `<div class="bk-q"><b>${i + 1}.</b> [${q.tracks.map(x => tracks[x]).join("")}] ${WQ.esc(t(q.q))}<br>${q.a.map((a, j) => `<span class="${j === q.c ? "ans" : ""}">${"ABCD"[j]}. ${WQ.esc(t(a))}</span>`).join(" &nbsp; ")}</div>`).join("")}</div>
     <p class="small muted">K = kids · T = teens · A = adults</p>`);
@@ -124,7 +134,6 @@ a{color:inherit;text-decoration:none}
   const fill = (id, fn) => { const box = document.getElementById(id); try { if (fn) fn(box); else box.innerHTML = `<p class="todo">${t(L.missing)}</p>`; } catch (e) { box.innerHTML = `<p class="todo">${t(L.missing)} (${WQ.esc(e.message)})</p>`; } };
   fill("bkLearn", WQ.renderLearnPrint);
   fill("bkTeacher", WQ.renderTeacherPrint);
-  fill("bkZph", WQ.renderZphPrint);
   fill("bkLabs", WQ.renderLabPrint && (box => WQ.labs.forEach((lab, i) => { const d = document.createElement("div"); if (i) d.className = "bk-lab"; box.appendChild(d); WQ.renderLabPrint(d, lab.id); })));
   if (window.QRCode) document.querySelectorAll("[data-qr]").forEach(q => new QRCode(q, { text: q.dataset.qr, width: 256, height: 256, correctLevel: QRCode.CorrectLevel.M }));
 })();

@@ -45,12 +45,14 @@ const WQ = (() => {
     badgesT:{en:"My Badges",bm:"Lencana Saya"}, badgesS:{en:"Badges are saved on this device.",bm:"Lencana disimpan pada peranti ini."},
     newBadge:{en:"New badge:",bm:"Lencana baharu:"}, notFound:{en:"Page not found.",bm:"Halaman tidak dijumpai."},
     ages:{en:"Ages",bm:"Umur"}, reset:{en:"Reset my progress",bm:"Set semula kemajuan saya"}, resetQ:{en:"Delete all badges and scores on this device?",bm:"Padam semua lencana dan markah pada peranti ini?"},
-    foot:{en:"WasteQuest · Waste-to-Wealth Educational Module · Universiti Putra Malaysia, Faculty of Engineering · Wan Azlina Wan Ab Karim Ghani, Shafreeza Sobri, Izzudin Ismail, Nur Syakina Jamali, Mohd Faiz Gunam Rasul, Salmiaton Ali",
-          bm:"WasteQuest · Modul Pendidikan Sisa kepada Kekayaan · Universiti Putra Malaysia, Fakulti Kejuruteraan · Wan Azlina Wan Ab Karim Ghani, Shafreeza Sobri, Izzudin Ismail, Nur Syakina Jamali, Mohd Faiz Gunam Rasul, Salmiaton Ali"}
+    foot:{en:"WasteQuest · Universiti Putra Malaysia, Department of Chemical and Environmental Engineering, Faculty of Engineering · Dr Wan Azlina Wan Ab Karim Ghani and team",bm:"WasteQuest · Universiti Putra Malaysia, Jabatan Kejuruteraan Kimia dan Alam Sekitar, Fakulti Kejuruteraan · Dr Wan Azlina Wan Ab Karim Ghani dan pasukan"}
   };
   W.S = S;
 
   /* ---------- registries ---------- */
+  const subs = {};
+  W.on = (ev, fn) => (subs[ev] = subs[ev] || []).push(fn);
+  W.emit = (ev, ...a) => (subs[ev] || []).forEach(fn => { try { fn(...a); } catch (e) { console.error(e); } });
   W.registerGame = (id, def) => { W.games[id] = { id, order: 99, kind: "game", ...def }; if (def.badge) W.addBadge(id, def.badge); };
   W.registerPage = (id, def) => { W.pages[id] = def; };
   W.addBadge = (id, b) => { W.badges[id] = b; };              // b = {icon, name:{en,bm}, desc?:{en,bm}}
@@ -60,9 +62,9 @@ const WQ = (() => {
     const e = W.earned(); if (e[id]) return false;
     e[id] = new Date().toISOString(); store.setJSON("badges", e); W.track("badge/" + id);
     const b = W.badges[id]; if (b) W.toast(`${b.icon} ${W.t(S.newBadge)} ${W.t(b.name)}`);
-    W.confetti(); return true;
+    W.confetti(); W.emit("award", id); return true;
   };
-  W.best = (key, score) => { const k = "best-" + key, b = Math.max(score ?? 0, +(store.get(k) || 0)); if (score != null) { store.set(k, b); W.track("finish/" + key); } return b; };
+  W.best = (key, score) => { const k = "best-" + key, b = Math.max(score ?? 0, +(store.get(k) || 0)); if (score != null) { store.set(k, b); W.track("finish/" + key); W.emit("finish", key, score); } return b; };
   /* usage counter: GoatCounter (script tag in index.html). No cookies, no names; counts only page opens + events below. */
   const tq = [], viewKey = () => (location.hash.replace(/^#\/?/, "") || "home").split("/").slice(0, 2).join("/");
   W.track = (path, page) => { const c = page ? { path, title: path } : { path, event: true }, g = window.goatcounter;
@@ -71,7 +73,8 @@ const WQ = (() => {
 
   /* ---------- feedback ---------- */
   let ac;
-  W.beep = ok => { const v = viewKey(); if (!/^(cert|lab)\b/.test(v)) W.track(`answer/${v}/${ok ? "right" : "wrong"}`);
+  W.beep = ok => { const v = viewKey(); W.emit("answer", ok, v); if (!/^(cert|lab)\b/.test(v)) W.track(`answer/${v}/${ok ? "right" : "wrong"}`);
+    if (W.rw && W.rw.sfxOn && !W.rw.sfxOn()) return;  // v2: rewards.js sound toggle (off by default)
     try { ac = ac || new AudioContext(); const o = ac.createOscillator(), g = ac.createGain(), t = ac.currentTime; o.type = "triangle";
     (ok ? [660, 880] : [220, 180]).forEach((f, i) => o.frequency.setValueAtTime(f, t + i * .09));
     g.gain.setValueAtTime(.15, t); g.gain.exponentialRampToValueAtTime(.001, t + .25); o.connect(g).connect(ac.destination); o.start(); o.stop(t + .26); } catch (e) {} };
@@ -88,13 +91,14 @@ const WQ = (() => {
   let cleanup = null, lastHash = null;
   W.go = h => { location.hash = "#/" + h; };
   W.route = () => {
+    document.documentElement.dataset.aud = W.aud;   // kids mode hides .ad-only (teacher links)
     const parts = (location.hash.replace(/^#\/?/, "") || "home").split("/").map(decodeURIComponent);
     const [view, ...args] = parts, el = $("#view"), relang = lastHash === location.hash;
     lastHash = location.hash;
     if (cleanup) { try { cleanup(); } catch (e) {} cleanup = null; }
     el.innerHTML = "";
     let r;
-    if (view === "home") r = home(el);
+    if (view === "home") r = W.pages.home ? W.pages.home.mount(el, { args, relang }) : home(el);  // v2: js/town/home.js owns home
     else if (view === "games") r = gamesList(el);
     else if (view === "badges") r = badgeWall(el);
     else if (view === "game" && W.games[args[0]]) r = W.games[args[0]].mount(el, { args: args.slice(1), relang });
@@ -105,6 +109,7 @@ const WQ = (() => {
     W.$$(".navlinks a").forEach(a => a.classList.toggle("on", a.dataset.v === view || (a.dataset.v === "games" && view === "game") || (a.dataset.v === "labs" && view === "lab")));
     if (!relang) { scrollTo(0, 0); W.track("/" + viewKey(), true); }
     document.title = "WasteQuest";
+    W.emit("route", view, args, relang);
   };
   W.back = () => { const v = (location.hash.replace(/^#\/?/, "").split("/")[0]); if (v === "game") W.go("games"); else if (v === "lab") W.go("labs"); else W.go("home"); };
 
@@ -143,7 +148,7 @@ const WQ = (() => {
     el.innerHTML = W.head("🏅", S.badgesT, S.badgesS) + `<div class="badgewall">${Object.entries(W.badges).map(([id, b]) =>
       `<div class="bdg ${e[id] ? "" : "off"}"><span class="bi">${b.icon}</span><b>${W.esc(W.t(b.name))}</b>${b.desc ? `<span class="small muted">${W.esc(W.t(b.desc))}</span>` : ""}</div>`).join("")}</div>
       <p style="margin-top:24px" class="row"><a class="btn" href="#/cert">🎓 ${W.t(S.certN)}</a><button class="btn alt" id="rst">${W.t(S.reset)}</button></p>`;
-    $("#rst", el).onclick = () => { if (confirm(W.t(S.resetQ))) { try { Object.keys(localStorage).filter(k => k.startsWith("wq-") && !["wq-lang","wq-aud"].includes(k)).forEach(k => localStorage.removeItem(k)); } catch (er) {} W.route(); } };
+    $("#rst", el).onclick = () => { if (confirm(W.t(S.resetQ))) { try { Object.keys(localStorage).filter(k => k.startsWith("wq-") && !k.startsWith("wq-trk-") && !["wq-lang","wq-aud"].includes(k)).forEach(k => localStorage.removeItem(k)); } catch (er) {} W.route(); } };
   }
 
   W.start = () => {

@@ -1,4 +1,4 @@
-/* Hands-on Labs: 15 real activity guides (10 from the 2025 ENG3104 posters, corrected; 5 from the Zero-Plastic Hero 2024 projects) + labs gallery, single lab page,
+/* Hands-on Labs: 15 real activity guides (adapted from UPM chemical engineering student projects, corrected) + labs gallery, single lab page,
    printable worksheet (#/lab/<id>/print) and WQ.renderLabPrint(el, id) for the PDF booklet.
    Poster transcriptions and every correction: assets/labs/_poster_notes.md
 // SOURCES:
@@ -15,28 +15,19 @@
 //  - Thermal conductivity: still air about 0.026 W/m·K, concrete about 1 W/m·K (engineering tables, e.g. engineeringtoolbox.com)
 //  - Flood rules (stay out of floodwater, call 999) and "Reach or throw, don't go": NADMA / Bomba; Royal Life Saving Society
 //  - Money plant (Epipremnum) toxic to cats and dogs: ASPCA toxic plant list
-//  - Zero-Plastic Hero 2024 projects, figures and links: "Zero-Plastic Hero by ChemE (Presentation).pptx" slides 6-7 and the groups' Padlet/Drive/YouTube pages (ZPH below)
-//  - Student figures (48 g:96 g candle, pet-food cost table, G1 RM51/pot, G10 RM0.84/pot): the posters and research/eng3104_and_videos.md
+//  - Five labs adapted from the UPM ENG3104 2024 student projects ("Zero-Plastic Hero by ChemE (Presentation).pptx" slides 6-7); no student names or links shown (PLAN_v2.md)
+//  - Shop prices (seen 7 Oct 2026, undated listings, vary by shop): research/v2/01_todo_prices_weights.md section 3: paraffin RM14-22/kg (shopee 1 kg listing; shop.bf-1.com), wicks RM5/10 (handmadesoapmalaysia.my),
+//    fragrance RM25/10 mL (myhalalbasket.com), melt-and-pour base RM26/kg (handmadesoapmalaysia.my/shop/soap-base-transparent), cornstarch+corn syrup batch RM0.90-1.01 (jayaindahgrocer, greatocean.my, hoibaking.com),
+//    Arduino parts RM32.35-56.68 (makerhub.my, my.cytron.io), brown sugar RM5.70-5.75/kg (jayagrocer, myaeon2go), bokashi bran RM8.09-14/kg (zerowasteearthstore.com, shopee), live worms RM380/kg Peninsular (vmsfarmgarden.easy.co),
+//    potting mix RM7.50/7 L (homepro.com.my), seed packet RM5.90 (shop.eatsshootsandroots.org), AB mix listing RM16.90 pack unclear (toclanasia.com), baking paper RM5.27/5 m (hoibaking.com) - RM9.90/12 m (bakewithyen.my Feb 2025)
+//  - Age/supervision gating: research/v2/02_todo_curriculum_credential.md A2 (heated oil/flames and plastic ironing = adult demonstration for primary pupils; float ring and sleeping bag are models only)
+//  - Student figures (48 g:96 g candle, pet-food cost table, RM0.84 bioplastic pot, RM10.50 stool; historical student estimates): the posters and research/eng3104_and_videos.md
 */
 (() => {
 const L=(en,bm)=>({en,bm}), H=(en,bm)=>({h:{en,bm}});
 const S=(en,bm,xen,xbm)=>xen?{en,bm,x:{en:xen,bm:xbm}}:{en,bm};
 const D=(en,bm)=>({en,bm,lv:"danger"}), W=(en,bm)=>({en,bm,lv:"warn"});
 const P=(src,en,bm)=>({src,cap:{en,bm}});
-/* Zero-Plastic Hero by ChemE 2024: the 10 projects' own pages (slide 6 of the programme deck) */
-const ZPH={
- g8:"https://padlet.com/2112526/eng-3104-the-engineer-and-society-ug4uatp02b23b28r/wish/zV61Q6lY5qJGWO98",
- g8yt:"https://youtu.be/SPpa7bFrc9E",
- ecoviva:"https://youtu.be/zX8zafcs7lY",
- g4tote:"https://padlet.com/21114410/the-engineer-and-society-group-4-g2cxzsbllscpvbbw/wish/x5m7aoJm980YWkAV",
- g9:"https://padlet.com/zoehuiwen1208/eng3104-log-book-group-9-l41upkj5c99x9g55/wish/j40PQDB41KgJWvXB",
- sleepbag:"https://padlet.com/21114410/the-engineer-and-society-group-4-g2cxzsbllscpvbbw/wish/goElQyLmVkgwa3yY",
- sleepvid:"https://drive.google.com/file/d/1qkQWFfZNvxYPrlJ0hFkOVvDESaf0bR3g/view",
- hydro:"https://drive.google.com/file/d/1hBBR-KKBpISjVeWals2vDUaf-lfvy8_R/view",
- umbrella:"https://drive.google.com/file/d/1GQTBpVMTBzsL70X5KbG6TKr4nNHUywHN/view",
- lifebuoy:"https://drive.google.com/file/d/1GhuDHQx6ZjJk0AegA-IBj9G4pu63PUfE/view",
- biopots:"https://padlet.com/21242020/eng3104-the-engineer-and-society-zco6hqg3jj0qs3et/wish/wKmOZ5JA11D7WzMA"
-};
 
 const LABS=[
 /* ---------------------------------------------------------------- 1 CANDLE */
@@ -45,7 +36,7 @@ const LABS=[
  title:L("Eco-Candles from Used Cooking Oil","Lilin Eko daripada Minyak Masak Terpakai"),
  hook:L("Turn the oil left in the wok into a glowing scented candle.","Tukar minyak lebihan dalam kuali menjadi lilin wangi yang bercahaya."),
  time:L("60 min + 2–4 h to set","60 min + 2–4 jam untuk mengeras"),
- cost:L("Low: the oil is free; buy paraffin wax, wicks and fragrance.","Rendah: minyak percuma; beli lilin parafin, sumbu dan pewangi."),costTodo:"confirm RM price per candle (wax, wicks, fragrance)",
+ cost:L("Low: the oil is free. Example shop prices (Oct 2026): paraffin wax RM 14–22 per kg, so the 96 g in this recipe is about RM 1.30–2.10; wicks about RM 0.50 each; fragrance extra (one 10 mL bottle was RM 25). Prices vary by shop.","Rendah: minyak percuma. Contoh harga kedai (Okt 2026): lilin parafin RM 14–22 sekilogram, jadi 96 g dalam resipi ini kira-kira RM 1.30–2.10; sumbu kira-kira RM 0.50 seutas; pewangi berasingan (sebotol 10 mL berharga RM 25). Harga berbeza mengikut kedai."),
  waste:L("Used cooking oil","Minyak masak terpakai"),product:L("Scented candles","Lilin beraroma"),
  why:{env:L("Oil poured down the sink sticks inside pipes, causes blockages and pollutes rivers. Every jar of oil you reuse stays out of the drain.","Minyak yang dituang ke dalam sinki melekat di dalam paip, menyebabkan sumbat dan mencemarkan sungai. Setiap balang minyak yang diguna semula tidak masuk ke longkang."),
   econ:L("A free waste becomes a product people buy as gifts. Used cooking oil also has cash value: some recycling centres and collection points buy it for biodiesel.","Sisa percuma menjadi produk yang dibeli orang sebagai hadiah. Minyak masak terpakai juga bernilai: sesetengah pusat kitar semula dan pusat kutipan membelinya untuk biodiesel."),
@@ -89,7 +80,7 @@ const LABS=[
   L("Why should we never pour oil down the sink?","Mengapa kita tidak boleh menuang minyak ke dalam sinki?"),
   L("What would you change to make your candle better?","Apakah yang akan anda ubah untuk menjadikan lilin anda lebih baik?"),
   L("Is a candle the best use for used oil? What else could it become?","Adakah lilin kegunaan terbaik untuk minyak terpakai? Apa lagi yang boleh dihasilkan?")],
- posters:[P("assets/labs/candle-poster-1.jpg","Steps poster (BM), 2025 Group 1","Poster langkah (BM), Kumpulan 1 2025")]},
+ posters:[P("assets/labs/candle-poster-1.jpg","Steps poster (BM)","Poster langkah (BM)")]},
 
 /* ---------------------------------------------------------------- 2 PET FOOD */
 {id:"petfood",icon:"🐟",min:10,mins:150,diff:3,sup:"adult",heat:true,sdgs:[12,14],video:"1whvpv4cOKyoWWrTDyCZW9fMfoSgThVS5",
@@ -123,7 +114,7 @@ const LABS=[
   S("Mix the dried fish with the egg, flour and oil (and taurine only if a vet said so). Knead into a dough. No salt, onion, garlic or spices!","Gaul ikan kering dengan telur, tepung dan minyak (dan taurin hanya jika disarankan doktor haiwan). Uli menjadi doh. Jangan masukkan garam, bawang, bawang putih atau rempah!","Onion and garlic are toxic to cats and dogs, even when cooked.","Bawang dan bawang putih beracun kepada kucing dan anjing, walaupun sudah dimasak."),
   S("Dust with flour, roll the dough flat and cut tiny shapes (cat-bite size).","Tabur tepung, gelek doh sehingga leper dan potong bentuk kecil (saiz segigit kucing)."),
   S("ADULT: bake at 150 °C for about 20 minutes until firm and dry right through. Thicker pieces need longer.","ORANG DEWASA: bakar pada 150 °C kira-kira 20 minit sehingga keras dan kering sepenuhnya. Kepingan tebal memerlukan masa lebih lama."),
-  S("Cool completely. Store in an airtight, labelled container in the fridge and use within about a week. Throw away anything that smells bad or grows mould.","Sejukkan sepenuhnya. Simpan dalam bekas kedap udara berlabel di dalam peti sejuk dan gunakan dalam masa kira-kira seminggu. Buang jika berbau busuk atau berkulat.","The 2025 group saw no mould after 14 days, but home kitchens vary, so we play safe.","Kumpulan 2025 tidak menemui kulat selepas 14 hari, tetapi keadaan dapur berbeza, jadi kita berhati-hati."),
+  S("Cool completely. Store in an airtight, labelled container in the fridge and use within about a week. Throw away anything that smells bad or grows mould.","Sejukkan sepenuhnya. Simpan dalam bekas kedap udara berlabel di dalam peti sejuk dan gunakan dalam masa kira-kira seminggu. Buang jika berbau busuk atau berkulat.","The 2025 student group saw no mould after 14 days, but home kitchens vary, so we play safe.","Kumpulan pelajar 2025 tidak menemui kulat selepas 14 hari, tetapi keadaan dapur berbeza, jadi kita berhati-hati."),
   S("Give only a few pieces a day, as a treat.","Beri beberapa keping sahaja sehari sebagai snek.","Vets advise that treats should be no more than 10% of a pet's daily calories.","Doktor haiwan menasihatkan snek tidak melebihi 10% daripada kalori harian haiwan.")],
  safety:[D("Steamer, oven, hot trays and knives: adults only.","Pengukus, ketuhar, dulang panas dan pisau: orang dewasa sahaja."),
   D("Hygiene: wash hands, boards and knives after touching raw fish. Keep raw fish cold until cooking.","Kebersihan: basuh tangan, papan dan pisau selepas memegang ikan mentah. Simpan ikan mentah sejuk sehingga dimasak."),
@@ -149,7 +140,7 @@ const LABS=[
  title:L("Trash to Treasure: Soap, Tote & Toy Car","Sampah kepada Harta: Sabun, Beg Tote & Kereta Mainan"),
  hook:L("Three quick makes: used oil → soap, old T-shirt → bag, bottle caps → racing car.","Tiga projek pantas: minyak terpakai → sabun, baju-T lama → beg, penutup botol → kereta lumba."),
  time:L("3 activities × about 30 min","3 aktiviti × kira-kira 30 min"),
- cost:L("Very low: mostly waste; buy soap base, glue and rubber bands.","Sangat rendah: kebanyakannya sisa; beli bes sabun, gam dan getah."),costTodo:"confirm RM price of melt-and-pour soap base",
+ cost:L("Very low: mostly waste. Example shop price (Oct 2026): melt-and-pour soap base RM 26 per kg, so 200 g is about RM 5.20. Glue, rubber bands and decorations extra. Prices vary.","Sangat rendah: kebanyakannya sisa. Contoh harga kedai (Okt 2026): bes sabun cair-dan-tuang RM 26 sekilogram, jadi 200 g kira-kira RM 5.20. Gam, getah dan hiasan berasingan. Harga berbeza-beza."),
  waste:L("Used cooking oil, old T-shirts, bottle caps, ice-cream sticks","Minyak masak terpakai, baju-T lama, penutup botol, batang aiskrim"),product:L("Soap, tote bag, toy car","Sabun, beg tote, kereta mainan"),
  why:{env:L("Textiles are 2.3% of Malaysian household waste, and oil in drains pollutes rivers. Reusing a T-shirt, oil or bottle caps keeps them out of landfill.","Tekstil ialah 2.3% daripada sisa domestik Malaysia, dan minyak dalam longkang mencemarkan sungai. Mengguna semula baju-T, minyak atau penutup botol menjauhkannya daripada tapak pelupusan."),
   econ:L("Upcycled soap and bags sell at school bazaars; toys from waste cost almost nothing.","Sabun dan beg kitar naik boleh dijual di bazar sekolah; mainan daripada sisa hampir tiada kos."),
@@ -257,7 +248,7 @@ const LABS=[
  title:L("Kopi Wira Bau: Coffee-Ground Odour Absorbers","Kopi Wira Bau: Penyerap Bau daripada Hampas Kopi"),
  hook:L("Used coffee grounds become cute shapes that freshen shoes, cupboards and fridges.","Hampas kopi dijadikan bentuk comel yang menyegarkan rak kasut, almari dan peti sejuk."),
  time:L("40 min + 1–2 days drying","40 min + 1–2 hari pengeringan"),
- cost:L("Very low: cornstarch, corn syrup and cinnamon.","Sangat rendah: tepung jagung, sirap jagung dan kayu manis."),costTodo:"confirm RM price per batch",
+ cost:L("Very low: the cornstarch and corn syrup for one batch cost about RM 0.90–1.00 (shop prices, Oct 2026). Add a little for cinnamon and fragrance. Prices vary.","Sangat rendah: tepung jagung dan sirap jagung untuk satu adunan berharga kira-kira RM 0.90–1.00 (harga kedai, Okt 2026). Tambah sedikit untuk kayu manis dan pewangi. Harga berbeza-beza."),
  waste:L("Used coffee grounds from cafés","Hampas kopi dari kedai kopi"),product:L("Odour-absorbing shapes","Bentuk penyerap bau"),
  why:{env:L("Cafés throw away coffee grounds every day; in landfill they rot. Reusing them keeps food waste out of the bin.","Kedai kopi membuang hampas kopi setiap hari; di tapak pelupusan ia reput. Mengguna semula hampas menjauhkan sisa makanan daripada tong sampah."),
   econ:L("A free waste becomes a gift or bazaar product that is cheaper than many shop-bought air fresheners.","Sisa percuma menjadi hadiah atau produk bazar yang lebih murah daripada kebanyakan penyegar udara di kedai."),
@@ -301,11 +292,11 @@ const LABS=[
  title:L("Self-Watering Bottle Garden","Taman Botol Siram Sendiri"),
  hook:L("A plastic bottle and a T-shirt strip water your plant for you. Teens can add an Arduino brain.","Botol plastik dan jalur baju-T menyiram pokok untuk anda. Remaja boleh menambah \"otak\" Arduino."),
  time:L("40 min (Arduino version: +2 h)","40 min (versi Arduino: +2 jam)"),
- cost:L("Wick version: almost free. Arduino version: the 2024 G1 vertical-garden budget was RM 51 per pot.","Versi sumbu: hampir percuma. Versi Arduino: bajet taman menegak G1 2024 ialah RM 51 sepasu."),costTodo:"confirm RM price of an Arduino kit (board, capacitive sensor, relay, pump)",
+ cost:L("Wick version: almost free. Arduino version: example parts (Oct 2026: compatible board, moisture sensor, relay, small pump) add up to about RM 32–57, before wires, tubing and a power supply. Prices vary by shop.","Versi sumbu: hampir percuma. Versi Arduino: contoh komponen (Okt 2026: papan serasi, sensor kelembapan, geganti, pam kecil) berjumlah kira-kira RM 32–57, belum termasuk wayar, tiub dan bekalan kuasa. Harga berbeza mengikut kedai."),
  waste:L("PET bottles, old T-shirt","Botol PET, baju-T lama"),product:L("Self-watering planter (automatic watering for teens)","Pasu siram sendiri (siraman automatik untuk remaja)"),
  why:{env:L("Bottles are reused before they are recycled, and wick watering gives the plant only the water it needs, with less run-off.","Botol diguna semula sebelum dikitar semula, dan siraman sumbu memberi pokok air yang diperlukan sahaja, dengan kurang air terbuang."),
   econ:L("Free planters; automatic watering saves time and water for urban growers.","Pasu percuma; siraman automatik menjimatkan masa dan air bagi petani bandar."),
-  soc:L("Small gardens fit flats and school corridors, adding green space where there is little (the 2024 G1 idea).","Taman kecil muat di rumah pangsa dan koridor sekolah, menambah ruang hijau di tempat yang kurang (idea G1 2024).")},
+  soc:L("Small gardens fit flats and school corridors, adding green space where there is little (an idea from a 2024 student project).","Taman kecil muat di rumah pangsa dan koridor sekolah, menambah ruang hijau di tempat yang kurang (idea daripada projek pelajar 2024).")},
  mats:[H("Wick planter (everyone)","Pasu sumbu (semua)"),
   L("1 clean 1.5 L PET bottle, label removed","1 botol PET 1.5 L yang bersih, label ditanggalkan"),
   L("1 strip of old cotton T-shirt, about 2 cm × 25 cm (the wick)","1 jalur baju-T kapas lama, kira-kira 2 cm × 25 cm (sumbu)"),
@@ -359,7 +350,7 @@ void loop() {
   W("Standing water breeds Aedes mosquitoes (dengue). Keep the reservoir covered and change the water at least once a week: mosquitoes grow from egg to adult in about 7–10 days.","Air bertakung menjadi tempat pembiakan nyamuk Aedes (denggi). Tutup takungan dan tukar air sekurang-kurangnya seminggu sekali: nyamuk membesar daripada telur menjadi dewasa dalam kira-kira 7–10 hari.")],
  sci:{kids:L("The T-shirt strip drinks water up like a tissue dipped in a drink. Water creeps up the tiny gaps between the threads into the soil, so the plant gets a drink whenever the soil is dry.","Jalur baju-T menyedut air seperti tisu yang dicelup ke dalam minuman. Air naik melalui celah halus antara benang ke dalam tanah, jadi pokok mendapat air setiap kali tanah kering."),
   teens:L("Capillary action: water molecules stick to the fibres (adhesion) and to each other (cohesion), so water climbs narrow gaps against gravity; the narrower the gap, the higher it rises (Jurin's law, h = 2γcosθ ⁄ ρgr). As the soil dries and leaves transpire, water keeps moving from the wet wick to the dry soil. In the Arduino version, a capacitive sensor measures the soil's dielectric permittivity: water (ε ≈ 80) raises it far above dry soil, so the reading tracks moisture. The code is a feedback loop: measure → compare with a threshold → act → wait → measure again.","Tindakan kapilari: molekul air melekat pada gentian (lekatan) dan sesama sendiri (lekitan), jadi air naik melalui celah sempit melawan graviti; lebih sempit celahnya, lebih tinggi air naik (hukum Jurin, h = 2γcosθ ⁄ ρgr). Apabila tanah kering dan daun bertranspirasi, air terus bergerak dari sumbu basah ke tanah kering. Dalam versi Arduino, penderia kapasitif mengukur ketelusan dielektrik tanah: air (ε ≈ 80) menaikkannya jauh melebihi tanah kering, jadi bacaan mengikut kelembapan. Kod itu ialah gelung suap balik: ukur → banding dengan nilai ambang → bertindak → tunggu → ukur semula."),
-  adults:L("Sub-irrigation (wicking) cuts evaporation and run-off and suits small urban plots; sensor-driven irrigation adds data and saves labour. Costs scale quickly: the 2024 G1 proposal budgeted RM 51 per pot for a sensor-and-pump vertical garden, so the wick system is the low-cost entry point and automation suits demonstrations or high-value crops. In the waste hierarchy, reusing a bottle comes before recycling it.","Siraman bawah (sumbu) mengurangkan penyejatan dan air larian serta sesuai untuk plot bandar yang kecil; siraman berpenderia menambah data dan menjimatkan tenaga kerja. Kos meningkat dengan cepat: cadangan G1 2024 membajetkan RM 51 sepasu untuk taman menegak berpenderia dan pam, jadi sistem sumbu ialah pilihan permulaan berkos rendah dan automasi sesuai untuk demonstrasi atau tanaman bernilai tinggi. Dalam hierarki sisa, guna semula botol didahulukan sebelum kitar semula.")},
+  adults:L("Sub-irrigation (wicking) cuts evaporation and run-off and suits small urban plots; sensor-driven irrigation adds data and saves labour. Costs scale quickly: one 2024 student proposal budgeted RM 51 per pot for a sensor-and-pump vertical garden, so the wick system is the low-cost entry point and automation suits demonstrations or high-value crops. In the waste hierarchy, reusing a bottle comes before recycling it.","Siraman bawah (sumbu) mengurangkan penyejatan dan air larian serta sesuai untuk plot bandar yang kecil; siraman berpenderia menambah data dan menjimatkan tenaga kerja. Kos meningkat dengan cepat: satu cadangan pelajar 2024 membajetkan RM 51 sepasu untuk taman menegak berpenderia dan pam, jadi sistem sumbu ialah pilihan permulaan berkos rendah dan automasi sesuai untuk demonstrasi atau tanaman bernilai tinggi. Dalam hierarki sisa, guna semula botol didahulukan sebelum kitar semula.")},
  teach:L("Cut the bottles before class for under-10s. Fast growers (kangkung, sawi) show results within about 2 weeks. Run the Arduino build as a teen club activity.","Potong botol sebelum kelas untuk murid bawah 10 tahun. Tanaman cepat tumbuh (kangkung, sawi) menunjukkan hasil dalam kira-kira 2 minggu. Jalankan binaan Arduino sebagai aktiviti kelab remaja."),
  ext:[L("Water use: mark the reservoir level every day. How many mL does the plant use per day? Compare a wick pot with a hand-watered pot.","Penggunaan air: tanda paras takungan setiap hari. Berapa mL air digunakan sehari? Bandingkan pasu sumbu dengan pasu yang disiram tangan."),
   L("Wick test: try cotton, polyester and a sponge strip. How high does coloured water rise in 10 minutes in each?","Ujian sumbu: cuba kapas, poliester dan jalur span. Setinggi mana air berwarna naik dalam 10 minit bagi setiap satu?"),
@@ -367,8 +358,7 @@ void loop() {
  refl:[L("How does the water get from the bottle to the roots without you?","Bagaimana air sampai dari botol ke akar tanpa anda?"),
   L("Why must we change the water every week?","Mengapa kita mesti menukar air setiap minggu?"),
   L("What else could you grow in a bottle garden at school?","Apa lagi yang boleh ditanam dalam taman botol di sekolah?")],
- posters:[P("assets/labs/watering-poster-1.jpg","Materials, DIY tips and cover (G6)","Bahan, tip DIY dan kulit (G6)"),P("assets/labs/watering-poster-2.jpg","How the automatic system works, benefits","Cara sistem automatik berfungsi, kebaikan")],
- credit:L("Original poster: UPM ENG3104 student group G6 (2025)","Poster asal: kumpulan pelajar ENG3104 UPM G6 (2025)")},
+ posters:[P("assets/labs/watering-poster-2.jpg","How the automatic system works, benefits","Cara sistem automatik berfungsi, kebaikan")]},
 
 /* ---------------------------------------------------------------- 7 ENZYME */
 {id:"enzyme",icon:"🍊",min:7,mins:30,diff:1,sup:"light",heat:false,sdgs:[6,12,13],video:null,
@@ -376,7 +366,7 @@ void loop() {
  title:L("Eco-Enzyme","Eko-Enzim"),
  hook:L("Fruit peels + brown sugar + water and a little patience make a natural cleaner.","Kulit buah + gula perang + air dan sedikit kesabaran menghasilkan pembersih semula jadi."),
  time:L("30 min + 3 months fermenting","30 min + 3 bulan penapaian"),
- cost:L("Very low: only brown sugar, gula merah or molasses.","Sangat rendah: hanya gula perang, gula merah atau molases."),costTodo:"confirm RM cost per litre",
+ cost:L("Very low: about RM 0.60 of brown sugar for a batch made with 1 L of water (shop prices, Oct 2026). How much liquid you get back varies.","Sangat rendah: kira-kira RM 0.60 gula perang untuk satu kelompok dengan 1 L air (harga kedai, Okt 2026). Jumlah cecair yang terhasil berbeza-beza."),
  waste:L("Fruit and vegetable peels","Kulit buah dan sayur"),product:L("Eco-enzyme liquid (mild cleaner, plant feed)","Cecair eko-enzim (pembersih lembut, baja tanaman)"),
  why:{env:L("Food is 30.6% of Malaysian household waste. Peels turned into eco-enzyme stay out of landfill, where they would rot and release methane.","Makanan ialah 30.6% daripada sisa domestik Malaysia. Kulit buah yang dijadikan eko-enzim tidak masuk ke tapak pelupusan, di mana ia akan reput dan membebaskan metana."),
   econ:L("A bag of sugar plus free peels makes litres of mild cleaner, and the leftover pulp becomes compost.","Sebungkus gula dan kulit buah percuma menghasilkan berliter-liter pembersih lembut, dan hampasnya menjadi kompos."),
@@ -393,7 +383,7 @@ void loop() {
   S("Add the peels. Leave at least a quarter of the bottle empty for the gas.","Masukkan kulit buah. Biarkan sekurang-kurangnya suku botol kosong untuk gas."),
   S("Close the lid. Label it with today's date and the ready date (3 months later).","Tutup penutup. Labelkan dengan tarikh hari ini dan tarikh siap (3 bulan kemudian)."),
   S("Keep it in a cool, shady place, out of direct sun.","Simpan di tempat yang sejuk dan teduh, jauh dari cahaya matahari terus."),
-  S("For the first 2 weeks, open the lid a little every day to let the gas out, then close it. After that, once a week.","Dalam 2 minggu pertama, buka penutup sedikit setiap hari untuk melepaskan gas, kemudian tutup semula. Selepas itu, seminggu sekali.","The 2025 group built a pressure-relief valve and an Arduino-driven stirrer to do this automatically.","Kumpulan 2025 membina injap pelega tekanan dan pengacau berkuasa Arduino untuk melakukannya secara automatik."),
+  S("For the first 2 weeks, open the lid a little every day to let the gas out, then close it. After that, once a week.","Dalam 2 minggu pertama, buka penutup sedikit setiap hari untuk melepaskan gas, kemudian tutup semula. Selepas itu, seminggu sekali.","The 2025 student group built a pressure-relief valve and an Arduino-driven stirrer to do this automatically.","Kumpulan pelajar 2025 membina injap pelega tekanan dan pengacau berkuasa Arduino untuk melakukannya secara automatik."),
   S("After 3 months, strain it. The brown liquid is eco-enzyme! Put the leftover pulp in compost or in your next batch.","Selepas 3 bulan, tapis. Cecair perang itu ialah eko-enzim! Masukkan hampas ke dalam kompos atau kelompok seterusnya."),
   S("Always dilute before use. Commonly used: about 1 part eco-enzyme to 10–20 parts water for wiping floors and tables, and much weaker (about 1 : 500–1,000) for watering plants.","Sentiasa cairkan sebelum digunakan. Lazimnya: kira-kira 1 bahagian eko-enzim kepada 10–20 bahagian air untuk mengelap lantai dan meja, dan jauh lebih cair (kira-kira 1 : 500–1,000) untuk menyiram tanaman.")],
  safety:[W("Gas builds up inside: release it daily at first or the bottle can bulge or burst. Never use glass bottles.","Gas terkumpul di dalam: lepaskan setiap hari pada awalnya atau botol boleh mengembung atau pecah. Jangan guna botol kaca."),
@@ -409,7 +399,7 @@ void loop() {
  refl:[L("What made the gas inside the bottle?","Apakah yang menghasilkan gas di dalam botol?"),
   L("Why do we leave space at the top?","Mengapa kita membiarkan ruang kosong di atas?"),
   L("Which claims about eco-enzyme are true, and which need more evidence?","Dakwaan mana tentang eko-enzim yang benar, dan mana yang memerlukan lebih banyak bukti?")],
- posters:[P("assets/labs/enzyme-poster-1.jpg","Cover: the group's automatic mixer","Kulit: pengacau automatik kumpulan"),P("assets/labs/enzyme-poster-2.jpg","Materials: eco-enzyme, soap and mixer","Bahan: eko-enzim, sabun dan pengacau"),P("assets/labs/enzyme-poster-3.jpg","Method: ratio 3 kg peels : 1 kg sugar : 10 kg water","Kaedah: nisbah 3 kg kulit buah : 1 kg gula : 10 kg air")]},
+ posters:[P("assets/labs/enzyme-poster-2.jpg","Materials: eco-enzyme, soap and mixer","Bahan: eko-enzim, sabun dan pengacau"),P("assets/labs/enzyme-poster-3.jpg","Method: ratio 3 kg peels : 1 kg sugar : 10 kg water","Kaedah: nisbah 3 kg kulit buah : 1 kg gula : 10 kg air")]},
 
 /* ---------------------------------------------------------------- 8 ECOBRICK */
 {id:"ecobrick",icon:"🧱",min:7,mins:45,diff:1,sup:"light",heat:false,sdgs:[11,12,13,14,15],video:"10LjVG6AAdve3oxyZ_rpCBDIYJcBLaBYs",
@@ -421,7 +411,7 @@ void loop() {
  waste:L("Clean, dry soft plastics; PET bottles; foil-lined snack wrappers","Plastik lembut yang bersih dan kering; botol PET; pembalut snek berlapik kerajang"),product:L("Eco-bricks (benches, garden borders) and a woven wrapper tote","Eko-bata (bangku, sempadan taman) dan beg tote anyaman pembalut"),
  why:{env:L("Plastic is 21.9% of Malaysian household waste, and soft plastics like wrappers are hard to recycle. Packed into eco-bricks, they stay out of drains, rivers and open burning.","Plastik ialah 21.9% daripada sisa domestik Malaysia, dan plastik lembut seperti pembalut sukar dikitar semula. Apabila dipadatkan dalam eko-bata, ia tidak masuk ke longkang, sungai atau dibakar terbuka."),
   econ:L("Eco-bricks replace some bought materials for garden benches and borders; woven bags are durable, waterproof and unique.","Eko-bata menggantikan sebahagian bahan binaan yang dibeli untuk bangku dan sempadan taman; beg anyaman tahan lama, kalis air dan unik."),
-  soc:L("Building a school bench together is a visible shared achievement (and the 2024 G4 team gave bags to homeless people).","Membina bangku sekolah bersama ialah pencapaian bersama yang dapat dilihat (dan pasukan G4 2024 menghadiahkan beg kepada golongan gelandangan).")},
+  soc:L("Building a school bench together is a visible shared achievement (one 2024 student team gave bags to homeless people).","Membina bangku sekolah bersama ialah pencapaian bersama yang dapat dilihat (satu pasukan pelajar 2024 menghadiahkan beg kepada golongan gelandangan).")},
  table:{head:[L("Bottle","Botol"),L("Minimum mass","Jisim minimum"),L("Density","Ketumpatan")],
   rows:[["500 mL","167 g","0.33 g/mL"],["600 mL","200 g","0.33 g/mL"],["1.5 L","500 g","0.33 g/mL"]],
   note:L("Global Ecobrick Alliance minimum for building: 0.33 g/mL.","Minimum Global Ecobrick Alliance untuk binaan: 0.33 g/mL.")},
@@ -446,25 +436,23 @@ void loop() {
   S("Fold each rectangle in half the long way, open it, fold both long edges to the middle line, then fold in half again. You get a long thin strip.","Lipat setiap segi empat dua memanjang, buka, lipat kedua-dua tepi panjang ke garisan tengah, kemudian lipat dua sekali lagi. Anda dapat jalur panjang yang nipis."),
   S("Fold the strip in half across the middle, then fold both ends in to the middle crease. You get a small V-shaped link.","Lipat jalur itu dua melintang, kemudian lipat kedua-dua hujung ke garisan lipatan tengah. Anda dapat sambungan kecil berbentuk V."),
   S("Slide the ends of one link into the pockets of another to make a zig-zag chain. Make many chains.","Masukkan hujung satu sambungan ke dalam poket sambungan lain untuk membentuk rantai zig-zag. Buat banyak rantai."),
-  S("Join chains side by side with staples or tape to make two panels, then join the panels into a bag and add two handles.","Cantumkan rantai bersebelahan dengan stapler atau pita untuk membentuk dua panel, kemudian cantumkan panel menjadi beg dan pasang dua pemegang.","The 2024 G4 team filled small gaps with thin plastic strips. Put shiny sides out for a sparkly bag.","Pasukan G4 2024 mengisi celah kecil dengan jalur plastik nipis. Letakkan bahagian berkilat di luar untuk beg yang bergemerlapan.")],
+  S("Join chains side by side with staples or tape to make two panels, then join the panels into a bag and add two handles.","Cantumkan rantai bersebelahan dengan stapler atau pita untuk membentuk dua panel, kemudian cantumkan panel menjadi beg dan pasang dua pemegang.","One 2024 student team filled small gaps with thin plastic strips. Put shiny sides out for a sparkly bag.","Satu pasukan pelajar 2024 mengisi celah kecil dengan jalur plastik nipis. Letakkan bahagian berkilat di luar untuk beg yang bergemerlapan.")],
  safety:[W("Clean and dry only: food leftovers make bricks mouldy and smelly.","Bersih dan kering sahaja: sisa makanan menjadikan bata berkulat dan berbau."),
   W("Scissors: cut away from your body. Staples are sharp.","Gunting: gunting menjauhi badan. Stapler tajam."),
   W("Eco-bricks are not for load-bearing walls. Keep them out of strong sun and away from fire: use them inside a frame, or covered with earth or cement, for benches and garden borders.","Eko-bata bukan untuk dinding galas beban. Jauhkan daripada cahaya matahari terik dan api: gunakan di dalam rangka, atau ditutup tanah atau simen, untuk bangku dan sempadan taman.")],
  sci:{kids:L("Air takes up space. When you press the plastic down hard, you squeeze out the air and fit more plastic in, so the bottle becomes hard and strong like a brick.","Udara memenuhi ruang. Apabila anda menekan plastik dengan kuat, anda menolak keluar udara dan memasukkan lebih banyak plastik, jadi botol menjadi keras dan kuat seperti bata."),
   teens:L("Density = mass ÷ volume. Polyethylene and polypropylene, the main soft plastics, have densities of about 0.9–1.0 g/cm³, so a brick at 0.33 g/mL is still roughly two-thirds air. Packing harder raises the density, stiffness and resistance to denting. Soft plastics are hard to recycle because they are thin, light, often dirty and often multi-layer (plastic + aluminium foil), which recyclers cannot separate.","Ketumpatan = jisim ÷ isi padu. Polietilena dan polipropilena, plastik lembut utama, mempunyai ketumpatan kira-kira 0.9–1.0 g/cm³, jadi bata pada 0.33 g/mL masih kira-kira dua pertiga udara. Pemadatan yang lebih kuat meningkatkan ketumpatan, kekakuan dan ketahanan daripada kemik. Plastik lembut sukar dikitar semula kerana nipis, ringan, selalunya kotor dan selalunya berbilang lapisan (plastik + kerajang aluminium) yang tidak dapat diasingkan oleh pengitar semula."),
-  adults:L("Eco-bricks are plastic sequestration: they hold plastic out of the environment, but do not recycle it or reduce production. Treat them as the last step after refuse, reduce and reuse. The Global Ecobrick Alliance sets a minimum density of 0.33 g/mL for building use. The woven-wrapper bag (from the 2024 G4 \"Plastic is Valuable\" proposal) upcycles multilayer packaging that has almost no recycling market.","Eko-bata ialah penyimpanan plastik: ia menahan plastik daripada alam sekitar, tetapi tidak mengitar semula atau mengurangkan pengeluarannya. Anggap ia langkah terakhir selepas tolak, kurangkan dan guna semula. Global Ecobrick Alliance menetapkan ketumpatan minimum 0.33 g/mL untuk binaan. Beg anyaman pembalut (daripada cadangan G4 2024 \"Plastic is Valuable\") mengitar naik pembungkusan berbilang lapisan yang hampir tiada pasaran kitar semula.")},
+  adults:L("Eco-bricks are plastic sequestration: they hold plastic out of the environment, but do not recycle it or reduce production. Treat them as the last step after refuse, reduce and reuse. The Global Ecobrick Alliance sets a minimum density of 0.33 g/mL for building use. The woven-wrapper bag (from a 2024 student proposal) upcycles multilayer packaging that has almost no recycling market.","Eko-bata ialah penyimpanan plastik: ia menahan plastik daripada alam sekitar, tetapi tidak mengitar semula atau mengurangkan pengeluarannya. Anggap ia langkah terakhir selepas tolak, kurangkan dan guna semula. Global Ecobrick Alliance menetapkan ketumpatan minimum 0.33 g/mL untuk binaan. Beg anyaman pembalut (daripada satu cadangan pelajar 2024) mengitar naik pembungkusan berbilang lapisan yang hampir tiada pasaran kitar semula.")},
  teach:L("Agree on ONE bottle size for the whole school so the bricks fit together. A 1.5 L brick takes several sessions: let pupils take bottles home. Keep a class log of the total plastic packed (kg).","Tetapkan SATU saiz botol untuk seluruh sekolah supaya bata sepadan. Bata 1.5 L mengambil beberapa sesi: benarkan murid membawa botol pulang. Simpan rekod kelas jumlah plastik yang dipadatkan (kg)."),
  ext:[L("Class total: add up the mass of all the eco-bricks. How many plastic bags is that? (Weigh 10 bags to find the mass of one.)","Jumlah kelas: tambah jisim semua eko-bata. Berapa beg plastik itu? (Timbang 10 beg untuk mengetahui jisim sebiji.)"),
   L("Design: sketch a bench made of 1.5 L eco-bricks. How many bricks do you need? How much plastic would it lock away?","Reka bentuk: lakar bangku daripada eko-bata 1.5 L. Berapa bata diperlukan? Berapa banyak plastik dapat disimpan?"),
-  L("Check a real design: the 2024 Group 8 stool used 21 bottles of 1.5 L and 800 g of plastic in total. What was the density of each brick? Does it meet the 0.33 g/mL minimum? How much plastic would 21 proper bricks hold?","Semak reka bentuk sebenar: bangku Kumpulan 8 2024 menggunakan 21 botol 1.5 L dan 800 g plastik secara keseluruhan. Berapakah ketumpatan setiap bata? Adakah ia mencapai minimum 0.33 g/mL? Berapa banyak plastik yang boleh disimpan oleh 21 bata yang betul?"),
-  L("Cost it like an engineer: Group 8 spent RM 10.50 on glue sticks and tape for each stool, plus a measuring tape (RM 12) and a glue gun (RM 8) bought once. They planned to sell at RM 25. What is the profit on the first stool? On the tenth?","Kira kos seperti jurutera: Kumpulan 8 membelanjakan RM 10.50 untuk gam silikon dan pita bagi setiap bangku, serta pita pengukur (RM 12) dan pistol gam (RM 8) yang dibeli sekali. Mereka merancang menjual pada RM 25. Berapakah untung bangku pertama? Bangku kesepuluh?"),
+  L("Check a real design: a 2024 student stool used 21 bottles of 1.5 L and 800 g of plastic in total. What was the density of each brick? Does it meet the 0.33 g/mL minimum? How much plastic would 21 proper bricks hold?","Semak reka bentuk sebenar: sebuah bangku pelajar 2024 menggunakan 21 botol 1.5 L dan 800 g plastik secara keseluruhan. Berapakah ketumpatan setiap bata? Adakah ia mencapai minimum 0.33 g/mL? Berapa banyak plastik yang boleh disimpan oleh 21 bata yang betul?"),
+  L("Cost it like an engineer: A 2024 student team spent RM 10.50 on glue sticks and tape for each stool, plus a measuring tape (RM 12) and a glue gun (RM 8) bought once. They planned to sell at RM 25. What is the profit on the first stool? On the tenth?","Kira kos seperti jurutera: Satu pasukan pelajar 2024 membelanjakan RM 10.50 untuk gam silikon dan pita bagi setiap bangku, serta pita pengukur (RM 12) dan pistol gam (RM 8) yang dibeli sekali. Mereka merancang menjual pada RM 25. Berapakah untung bangku pertama? Bangku kesepuluh?"),
   L("Bag test: load your woven bag with books until it fails. Record the mass. Where did it break, and how could the design be stronger?","Ujian beg: isi beg anyaman dengan buku sehingga rosak. Catat jisimnya. Di mana ia koyak, dan bagaimana reka bentuknya boleh diperkuat?")],
  refl:[L("Which plastics in your home are hardest to recycle?","Plastik mana di rumah anda yang paling sukar dikitar semula?"),
   L("Is an eco-brick recycling? Why or why not?","Adakah eko-bata dikira kitar semula? Mengapa?"),
   L("How could your school use less soft plastic in the first place?","Bagaimana sekolah anda boleh mengurangkan penggunaan plastik lembut dari awal?")],
- posters:[P("assets/labs/ecobrick-poster-1.jpg","\"Turn Trash into Treasure\": eco-bricks and bags (Group 8)","\"Turn Trash into Treasure\": eko-bata dan beg (Kumpulan 8)"),P("assets/labs/ecobrick-poster-2.jpg","\"Plastic is Valuable\": wrapper tote and bubble-wrap sleeping bag (Group 4)","\"Plastic is Valuable\": beg tote pembalut dan beg tidur balutan gelembung (Kumpulan 4)"),P("assets/zph/ecobricks.jpg","Eco-brick stool and pillar at Zero-Plastic Hero 2024","Bangku dan tiang eko-bata di Zero-Plastic Hero 2024"),P("assets/zph/ecobrick-sketch.jpg","2024 Group 8: stool sketch (21 × 1.5 L bottles)","Kumpulan 8 2024: lakaran bangku (21 × botol 1.5 L)"),P("assets/zph/ecobrick-cost.jpg","2024 Group 8: costing the stool","Kumpulan 8 2024: pengiraan kos bangku"),P("assets/zph/ecobags.jpg","Bags made from plastic waste at Zero-Plastic Hero 2024","Beg daripada sisa plastik di Zero-Plastic Hero 2024")],
- links:[[ZPH.g8,"2024 Group 8 project page: eco-brick furniture (Padlet)","Halaman projek Kumpulan 8 2024: perabot eko-bata (Padlet)"],[ZPH.g8yt,"\"Ecobrick Furniture\" video by 2024 Group 8 (YouTube)","Video \"Ecobrick Furniture\" oleh Kumpulan 8 2024 (YouTube)"],[ZPH.g4tote,"2024 Group 4 project page: tote bags (Padlet)","Halaman projek Kumpulan 4 2024: beg tote (Padlet)"]],
- credit:L("Original posters: UPM ENG3104 student groups (Group 8; Group 4 \"Plastic is Valuable\"). Furniture photos: 2024 Group 8 (Zero-Plastic Hero 2024).","Poster asal: kumpulan pelajar ENG3104 UPM (Kumpulan 8; Kumpulan 4 \"Plastic is Valuable\"). Foto perabot: Kumpulan 8 2024 (Zero-Plastic Hero 2024).")},
+ posters:[P("assets/zph/ecobricks.jpg","Eco-brick stool and pillar made by students","Bangku dan tiang eko-bata buatan pelajar"),P("assets/zph/ecobrick-sketch.jpg","Stool sketch (21 × 1.5 L bottles)","Lakaran bangku (21 × botol 1.5 L)"),P("assets/zph/ecobrick-cost.jpg","Costing the stool","Pengiraan kos bangku")]},
 
 /* ---------------------------------------------------------------- 9 COMPOST */
 {id:"compost",icon:"🪱",min:7,mins:45,diff:2,sup:"light",heat:false,sdgs:[2,12,13,15],video:"1SOScJJ9-HIPY8lE52Z-aZTCm7TPebikd",
@@ -472,7 +460,7 @@ void loop() {
  title:L("Composting: Bokashi & Worms","Pengkomposan: Bokashi & Cacing"),
  hook:L("Feed food scraps to microbes and worms and get rich soil back.","Beri sisa makanan kepada mikrob dan cacing, dan dapatkan tanah yang subur."),
  time:L("45 min to set up; 2–8 weeks to finish","45 min untuk disediakan; 2–8 minggu untuk siap"),
- cost:L("Low: reuse old buckets; bokashi bran and worms may need to be bought.","Rendah: guna semula baldi lama; dedak bokashi dan cacing mungkin perlu dibeli."),costTodo:"confirm RM price of bokashi bran and composting worms",
+ cost:L("Low: reuse old buckets. Example shop prices (Oct 2026): bokashi bran about RM 8–14 per kg. Composting worms are sold by the kilogram and cost much more (one seller: RM 380 per kg in Peninsular Malaysia); the price of a small starter amount varies.","Rendah: guna semula baldi lama. Contoh harga kedai (Okt 2026): dedak bokashi kira-kira RM 8–14 sekilogram. Cacing kompos dijual mengikut kilogram dan jauh lebih mahal (seorang penjual: RM 380 sekilogram di Semenanjung Malaysia); harga untuk jumlah permulaan yang kecil berbeza-beza."),
  waste:L("Food scraps, dry leaves, cardboard","Sisa makanan, daun kering, kadbod"),product:L("Compost, vermicast and liquid plant feed","Kompos, tahi cacing (vermikas) dan baja cecair"),
  why:{env:L("Food is 30.6% of Malaysian household waste. Buried in landfill without air, it rots into methane (a strong greenhouse gas) and dirty liquid called leachate. Composting turns it back into soil instead.","Makanan ialah 30.6% daripada sisa domestik Malaysia. Apabila tertimbus di tapak pelupusan tanpa udara, ia reput menjadi metana (gas rumah hijau yang kuat) dan cecair kotor yang dipanggil larut resap. Pengkomposan mengembalikannya menjadi tanah."),
   econ:L("Compost and worm castings replace some bought fertiliser and potting soil, and gardeners will buy them.","Kompos dan tahi cacing menggantikan sebahagian baja dan tanah pasu yang dibeli, dan pekebun sanggup membelinya."),
@@ -519,7 +507,7 @@ void loop() {
  refl:[L("Which foods can go in bokashi but not in a worm bin?","Makanan apa boleh dimasukkan ke dalam bokashi tetapi tidak ke dalam tong cacing?"),
   L("Why does food buried in landfill make methane?","Mengapa makanan yang tertimbus di tapak pelupusan menghasilkan metana?"),
   L("How did it feel to look after living worms?","Bagaimana perasaan anda menjaga cacing yang hidup?")],
- posters:[P("assets/labs/compost-poster-1.jpg","Worm composting poster","Poster pengkomposan cacing"),P("assets/labs/compost-poster-2.jpg","Bokashi bin sketch","Lakaran tong bokashi"),P("assets/labs/compost-poster-3.jpg","Quick bokashi guide","Panduan ringkas bokashi")]},
+ posters:[P("assets/labs/compost-poster-1.jpg","Worm composting poster","Poster pengkomposan cacing"),P("assets/labs/compost-poster-2.jpg","Bokashi bin sketch","Lakaran tong bokashi")]},
 
 /* ---------------------------------------------------------------- 10 BIOPLASTIC */
 {id:"bioplastic",icon:"🌽",min:9,mins:60,diff:2,sup:"adult",heat:true,sdgs:[9,12,14],video:null,
@@ -527,10 +515,10 @@ void loop() {
  title:L("Cornstarch Bioplastic","Bioplastik Kanji Jagung"),
  hook:L("Cook starch, water, vinegar and glycerin into a plastic you can shape, then test whether it really is \"green\".","Masak kanji, air, cuka dan gliserin menjadi plastik yang boleh dibentuk, kemudian uji sama ada ia benar-benar \"hijau\"."),
  time:L("60 min + 2 days drying","60 min + 2 hari pengeringan"),
- cost:L("About RM 0.84 per small pot (2024 Group 10 estimate).","Kira-kira RM 0.84 bagi sebuah pasu kecil (anggaran Kumpulan 10, 2024)."),
+ cost:L("About RM 0.84 per small pot (2024 UPM student estimate; prices may have changed).","Kira-kira RM 0.84 bagi sebuah pasu kecil (anggaran pelajar UPM 2024; harga mungkin telah berubah)."),
  waste:L("Not a waste product: a plant-based swap for single-use plastic","Bukan produk sisa: pengganti berasaskan tumbuhan untuk plastik pakai buang"),product:L("Seedling pots, coasters and small shapes","Pasu semaian, alas cawan dan bentuk kecil"),
  why:{env:L("Plastic is 21.9% of Malaysian household waste, and most plastic is made from oil. Starch plastic comes from plants, but \"made from plants\" does not automatically mean it breaks down anywhere. This lab tests that honestly.","Plastik ialah 21.9% daripada sisa domestik Malaysia, dan kebanyakan plastik dibuat daripada minyak. Plastik kanji berasal daripada tumbuhan, tetapi \"dibuat daripada tumbuhan\" tidak semestinya bermaksud ia terurai di mana-mana. Makmal ini mengujinya dengan jujur."),
-  econ:L("Starch, glycerin and vinegar are cheap. The 2024 Group 10 team costed a seedling pot at about RM 0.84.","Kanji, gliserin dan cuka murah. Pasukan Kumpulan 10, 2024 menganggarkan kos sebuah pasu semaian kira-kira RM 0.84."),
+  econ:L("Starch, glycerin and vinegar are cheap. A 2024 UPM student team costed a seedling pot at about RM 0.84.","Kanji, gliserin dan cuka murah. Satu pasukan pelajar UPM 2024 menganggarkan kos sebuah pasu semaian kira-kira RM 0.84."),
   soc:L("Students act as materials engineers: they design, test and judge a \"green\" claim with evidence.","Pelajar bertindak sebagai jurutera bahan: mereka mereka bentuk, menguji dan menilai dakwaan \"hijau\" dengan bukti.")},
  mats:[L("15 g cornstarch (tepung jagung), about 2 tablespoons","15 g tepung jagung, kira-kira 2 sudu besar"),
   L("100 mL water","100 mL air"),
@@ -554,7 +542,7 @@ void loop() {
   W("Do not put it in the plastic recycling bin: it contaminates real plastic recycling. Small pieces can go in the compost.","Jangan masukkan ke dalam tong kitar semula plastik: ia mencemarkan kitar semula plastik sebenar. Cebisan kecil boleh dimasukkan ke dalam kompos.")],
  sci:{kids:L("Starch is made of very long chains, like a necklace of sugar beads. Heating it in water unwinds the chains, and they tangle together. When it dries, the tangle becomes a bendy sheet: a plastic! Glycerin keeps it soft. Because it is made from plants and loves water, it goes soft when it gets wet.","Kanji terdiri daripada rantai yang sangat panjang, seperti rantai manik gula. Memanaskannya dalam air membuka rantai itu, lalu ia berselirat. Apabila kering, selirat itu menjadi kepingan yang lentur: plastik! Gliserin mengekalkannya lembut. Kerana ia dibuat daripada tumbuhan dan suka air, ia menjadi lembut apabila basah."),
   teens:L("Plastics are polymers: very long-chain molecules. Starch is a natural polymer of glucose made of amylose (mostly straight chains) and amylopectin (branched). Heating starch in water (gelatinisation, at roughly 60–70 °C for corn starch) lets water into the granules, which swell and burst; as the film dries, the released chains tangle and hydrogen-bond into a solid network. Glycerol is a plasticiser: its small molecules sit between the chains and reduce chain-to-chain hydrogen bonding, making the film flexible (too much makes it sticky). Vinegar's role is smaller than often claimed (acid may cut some amylopectin branches for a smoother film), so test with and without it.","Plastik ialah polimer: molekul berantai sangat panjang. Kanji ialah polimer semula jadi glukosa yang terdiri daripada amilosa (kebanyakannya rantai lurus) dan amilopektin (bercabang). Memanaskan kanji dalam air (pengelatinan, kira-kira 60–70 °C bagi kanji jagung) membolehkan air masuk ke dalam butir kanji, yang mengembang dan pecah; apabila filem kering, rantai yang terbebas berselirat dan membentuk ikatan hidrogen menjadi rangkaian pepejal. Gliserol ialah pemplastik: molekul kecilnya berada di antara rantai dan mengurangkan ikatan hidrogen antara rantai, menjadikan filem lentur (terlalu banyak menjadikannya melekit). Peranan cuka lebih kecil daripada yang sering didakwa (asid mungkin memotong sebahagian cabang amilopektin untuk filem yang lebih licin), jadi uji dengan dan tanpa cuka."),
-  adults:L("\"Bioplastic\" mixes two separate ideas. Bio-based means made from plants; biodegradable means microbes break it down under stated conditions. They are independent: bio-based polyethylene is not biodegradable, while some fossil-based polyesters are. ASTM D6866 measures bio-based carbon content (by radiocarbon); it says nothing about biodegradability, which is certified under standards such as EN 13432 or ASTM D6400. Plain starch films are weak and water-sensitive, so they suit short-life uses such as seedling pots, not packaging for wet food. The 2024 Group 10 (PLASTREE) costing of RM 0.84 per pot is a good start; scaling would need consistent drying, moisture resistance and a real end-of-life route.","\"Bioplastik\" mencampurkan dua idea berbeza. Berasaskan bio bermaksud dibuat daripada tumbuhan; terbiodegradasi bermaksud mikrob mengurainya dalam keadaan yang dinyatakan. Kedua-duanya tidak bergantung antara satu sama lain: polietilena berasaskan bio tidak terbiodegradasi, manakala sesetengah poliester berasaskan fosil boleh terbiodegradasi. ASTM D6866 mengukur kandungan karbon berasaskan bio (melalui radiokarbon); ia tidak menyatakan apa-apa tentang biodegradasi, yang diperakui di bawah piawaian seperti EN 13432 atau ASTM D6400. Filem kanji biasa lemah dan sensitif kepada air, jadi ia sesuai untuk kegunaan jangka pendek seperti pasu semaian, bukan pembungkusan makanan basah. Anggaran kos Kumpulan 10, 2024 (PLASTREE) sebanyak RM 0.84 sepasu ialah permulaan yang baik; untuk dikembangkan, ia memerlukan pengeringan yang konsisten, ketahanan lembapan dan laluan akhir hayat yang sebenar.")},
+  adults:L("\"Bioplastic\" mixes two separate ideas. Bio-based means made from plants; biodegradable means microbes break it down under stated conditions. They are independent: bio-based polyethylene is not biodegradable, while some fossil-based polyesters are. ASTM D6866 measures bio-based carbon content (by radiocarbon); it says nothing about biodegradability, which is certified under standards such as EN 13432 or ASTM D6400. Plain starch films are weak and water-sensitive, so they suit short-life uses such as seedling pots, not packaging for wet food. The 2024 student costing of RM 0.84 per pot is a good start; scaling would need consistent drying, moisture resistance and a real end-of-life route.","\"Bioplastik\" mencampurkan dua idea berbeza. Berasaskan bio bermaksud dibuat daripada tumbuhan; terbiodegradasi bermaksud mikrob mengurainya dalam keadaan yang dinyatakan. Kedua-duanya tidak bergantung antara satu sama lain: polietilena berasaskan bio tidak terbiodegradasi, manakala sesetengah poliester berasaskan fosil boleh terbiodegradasi. ASTM D6866 mengukur kandungan karbon berasaskan bio (melalui radiokarbon); ia tidak menyatakan apa-apa tentang biodegradasi, yang diperakui di bawah piawaian seperti EN 13432 atau ASTM D6400. Filem kanji biasa lemah dan sensitif kepada air, jadi ia sesuai untuk kegunaan jangka pendek seperti pasu semaian, bukan pembungkusan makanan basah. Anggaran kos pelajar 2024 sebanyak RM 0.84 sepasu ialah permulaan yang baik; untuk dikembangkan, ia memerlukan pengeringan yang konsisten, ketahanan lembapan dan laluan akhir hayat yang sebenar.")},
  teach:L("Pre-measure the dry ingredients into cups. One saucepan per adult. A microwave also works: heat in 20-second bursts, stirring between (adult only).","Sukat bahan kering ke dalam cawan lebih awal. Satu periuk bagi setiap orang dewasa. Ketuhar gelombang mikro juga boleh: panaskan 20 saat setiap kali dan kacau di antaranya (orang dewasa sahaja)."),
  ext:[L("Glycerin test: make films with 5, 10 and 15 mL glycerin. How far does each bend before it cracks? Which would make the best seedling pot?","Ujian gliserin: buat filem dengan 5, 10 dan 15 mL gliserin. Sejauh mana setiap satu boleh dilentur sebelum retak? Yang mana paling sesuai untuk pasu semaian?"),
   L("Breakdown test: bury one piece in soil, keep one in a jar of water and one dry. Photograph them every week for 4 weeks.","Ujian penguraian: tanam secebis dalam tanah, simpan secebis dalam balang air dan secebis kering. Ambil gambar setiap minggu selama 4 minggu."),
@@ -562,9 +550,7 @@ void loop() {
  refl:[L("Is \"made from plants\" the same as \"breaks down in nature\"?","Adakah \"dibuat daripada tumbuhan\" sama dengan \"terurai secara semula jadi\"?"),
   L("What would you use your bioplastic for, and what should it never be used for?","Untuk apa anda akan gunakan bioplastik anda, dan untuk apa ia tidak patut digunakan?"),
   L("How could you make it stronger or more water-resistant?","Bagaimana anda boleh menjadikannya lebih kuat atau lebih tahan air?")],
- posters:[P("assets/zph/biopots.jpg","Bio-pots shown at Zero-Plastic Hero 2024 (Group 10, PLASTREE)","Bio-pasu dipamerkan di Zero-Plastic Hero 2024 (Kumpulan 10, PLASTREE)")],
- links:[[ZPH.biopots,"PLASTREE (Group 10) project page: \"The making of bioplastic!\" video","Halaman projek PLASTREE (Kumpulan 10): video \"The making of bioplastic!\""]],
- credit:L("Idea: UPM ENG3104 2024 Group 10 (PLASTREE)","Idea: Kumpulan 10 ENG3104 UPM 2024 (PLASTREE)")},
+ posters:[P("assets/zph/biopots.jpg","Bio-pots made by students","Bio-pasu buatan pelajar")]},
 
 /* ================================================================ ZERO-PLASTIC HERO 2024 LABS (11–15) */
 /* ---------------------------------------------------------------- 11 VERTICAL GARDEN */
@@ -573,11 +559,11 @@ void loop() {
  title:L("Bottle Vertical Garden","Taman Menegak Botol"),
  hook:L("Hang a garden of plastic bottles on a wall or fence: water the top one and it drips down to the rest.","Gantung taman botol plastik pada dinding atau pagar: siram botol paling atas dan air menitis ke botol di bawahnya."),
  time:L("60 min to build, then water a little every day","60 min untuk membina, kemudian siram sedikit setiap hari"),
- cost:L("Almost free: used bottles and string; you may need to buy soil and seeds.","Hampir percuma: botol terpakai dan tali; mungkin perlu membeli tanah dan benih."),costTodo:"confirm RM price of a bag of soil and a seed packet",
+ cost:L("Almost free: used bottles and string. If you buy soil and seeds, example shop prices (Oct 2026): a 7 L bag of potting mix RM 7.50, a vegetable seed packet RM 5.90. Prices vary.","Hampir percuma: botol terpakai dan tali. Jika membeli tanah dan benih, contoh harga kedai (Okt 2026): sebungkus campuran tanah 7 L RM 7.50, sepaket benih sayur RM 5.90. Harga berbeza-beza."),
  waste:L("1.5 L PET bottles; compost from food waste","Botol PET 1.5 L; kompos daripada sisa makanan"),product:L("A hanging vertical garden and mini bottle pots","Taman menegak gantung dan pasu botol mini"),
  why:{env:L("Each bottle gets a second life before recycling, and plants on walls cool hot surfaces and give insects food.","Setiap botol mendapat hayat kedua sebelum dikitar semula, dan tumbuhan pada dinding menyejukkan permukaan panas serta memberi makanan kepada serangga."),
   econ:L("Grow kangkung, herbs or cuttings to use or sell, in a space too small for a normal garden.","Tanam kangkung, herba atau keratan untuk digunakan atau dijual, di ruang yang terlalu kecil untuk kebun biasa."),
-  soc:L("A green wall makes a school corner or flat balcony nicer, and mini pots make easy gifts (the 2024 G1 team gave pots to SMK Convent Kajang pupils).","Dinding hijau menceriakan sudut sekolah atau balkoni rumah pangsa, dan pasu mini menjadi hadiah mudah (pasukan G1 2024 memberi pasu kepada murid SMK Convent Kajang).")},
+  soc:L("A green wall makes a school corner or flat balcony nicer, and mini pots make easy gifts.","Dinding hijau menceriakan sudut sekolah atau balkoni rumah pangsa, dan pasu mini menjadi hadiah mudah.")},
  mats:[L("4–6 clear 1.5 L bottles with caps, washed, labels off","4–6 botol jernih 1.5 L bertutup, dibasuh, label ditanggalkan"),
   L("Strong string or nylon cord, and a frame, fence or grille to hang from","Tali kuat atau tali nilon, dan rangka, pagar atau gril untuk menggantung"),
   L("Soil mixed with compost (see the Compost lab)","Tanah dicampur kompos (lihat makmal Kompos)"),
@@ -591,7 +577,7 @@ void loop() {
   S("Fill each bottle two-thirds full with the soil and compost mix.","Isi setiap botol dua pertiga penuh dengan campuran tanah dan kompos."),
   S("Plant your seedlings or cuttings and press the soil gently around them.","Tanam anak benih atau keratan dan tekan tanah perlahan-lahan di sekelilingnya."),
   S("Water the top bottle slowly and watch it trickle down. Place the garden where it gets a few hours of sun.","Siram botol paling atas perlahan-lahan dan perhatikan air mengalir ke bawah. Letakkan taman di tempat yang mendapat cahaya matahari beberapa jam."),
-  S("Mini pots: cut the bottom 8 cm off spare bottles, poke holes, fill and plant. Tie a ribbon on for a gift.","Pasu mini: potong 8 cm bahagian bawah botol lebihan, tebuk lubang, isi dan tanam. Ikat reben untuk dijadikan hadiah.","The G1 team also built an Arduino soil sensor and pump to water the garden automatically: see the Smart Watering lab.","Pasukan G1 juga membina sensor tanah Arduino dan pam untuk menyiram taman secara automatik: lihat makmal Penyiraman Pintar.")],
+  S("Mini pots: cut the bottom 8 cm off spare bottles, poke holes, fill and plant. Tie a ribbon on for a gift.","Pasu mini: potong 8 cm bahagian bawah botol lebihan, tebuk lubang, isi dan tanam. Ikat reben untuk dijadikan hadiah.","The student team also built an Arduino soil sensor and pump to water the garden automatically: see the Smart Watering lab.","Pasukan pelajar itu juga membina sensor tanah Arduino dan pam untuk menyiram taman secara automatik: lihat makmal Penyiraman Pintar.")],
  safety:[W("Cut plastic edges are sharp: an adult cuts, then tape the edges.","Tepi plastik yang dipotong tajam: orang dewasa memotong, kemudian lekatkan pita pada tepinya."),
   W("Wet soil is heavy. Tie the bottles to a strong frame, not above where people walk or sit.","Tanah basah berat. Ikat botol pada rangka yang kuat, bukan di atas laluan atau tempat orang duduk."),
   W("No standing water: Aedes mosquitoes can breed in a cap or tray in about a week. Check and empty them weekly.","Tiada air bertakung: nyamuk Aedes boleh membiak dalam penutup botol atau dulang dalam kira-kira seminggu. Periksa dan kosongkan setiap minggu."),
@@ -606,8 +592,7 @@ void loop() {
  refl:[L("Where at home or school could a bottle garden go?","Di mana di rumah atau sekolah taman botol boleh diletakkan?"),
   L("Is reusing a bottle better than recycling it? Why?","Adakah mengguna semula botol lebih baik daripada mengitar semulanya? Mengapa?"),
   L("What would you grow, and who would you give it to?","Apakah yang akan anda tanam, dan kepada siapa anda akan memberinya?")],
- posters:[P("assets/zph/vgarden-1.jpg","Seedlings in mini bottle pots (G1 Eco-Elevate)","Anak benih dalam pasu botol mini (G1 Eco-Elevate)"),P("assets/zph/vgarden-2.jpg","Money plant cuttings ready to give away","Keratan pokok duit-duit sedia untuk diberi")],
- credit:L("Project: UPM ENG3104 2024 Group 1 \"Eco-Elevate: Plastic's Green Revolution in Vertical Garden\" (Zero-Plastic Hero 2024). Video and photos: the group.","Projek: Kumpulan 1 ENG3104 UPM 2024 \"Eco-Elevate: Plastic's Green Revolution in Vertical Garden\" (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut.")},
+ posters:[P("assets/zph/vgarden-1.jpg","Seedlings in mini bottle pots","Anak benih dalam pasu botol mini"),P("assets/zph/vgarden-2.jpg","Money plant cuttings ready to give away","Keratan pokok duit-duit sedia untuk diberi")]},
 
 /* ---------------------------------------------------------------- 12 HYDROPONICS */
 {id:"hydro",icon:"🥬",min:9,mins:60,diff:2,sup:"close",heat:false,sdgs:[2,6,11,12],video:"self",
@@ -615,18 +600,18 @@ void loop() {
  title:L("Bottle Hydroponics","Hidroponik Botol"),
  hook:L("Grow leafy vegetables in water, with no soil and no pump, inside a cut plastic bottle.","Tanam sayur berdaun di dalam air, tanpa tanah dan tanpa pam, di dalam botol plastik yang dipotong."),
  time:L("60 min to set up; about 4–6 weeks to harvest","60 min untuk menyediakan; kira-kira 4–6 minggu untuk dituai"),
- cost:L("Bottles are free; hydroponic nutrient (AB mix) and seeds are bought.","Botol percuma; nutrien hidroponik (baja AB) dan benih perlu dibeli."),costTodo:"confirm RM price of AB mix and seeds",
+ cost:L("Bottles are free; hydroponic nutrient (AB mix) and seeds are bought. Example (Oct 2026): a vegetable seed packet RM 5.90; AB mix price varies by pack size (one listing showed RM 16.90).","Botol percuma; nutrien hidroponik (baja AB) dan benih perlu dibeli. Contoh (Okt 2026): sepaket benih sayur RM 5.90; harga baja AB berbeza mengikut saiz pek (satu senarai menunjukkan RM 16.90)."),
  waste:L("1.5 L PET bottles and caps; scrap wood and bubble wrap for the shelter","Botol PET 1.5 L dan penutupnya; kayu buangan dan balutan gelembung untuk teduhan"),product:L("A soil-free vegetable pot and a mini rain shelter","Pasu sayur tanpa tanah dan teduhan hujan mini"),
  why:{env:L("Bottles get reused, and a hydroponic pot with no pump uses no electricity. Plants take only the water they need.","Botol diguna semula, dan pasu hidroponik tanpa pam tidak menggunakan elektrik. Tumbuhan hanya mengambil air yang diperlukan."),
   econ:L("Fresh sawi or lettuce at home or in the school canteen, grown on a wall or a corridor with no garden land.","Sawi atau salad segar di rumah atau kantin sekolah, ditanam di dinding atau koridor tanpa tanah kebun."),
-  soc:L("Flats and schools without land can still grow food. The 2024 G3 team designed a \"rain shelter house\" so the bottles keep working in the rainy season.","Rumah pangsa dan sekolah tanpa tanah masih boleh menanam makanan. Pasukan G3 2024 mereka bentuk \"rumah perlindungan hujan\" supaya botol terus berfungsi pada musim hujan.")},
+  soc:L("Flats and schools without land can still grow food. A 2024 student team designed a \"rain shelter house\" so the bottles keep working in the rainy season.","Rumah pangsa dan sekolah tanpa tanah masih boleh menanam makanan. Satu pasukan pelajar 2024 mereka bentuk \"rumah perlindungan hujan\" supaya botol terus berfungsi pada musim hujan.")},
  mats:[H("Bottle pot","Pasu botol"),
   L("1 clear 1.5 L bottle per plant, washed","1 botol jernih 1.5 L bagi setiap pokok, dibasuh"),
   L("Seeds of a leafy vegetable (sawi, lettuce or kangkung) and a kitchen sponge cut into 2 cm cubes","Benih sayur berdaun (sawi, salad atau kangkung) dan span dapur dipotong menjadi kiub 2 cm"),
   L("Hydroponic nutrient A and B (AB mix) and a measuring syringe or spoon","Nutrien hidroponik A dan B (baja AB) dan picagari atau sudu penyukat"),
   L("Black paper, foil or old cloth to cover the bottle; tape","Kertas hitam, kerajang atau kain lama untuk membalut botol; pita"),
   L("Craft knife (adult only) and a marker","Pisau kraf (orang dewasa sahaja) dan pen penanda"),
-  H("Rain shelter (G3 design, optional)","Teduhan hujan (reka bentuk G3, pilihan)"),
+  H("Rain shelter (optional)","Teduhan hujan (pilihan)"),
   L("Scrap wood strips, nails and hammer; extra bottles; stapler; clear tape; bubble wrap","Jalur kayu buangan, paku dan tukul; botol tambahan; stapler; pita jernih; balutan gelembung")],
  steps:[H("Bottle pot (Kratky method)","Pasu botol (kaedah Kratky)"),
   S("Sow 1–2 seeds on each wet sponge cube. Keep them damp in a tray until roots and 2 small leaves appear (about a week).","Semai 1–2 biji benih pada setiap kiub span basah. Pastikan lembap dalam dulang sehingga akar dan 2 daun kecil muncul (kira-kira seminggu)."),
@@ -638,9 +623,9 @@ void loop() {
   S("Tape around the joint so no light, rain or mosquitoes can get in. Label the bottle \"Not for drinking\".","Lekatkan pita di sekeliling sambungan supaya cahaya, hujan atau nyamuk tidak boleh masuk. Labelkan botol \"Bukan untuk diminum\"."),
   S("Keep it in bright light but out of the rain. Do not refill to the top: as the roots grow, the water level drops and leaves an air gap.","Letakkan di tempat terang tetapi terlindung daripada hujan. Jangan isi semula sehingga penuh: apabila akar membesar, paras air turun dan meninggalkan ruang udara.","The top roots breathe from the air gap and the lower roots drink. If the water gets very low, top up only to about half.","Akar atas bernafas daripada ruang udara dan akar bawah menyerap air. Jika air terlalu rendah, tambah hanya sehingga kira-kira separuh."),
   S("Harvest the leaves in about 4–6 weeks. Pour leftover nutrient water onto garden plants, not into a drain.","Tuai daun dalam kira-kira 4–6 minggu. Tuang baki air nutrien pada tanaman kebun, bukan ke dalam longkang."),
-  H("Rain shelter house (G3 2024)","Rumah perlindungan hujan (G3 2024)"),
+  H("Rain shelter house","Rumah perlindungan hujan"),
   S("Build a small wooden frame to fit the bottles you collected. Nail each bottle cap to the wood, then screw the bottle into its cap so it stays steady.","Bina rangka kayu kecil mengikut saiz botol yang dikumpul. Pakukan setiap penutup botol pada kayu, kemudian pulas botol ke dalam penutupnya supaya kukuh."),
-  S("For the roof, ADULT cuts the top and bottom off bottles and slits them open. Flatten, staple them together and tape the joins so rain cannot leak through.","Untuk bumbung, ORANG DEWASA memotong bahagian atas dan bawah botol serta membelahnya. Leperkan, stapler bersama dan lekatkan pita pada sambungan supaya hujan tidak bocor.","The G3 team used bubble wrap to fill gaps and save cost, and fixed the roof without glue.","Pasukan G3 menggunakan balutan gelembung untuk menutup celah dan menjimatkan kos, serta memasang bumbung tanpa gam.")],
+  S("For the roof, ADULT cuts the top and bottom off bottles and slits them open. Flatten, staple them together and tape the joins so rain cannot leak through.","Untuk bumbung, ORANG DEWASA memotong bahagian atas dan bawah botol serta membelahnya. Leperkan, stapler bersama dan lekatkan pita pada sambungan supaya hujan tidak bocor.","The student team used bubble wrap to fill gaps and save cost, and fixed the roof without glue.","Pasukan pelajar menggunakan balutan gelembung untuk menutup celah dan menjimatkan kos, serta memasang bumbung tanpa gam.")],
  safety:[W("Nutrient salts: an adult measures them. Do not drink or taste, wash hands after, and keep the packets away from small children.","Garam nutrien: orang dewasa yang menyukat. Jangan minum atau rasa, basuh tangan selepas itu dan jauhkan paket daripada kanak-kanak kecil."),
   W("Still water can breed Aedes mosquitoes in about a week. Seal every gap with tape and check for wrigglers weekly. If you see any, empty the bottle and start again.","Air yang tidak bergerak boleh membiakkan nyamuk Aedes dalam kira-kira seminggu. Tutup setiap celah dengan pita dan periksa jentik-jentik setiap minggu. Jika ada, kosongkan botol dan mulakan semula."),
   W("Cut bottle edges, nails and hammers: adults cut and hammer, learners wear covered shoes.","Tepi botol yang dipotong, paku dan tukul: orang dewasa memotong dan mengetuk, peserta memakai kasut bertutup.")],
@@ -653,10 +638,8 @@ void loop() {
   L("Design a rain shelter for 10 bottles on your school wall. Sketch it with measurements and list the waste materials you would use.","Reka teduhan hujan untuk 10 botol di dinding sekolah anda. Lakar dengan ukuran dan senaraikan bahan sisa yang akan digunakan.")],
  refl:[L("Why might hydroponics help people who live in flats?","Mengapakah hidroponik boleh membantu orang yang tinggal di rumah pangsa?"),
   L("What would happen to the roots if the bottle was filled to the top all the time?","Apakah yang akan berlaku kepada akar jika botol sentiasa diisi penuh?"),
-  L("Why did the G3 team need a roof over their bottles?","Mengapakah pasukan G3 memerlukan bumbung di atas botol mereka?")],
- posters:[P("assets/zph/hydro-1.jpg","The G3 rain shelter house prototype","Prototaip rumah perlindungan hujan G3")],
- links:[[ZPH.hydro,"G3 Team 1 \"Hydroponics in Rain Shelter House (RPH)\" build video (Google Drive)","Video pembinaan G3 Pasukan 1 \"Hydroponics in Rain Shelter House (RPH)\" (Google Drive)"]],
- credit:L("Project: UPM ENG3104 2024 Group 3, Team 1 \"Hydroponics in Rain Shelter House (RPH)\" (Zero-Plastic Hero 2024). Video and photo: the group.","Projek: Kumpulan 3 ENG3104 UPM 2024, Pasukan 1 \"Hydroponics in Rain Shelter House (RPH)\" (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut.")},
+  L("Why did the student team need a roof over their bottles?","Mengapakah pasukan pelajar memerlukan bumbung di atas botol mereka?")],
+ posters:[P("assets/zph/hydro-1.jpg","A rain shelter house prototype","Prototaip rumah perlindungan hujan")]},
 
 /* ---------------------------------------------------------------- 13 FUSED PLASTIC */
 {id:"fused",icon:"☂️",min:9,mins:90,diff:2,sup:"adult",heat:true,sdgs:[12,14],video:"self",
@@ -664,7 +647,7 @@ void loop() {
  title:L("Fused-Plastic Bags & Mini Umbrella","Beg & Payung Mini Plastik Cantum"),
  hook:L("Iron used plastic bags (between baking paper) into a tough new fabric, then make a drawstring bag, a tote or a working mini umbrella.","Seterika beg plastik terpakai (di antara kertas pembakar) menjadi fabrik baharu yang kuat, kemudian hasilkan beg serut, beg tote atau payung mini yang berfungsi."),
  time:L("90 min (the umbrella takes a second session)","90 min (payung memerlukan sesi kedua)"),
- cost:L("Almost free: used bags and straws; baking paper, thread and string.","Hampir percuma: beg dan straw terpakai; kertas pembakar, benang dan tali."),costTodo:"confirm RM price of a roll of baking paper",
+ cost:L("Almost free: used bags and straws, plus thread and string. Baking paper: example rolls from about RM 5.30 (30 cm × 5 m) to RM 9.90 (38 cm × 12 m); prices vary.","Hampir percuma: beg dan straw terpakai, serta benang dan tali. Kertas pembakar: contoh gulungan dari kira-kira RM 5.30 (30 cm × 5 m) hingga RM 9.90 (38 cm × 12 m); harga berbeza-beza."),
  waste:L("Thin plastic carrier bags (marked 2 HDPE or 4 LDPE); plastic straws","Beg plastik nipis (bertanda 2 HDPE atau 4 LDPE); straw plastik"),product:L("Fused plastic fabric: drawstring bag, tote bag, mini umbrella","Fabrik plastik cantum: beg serut, beg tote, payung mini"),
  why:{env:L("Carrier bags are light, blow into drains and are rarely recycled. Fusing them turns many weak bags into one strong, waterproof sheet.","Beg plastik ringan, mudah diterbangkan ke longkang dan jarang dikitar semula. Mencantumnya menukar banyak beg yang lemah menjadi satu kepingan yang kuat dan kalis air."),
   econ:L("Waterproof pouches and totes from free waste can be sold at school fairs.","Kantung dan beg tote kalis air daripada sisa percuma boleh dijual di karnival sekolah."),
@@ -677,15 +660,15 @@ void loop() {
  steps:[H("Make the fabric (ADULT irons)","Hasilkan fabrik (ORANG DEWASA menyeterika)"),
   S("Cut off the handles and the bottom seam of each bag, then cut down one side so it opens into a flat sheet.","Potong pemegang dan jahitan bawah setiap beg, kemudian gunting satu sisi supaya terbuka menjadi kepingan rata."),
   S("Stack 4–6 layers of bag on baking paper and cover with another sheet of baking paper. Plastic must never touch the iron.","Susun 4–6 lapisan beg di atas kertas pembakar dan tutup dengan sehelai lagi kertas pembakar. Plastik tidak boleh menyentuh seterika."),
-  S("ADULT: iron on a low-medium setting with no steam, keeping the iron moving for 15–20 seconds. Turn over and repeat.","ORANG DEWASA: seterika pada suhu rendah-sederhana tanpa wap, gerakkan seterika selama 15–20 saat. Terbalikkan dan ulang.","Too cool and the layers will not join (as the Eco-Viva team found); too hot and it shrinks, gets holes and smells. Stop if it smokes.","Terlalu sejuk, lapisan tidak bercantum (seperti yang didapati pasukan Eco-Viva); terlalu panas, ia mengecut, berlubang dan berbau. Berhenti jika berasap."),
+  S("ADULT: iron on a low-medium setting with no steam, keeping the iron moving for 15–20 seconds. Turn over and repeat.","ORANG DEWASA: seterika pada suhu rendah-sederhana tanpa wap, gerakkan seterika selama 15–20 saat. Terbalikkan dan ulang.","Too cool and the layers will not join (as one student team found); too hot and it shrinks, gets holes and smells. Stop if it smokes.","Terlalu sejuk, lapisan tidak bercantum (seperti yang didapati satu pasukan pelajar); terlalu panas, ia mengecut, berlubang dan berbau. Berhenti jika berasap."),
   S("Let it cool, then peel off the paper. The bags have shrunk into one stiff, waterproof sheet.","Biarkan sejuk, kemudian tanggalkan kertas. Beg-beg itu telah mengecut menjadi satu kepingan yang keras dan kalis air."),
-  H("Drawstring bag (Eco-Viva Bag team)","Beg serut (pasukan Eco-Viva Bag)"),
+  H("Drawstring bag","Beg serut"),
   S("Measure, mark and trim the fabric to two equal rectangles.","Ukur, tanda dan potong fabrik menjadi dua segi empat tepat yang sama besar."),
   S("Fold 2 cm over at the top edge, cover with baking paper and ADULT irons the fold to seal a tunnel. Then seal the sides and bottom the same way, or sew them.","Lipat 2 cm di tepi atas, tutup dengan kertas pembakar dan ORANG DEWASA menyeterika lipatan untuk menjadi terowong. Kemudian kedapkan sisi dan bawah dengan cara yang sama, atau jahit."),
   S("Make a plastic-bag cord: fold a bag 3 times, cut strips two fingers wide, open them out and cut in a zig-zag to get one long strip. Thread it through the tunnel and knot.","Buat tali beg plastik: lipat beg 3 kali, gunting jalur selebar dua jari, buka dan gunting secara zig-zag untuk mendapat satu jalur panjang. Masukkan ke dalam terowong dan simpul."),
-  H("Tote bag (Group 7)","Beg tote (Kumpulan 7)"),
+  H("Tote bag","Beg tote"),
   S("Cut fabric pieces to the size you want (front, back, base, two handles). Sew them together by hand or machine and add a button.","Potong kepingan fabrik mengikut saiz yang dikehendaki (depan, belakang, dasar, dua pemegang). Jahit dengan tangan atau mesin dan pasang butang."),
-  H("Mini umbrella (Group 7)","Payung mini (Kumpulan 7)"),
+  H("Mini umbrella","Payung mini"),
   S("ADULT irons straws flat between baking paper to make stiff strips. Cut each strip in half for 2 ribs, or in quarters for 4 stretchers.","ORANG DEWASA menyeterika straw sehingga leper di antara kertas pembakar untuk menghasilkan jalur keras. Potong setiap jalur dua untuk 2 rusuk, atau empat untuk 4 penyokong."),
   S("Bundle 4 straws as the shaft. Make 2 small holes at the ends of each rib and stretcher.","Ikat 4 straw sebagai batang. Buat 2 lubang kecil di hujung setiap rusuk dan penyokong."),
   S("Sew the stretchers to a short straw sleeve (the runner) with needle and thread, and the ribs to the top of the shaft. Add a stopper so the runner locks open.","Jahit penyokong pada lengan straw pendek (peluncur) dengan jarum dan benang, dan rusuk pada bahagian atas batang. Tambah penahan supaya peluncur terkunci apabila dibuka."),
@@ -704,9 +687,7 @@ void loop() {
  refl:[L("Why must plastic never touch the iron directly?","Mengapakah plastik tidak boleh menyentuh seterika secara terus?"),
   L("Is a fused-plastic bag better than refusing the carrier bag in the first place?","Adakah beg plastik cantum lebih baik daripada menolak beg plastik dari awal?"),
   L("What else could you make from the fabric?","Apa lagi yang boleh dibuat daripada fabrik ini?")],
- posters:[P("assets/zph/fused-umbrella.jpg","Group 7's mini umbrella frame made from ironed straws","Rangka payung mini Kumpulan 7 daripada straw yang diseterika"),P("assets/zph/fused-tote.jpg","Group 7's fused-plastic tote bag","Beg tote plastik cantum Kumpulan 7"),P("assets/zph/fused-pouch.jpg","A finished pouch with a button","Kantung siap dengan butang"),P("assets/zph/fused-drawstring.jpg","Eco-Viva Bag: inserting the drawstring","Eco-Viva Bag: memasukkan tali serut"),P("assets/zph/fused-plarn.jpg","Eco-Viva Bag: cutting zig-zag plastic strips","Eco-Viva Bag: menggunting jalur plastik zig-zag")],
- links:[[ZPH.umbrella,"Group 7 \"Production of Plastic Umbrella\" and tote bag video (Google Drive)","Video Kumpulan 7 \"Production of Plastic Umbrella\" dan beg tote (Google Drive)"],[ZPH.ecoviva,"\"Eco Viva Bag\" step-by-step video (YouTube)","Video langkah demi langkah \"Eco Viva Bag\" (YouTube)"]],
- credit:L("Projects: UPM ENG3104 2024 Group 7 (umbrella and tote bag) and the Eco-Viva Bag team (Zero-Plastic Hero 2024). Video and photos: the groups.","Projek: Kumpulan 7 ENG3104 UPM 2024 (payung dan beg tote) dan pasukan Eco-Viva Bag (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut.")},
+ posters:[P("assets/zph/fused-umbrella.jpg","Mini umbrella frame made from ironed straws","Rangka payung mini daripada straw yang diseterika"),P("assets/zph/fused-pouch.jpg","A finished pouch with a button","Kantung siap dengan butang"),P("assets/zph/fused-drawstring.jpg","Drawstring bag: inserting the drawstring","Beg serut: memasukkan tali serut"),P("assets/zph/fused-plarn.jpg","Drawstring bag: cutting zig-zag plastic strips","Beg serut: menggunting jalur plastik zig-zag")]},
 
 /* ---------------------------------------------------------------- 14 LIFEBUOY */
 {id:"lifebuoy",icon:"🛟",min:7,mins:45,diff:1,sup:"close",heat:false,sdgs:[11,13,14],video:"self",
@@ -747,12 +728,10 @@ void loop() {
  refl:[L("Why is a home-made float not safe for a real flood?","Mengapakah pelampung buatan sendiri tidak selamat untuk banjir sebenar?"),
   L("How does plastic in drains make floods worse?","Bagaimanakah plastik dalam longkang memburukkan banjir?"),
   L("What would you do if you saw someone in floodwater?","Apakah yang akan anda lakukan jika melihat seseorang di dalam air banjir?")],
- posters:[P("assets/zph/lifebuoy-steps.jpg","Their 4 steps: layer, roll, join, cover","4 langkah mereka: lapis, gulung, sambung, balut"),P("assets/zph/lifebuoy-1.jpg","The students' full-size prototype, covered in red PE tarpaulin","Prototaip saiz penuh pelajar, dibalut kanvas PE merah")],
- links:[[ZPH.lifebuoy,"Lifebuoy team video (Google Drive, Malay narration)","Video pasukan pelampung (Google Drive, narasi BM)"]],
- credit:L("Project: \"Second Life Plastic: Lifebuoy for Children in Emergency\", UPM ENG3104 2024 (Zero-Plastic Hero 2024). Video and photos: the group.","Projek: \"Second Life Plastic: Lifebuoy for Children in Emergency\", ENG3104 UPM 2024 (Zero-Plastic Hero 2024). Video dan foto: kumpulan tersebut."),credTodo:"which ENG3104 group number made the lifebuoy"},
+ posters:[P("assets/zph/lifebuoy-steps.jpg","4 steps: layer, roll, join, cover","4 langkah: lapis, gulung, sambung, balut"),P("assets/zph/lifebuoy-1.jpg","A full-size student prototype, covered in red PE tarpaulin","Prototaip saiz penuh pelajar, dibalut kanvas PE merah")]},
 
 /* ---------------------------------------------------------------- 15 SLEEPING BAG */
-{id:"sleepbag",icon:"🛌",min:10,mins:120,diff:2,sup:"close",heat:false,sdgs:[1,3,11,12],video:null,vurl:ZPH.sleepvid,
+{id:"sleepbag",icon:"🛌",min:10,mins:120,diff:2,sup:"close",heat:false,sdgs:[1,3,11,12],video:null,
  badge:{icon:"🛌",name:L("Warm Hearts Maker","Pembuat Hati Hangat")},
  title:L("3-in-1 Bubble-Wrap Sleeping Bag","Beg Tidur 3-dalam-1 Balutan Gelembung"),
  hook:L("Sew squares of bubble wrap and old cloth into a mat that becomes a blanket or a buttoned sleeping bag.","Jahit petak balutan gelembung dan kain lama menjadi tikar yang boleh dijadikan selimut atau beg tidur berbutang."),
@@ -761,7 +740,7 @@ void loop() {
  waste:L("Parcel bubble wrap; old bedsheets, curtains or T-shirts","Balutan gelembung bungkusan; cadar, langsir atau baju-T lama"),product:L("A 3-in-1 mat, blanket and sleeping bag","Tikar, selimut dan beg tidur 3-dalam-1"),
  why:{env:L("Bubble wrap from online shopping is light, bulky and rarely recycled. Here it gets a long second life with old cloth that would also be thrown away.","Balutan gelembung daripada membeli-belah dalam talian ringan, besar dan jarang dikitar semula. Di sini ia mendapat hayat kedua yang panjang bersama kain lama yang juga akan dibuang."),
   econ:L("Two free waste streams make a useful product for camping, school trips or flood relief centres.","Dua aliran sisa percuma menghasilkan produk berguna untuk perkhemahan, lawatan sekolah atau pusat pemindahan banjir."),
-  soc:L("The 2024 G4 team designed it for people sleeping rough on cold, hard floors: a gift that shows care.","Pasukan G4 2024 mereka bentuknya untuk golongan yang tidur di lantai yang sejuk dan keras: hadiah yang menunjukkan keprihatinan.")},
+  soc:L("A 2024 student team designed it for people sleeping rough on cold, hard floors: a gift that shows care.","Satu pasukan pelajar 2024 mereka bentuknya untuk golongan yang tidur di lantai yang sejuk dan keras: hadiah yang menunjukkan keprihatinan.")},
  mats:[L("Bubble wrap, enough for 18 squares of 30 cm × 30 cm","Balutan gelembung, cukup untuk 18 petak 30 cm × 30 cm"),
   L("Old cloth (bedsheet, curtain or T-shirts) for 18 matching squares","Kain lama (cadar, langsir atau baju-T) untuk 18 petak yang sepadan"),
   L("Ruler, marker, scissors and pins","Pembaris, pen penanda, gunting dan pin"),
@@ -770,10 +749,10 @@ void loop() {
  steps:[S("Cut 18 squares of bubble wrap and 18 squares of cloth, each 30 cm × 30 cm.","Gunting 18 petak balutan gelembung dan 18 petak kain, setiap satu 30 cm × 30 cm."),
   S("Pin a cloth square onto each bubble-wrap square, bubbles facing in.","Pinkan petak kain pada setiap petak balutan gelembung, gelembung menghadap ke dalam."),
   S("Sew the pairs into 6 rows of 3 squares.","Jahit pasangan petak menjadi 6 baris, setiap baris 3 petak."),
-  S("Sew the 6 rows together into one sheet, about 90 cm × 180 cm.","Jahit 6 baris itu menjadi satu kepingan, kira-kira 90 cm × 180 cm.","The G4 team made theirs about 100 cm × 180 cm: big enough for an adult to lie on.","Pasukan G4 membuat kira-kira 100 cm × 180 cm: cukup besar untuk orang dewasa berbaring."),
+  S("Sew the 6 rows together into one sheet, about 90 cm × 180 cm.","Jahit 6 baris itu menjadi satu kepingan, kira-kira 90 cm × 180 cm.","The student team made theirs about 100 cm × 180 cm: big enough for an adult to lie on.","Pasukan pelajar itu membuat kira-kira 100 cm × 180 cm: cukup besar untuk orang dewasa berbaring."),
   S("Fold a strip of cloth over the edges and sew it down so no bubble wrap sticks out.","Lipat jalur kain di tepi dan jahit supaya tiada balutan gelembung terkeluar."),
   S("Sew buttons along one long side and the bottom. Cut small button holes (or sew loops) on the matching edges.","Jahit butang di sepanjang satu sisi panjang dan bahagian bawah. Buat lubang butang kecil (atau jahit gelung) di tepi yang sepadan."),
-  S("Test all 3 ways: open flat as a mat (bubble side down), wrap as a blanket, or fold in half and button up as a sleeping bag.","Uji ketiga-tiga cara: buka rata sebagai tikar (bahagian gelembung ke bawah), balut sebagai selimut, atau lipat dua dan butangkan sebagai beg tidur.","The G4 team's next idea: velcro instead of buttons, so it is quicker to change.","Idea seterusnya pasukan G4: velcro sebagai ganti butang, supaya lebih cepat ditukar.")],
+  S("Test all 3 ways: open flat as a mat (bubble side down), wrap as a blanket, or fold in half and button up as a sleeping bag.","Uji ketiga-tiga cara: buka rata sebagai tikar (bahagian gelembung ke bawah), balut sebagai selimut, atau lipat dua dan butangkan sebagai beg tidur.","The student team's next idea: velcro instead of buttons, so it is quicker to change.","Idea seterusnya pasukan pelajar itu: velcro sebagai ganti butang, supaya lebih cepat ditukar.")],
  safety:[D("Plastic over the face can stop breathing. Never let babies or toddlers use or play with it, and never cover the face.","Plastik di muka boleh menghentikan pernafasan. Jangan biarkan bayi atau kanak-kanak kecil menggunakan atau bermain dengannya, dan jangan tutup muka."),
   W("Plastic burns and melts easily: keep it away from candles, mosquito coils and stoves.","Plastik mudah terbakar dan cair: jauhkan daripada lilin, ubat nyamuk lingkar dan dapur."),
   W("Needles and pins: count them before and after. Keep fingers clear of a sewing-machine needle.","Jarum dan pin: kira sebelum dan selepas. Jauhkan jari daripada jarum mesin jahit.")],
@@ -783,13 +762,11 @@ void loop() {
  teach:L("Split the class: cutters, pinners and sewers. Hand-sewing suits ages 10+; a teacher or older pupils use the machine. Two classes can make one bag each for a local shelter or relief centre (ask them first what they need).","Bahagikan kelas: penggunting, pengepin dan penjahit. Jahitan tangan sesuai untuk umur 10+; guru atau murid yang lebih tua menggunakan mesin. Dua kelas boleh membuat satu beg setiap satu untuk rumah perlindungan atau pusat bantuan tempatan (tanya dahulu apa yang mereka perlukan)."),
  ext:[L("Warmth test: put a cup of warm water on a square of bubble wrap and another on plain cloth on a cold floor. Measure the temperature every 5 minutes. Which cools faster?","Ujian kehangatan: letakkan secawan air suam di atas petak balutan gelembung dan secawan lagi di atas kain biasa di lantai sejuk. Ukur suhu setiap 5 minit. Yang mana lebih cepat sejuk?"),
   L("Area maths: how many 30 cm squares do you need for a 100 cm × 180 cm bag? (Remember the seams.)","Matematik luas: berapa petak 30 cm diperlukan untuk beg 100 cm × 180 cm? (Ingat jahitan.)"),
-  L("Research plastic-bag sleeping mats crocheted from strips of hundreds of bags (the G4 team's inspiration). Compare time and materials with your bag.","Kaji tikar tidur daripada jalur ratusan beg plastik yang dikait (inspirasi pasukan G4). Bandingkan masa dan bahan dengan beg anda.")],
+  L("Research plastic-bag sleeping mats crocheted from strips of hundreds of bags (the student team's inspiration). Compare time and materials with your bag.","Kaji tikar tidur daripada jalur ratusan beg plastik yang dikait (inspirasi pasukan pelajar itu). Bandingkan masa dan bahan dengan beg anda.")],
  refl:[L("Who in your community could use this, and how would you ask them?","Siapakah dalam komuniti anda yang boleh menggunakannya, dan bagaimana anda akan bertanya kepada mereka?"),
   L("Why is still air a good insulator?","Mengapakah udara pegun ialah penebat yang baik?"),
   L("What other waste could you use instead of bubble wrap?","Apakah sisa lain yang boleh digunakan selain balutan gelembung?")],
- posters:[P("assets/zph/sleepingbag.jpg","The rolled-up bubble-wrap sleeping bag at Zero-Plastic Hero 2024","Beg tidur balutan gelembung yang digulung di Zero-Plastic Hero 2024"),P("assets/zph/sleep-sew.jpg","Sewing the 30 cm squares","Menjahit petak 30 cm"),P("assets/zph/sleep-mat.jpg","Opened out as a mat","Dibuka sebagai tikar"),P("assets/labs/ecobrick-poster-2.jpg","G4 poster \"Plastic is Valuable\"","Poster G4 \"Plastic is Valuable\"")],
- links:[[ZPH.sleepbag,"Group 4 project page: bubble-wrap sleeping bag (Padlet)","Halaman projek Kumpulan 4: beg tidur balutan gelembung (Padlet)"],[ZPH.sleepvid,"Group 4 video (Google Drive)","Video Kumpulan 4 (Google Drive)"]],
- credit:L("Project: UPM ENG3104 2024 Group 4 \"Transformation of Used Plastic Bags and Bubble Wraps into Tote Bags and Sleeping Bags\" (Zero-Plastic Hero 2024). Photos: the group.","Projek: Kumpulan 4 ENG3104 UPM 2024 \"Transformation of Used Plastic Bags and Bubble Wraps into Tote Bags and Sleeping Bags\" (Zero-Plastic Hero 2024). Foto: kumpulan tersebut.")}
+ posters:[P("assets/zph/sleepingbag.jpg","The rolled-up bubble-wrap sleeping bag","Beg tidur balutan gelembung yang digulung"),P("assets/zph/sleep-sew.jpg","Sewing the 30 cm squares","Menjahit petak 30 cm"),P("assets/zph/sleep-mat.jpg","Opened out as a mat","Dibuka sebagai tikar")]}
 ];
 
 /* ================================================================= UI */
@@ -807,17 +784,15 @@ const T={
  video:L("Watch the demo","Tonton demonstrasi"),
 soon:L("Video coming soon","Video akan datang"),
  vidLocal:L("Plays from this website, no Google Drive needed. In the offline pack it plays without internet.","Dimainkan dari laman web ini, tanpa Google Drive. Dalam pek luar talian ia dimainkan tanpa internet."),
- vidLitmus:L("The 2025 student group built this digital pH meter (Arduino, pH probe and LCD screen) for their guessing game. The kitchen-waste indicator in this lab needs no electronics.","Kumpulan pelajar 2025 membina meter pH digital ini (Arduino, prob pH dan skrin LCD) untuk permainan meneka mereka. Penunjuk daripada sisa dapur dalam makmal ini tidak memerlukan elektronik."),
+vidLitmus:L("A 2025 student group built this digital pH meter (Arduino, pH probe and LCD screen) for their guessing game. The kitchen-waste indicator in this lab needs no electronics.","Kumpulan pelajar 2025 membina meter pH digital ini (Arduino, prob pH dan skrin LCD) untuk permainan meneka mereka. Penunjuk daripada sisa dapur dalam makmal ini tidak memerlukan elektronik."),
  vidMissing:L("This copy has no video file. Open the website or the offline pack to watch it.","Salinan ini tiada fail video. Buka laman web atau pek luar talian untuk menontonnya."),
  mats:L("You need","Anda perlukan"),steps:L("Steps","Langkah-langkah"),safety:L("Safety first","Keselamatan dahulu"),
  sci:L("The science","Sainsnya"),lvl:{kids:L("Kids level","Tahap kanak-kanak"),teens:L("Teens level","Tahap remaja"),adults:L("Adults level","Tahap dewasa")},
  lvlHint:L("Change the level on the Home page: \"Who's playing?\"","Tukar tahap di halaman Utama: \"Siapa yang bermain?\""),
  teach:L("Teacher tip","Tip guru"),ext:L("Challenge","Cabaran"),refl:L("Think about it","Fikirkan"),posters:L("Photos & posters","Foto & poster"),
- credit:L("Original poster: UPM ENG3104 student group (2025)","Poster asal: kumpulan pelajar ENG3104 UPM (2025)"),
+ credit:L("Photos and posters: UPM chemical engineering students, Faculty of Engineering. Lab guides checked and corrected by the WasteQuest team.","Foto dan poster: pelajar kejuruteraan kimia UPM, Fakulti Kejuruteraan. Panduan makmal disemak dan dibetulkan oleh pasukan WasteQuest."),
+ gate:L("Age and supervision","Umur dan pengawasan"),soonN:L("A new demo video for this lab is being made. Follow the steps and photos for now.","Video demonstrasi baharu untuk makmal ini sedang dihasilkan. Buat masa ini, ikut langkah dan foto."),
  code:L("Arduino sketch","Lakaran Arduino"),
- links:L("Student project pages","Halaman projek pelajar"),zphAll:L("See all 10 Zero-Plastic Hero 2024 projects","Lihat kesemua 10 projek Zero-Plastic Hero 2024"),
- vExt:L("Watch the students' video (Google Drive)","Tonton video pelajar (Google Drive)"),
- vExtN:L("Their video uses stock clips and music, so it is linked, not copied here. Needs internet.","Video mereka menggunakan klip dan muzik stok, jadi ia dipautkan, bukan disalin di sini. Perlu internet."),
  madeIt:L("I made it!","Saya berjaya buat!"),earned:L("Badge earned","Lencana diperoleh"),madeOn:L("You made this on","Anda membuatnya pada"),
  print:L("Print worksheet","Cetak lembaran kerja"),reset:L("Clear ticks","Kosongkan tanda"),
  prev:L("Previous lab","Makmal sebelum"),next:L("Next lab","Makmal seterusnya"),allLabs:L("All labs","Semua makmal"),
@@ -830,6 +805,17 @@ soon:L("Video coming soon","Video akan datang"),
  vid:L("Video","Video"),teenL:L("Teens","Remaja"),adultL:L("Adults","Dewasa")
 };
 
+/* age/supervision gating (research/v2/02_todo_curriculum_credential.md A2) */
+const GATE={
+ candle:L("Primary pupils (up to 12): an adult does all the heating and pouring as a demonstration. Children filter cold oil, weigh and decorate.","Murid sekolah rendah (hingga 12 tahun): orang dewasa melakukan semua pemanasan dan penuangan sebagai demonstrasi. Kanak-kanak menapis minyak sejuk, menimbang dan menghias."),
+ petfood:L("An adult handles raw fish, the steamer and the oven. These are occasional treats, not a tested complete pet food.","Orang dewasa mengendalikan ikan mentah, pengukus dan ketuhar. Ini snek sekali-sekala, bukan makanan haiwan lengkap yang telah diuji."),
+ treasure:L("Soap made with lye (sodium hydroxide) is for adults only. Children use melt-and-pour soap base, with an adult doing the melting.","Sabun yang dibuat dengan alkali kuat (natrium hidroksida) hanya untuk orang dewasa. Kanak-kanak menggunakan bes sabun cair-dan-tuang, dengan orang dewasa mencairkannya."),
+ watering:L("Arduino version: low-voltage parts only (USB or batteries), never mains electricity. An adult checks the wiring before power goes on.","Versi Arduino: komponen voltan rendah sahaja (USB atau bateri), jangan sekali-kali elektrik sesalur utama. Orang dewasa menyemak pendawaian sebelum kuasa dihidupkan."),
+ bioplastic:L("An adult does the heating on the stove. Children measure, stir away from the heat and shape the cooled mixture.","Orang dewasa memanaskan campuran di atas dapur. Kanak-kanak menyukat, mengacau jauh dari api dan membentuk campuran yang telah sejuk."),
+ fused:L("Primary pupils (up to 12): an adult does all the ironing as a demonstration, or brings ready-made fused sheets. Children cut, design and sew.","Murid sekolah rendah (hingga 12 tahun): orang dewasa melakukan semua kerja menyeterika sebagai demonstrasi, atau membawa kepingan plastik cantum yang siap. Kanak-kanak menggunting, mereka bentuk dan menjahit."),
+ lifebuoy:L("This is a model for learning how things float. It is not a safety device: never use it in water to hold up a person.","Ini model untuk belajar cara benda terapung. Ia bukan alat keselamatan: jangan sekali-kali gunakannya di dalam air untuk menampung seseorang."),
+ sleepbag:L("A learning prototype only: it has not been tested for outdoor or emergency use. An adult supervises needles and any sewing machine.","Prototaip pembelajaran sahaja: ia belum diuji untuk kegunaan luar atau kecemasan. Orang dewasa mengawasi penggunaan jarum dan mesin jahit.")
+};
 const t=WQ.t,E=WQ.esc,X=o=>E(t(o));
 const get=id=>LABS.find(l=>l.id===id);
 const stars=n=>"★".repeat(n)+"☆".repeat(3-n);
@@ -839,11 +825,12 @@ const tagList=(l,cls="tag")=>[
  `<span class="${cls}" aria-label="${X(T.diff)} ${l.diff} ${X(T.of3)}">${X(T.diff)} ${stars(l.diff)}</span>`,
  `<span class="${cls} ${supCls[l.sup]}">${X(T.sup[l.sup])}</span>`,l.heat?`<span class="${cls} red">🔥 ${X(T.heat)}</span>`:"",
  ...l.sdgs.map(n=>`<span class="${cls} lb-sdg">SDG ${n}</span>`)].join(" ");
-const costH=l=>X(l.cost)+(l.costTodo?` <span class="todo">TODO: ${E(l.costTodo)}</span>`:"");
+const costH=l=>X(l.cost);
 const noteH=s=>`<div class="note ${s.lv}">${s.lv==="danger"?"⛔":"⚠️"} ${X(s)}</div>`;
-const credit=l=>X(l.credit||T.credit)+(l.credTodo?` <span class="todo">TODO: ${E(l.credTodo)}</span>`:"");
-const ext=(u,txt)=>`<a href="${E(u)}" target="_blank" rel="noopener">${txt}</a>`;
-const linksH=l=>l.links?`<h3 class="lb-lh">🔗 ${X(T.links)}</h3><ul class="lb-links">${l.links.map(([u,en,bm])=>`<li>${ext(u,X({en,bm}))}</li>`).join("")}</ul><p class="small"><a href="#/zph">🦸 ${X(T.zphAll)} →</a></p>`:"";
+const credit=()=>X(T.credit);
+const gateH=l=>GATE[l.id]?`<p class="note warn lb-gate"><b>🧒 ${X(T.gate)}:</b> ${X(GATE[l.id])}</p>`:"";
+/* pixel cover from WQ.labCovers (art agent); returns false when unavailable so the emoji stays */
+const cover=(slot,id)=>{try{const c=document.createElement("canvas");if(!(WQ.labCovers&&WQ.labCovers.draw(c,id)))return;c.className="lb-cov";c.setAttribute("aria-hidden","true");slot.replaceWith(c);}catch(e){}};
 const tbl=l=>l.table?`<div class="tablewrap lb-tbl"><table class="tbl"><thead><tr>${l.table.head.map(h=>`<th>${X(h)}</th>`).join("")}</tr></thead><tbody>${l.table.rows.map(r=>`<tr>${r.map(c=>`<td>${X(c)}</td>`).join("")}</tr>`).join("")}</tbody></table><p class="small muted">${X(l.table.note)}</p></div>`:"";
 
 LABS.forEach(l=>{ l.ages=l.min+"+"; WQ.labs.push(l);
@@ -860,10 +847,10 @@ WQ.registerPage("labs",{mount(el){
   el.innerHTML=WQ.head("🧪",T.labsT,T.labsS)+
    `<div class="progress lb-prog"><span class="pill">🏅 ${got}/${LABS.length} ${X(T.made)}</span><div class="meter"><i style="width:${got/LABS.length*100}%"></i></div></div>
    <p class="note warn small">${X(T.safeHint)}</p>
-   <a class="card zp-ban" href="#/zph"><span aria-hidden="true">🦸</span><span><b>${X(Z.banT)}</b><br><span class="small">${X(Z.banS)}</span></span><span aria-hidden="true">→</span></a>
    <div class="lb-filters">${seg("a",T.fAge,[["all",T.all],["79",T.a79],["1012",T.a1012],["13",T.a13]])}${seg("t",T.fTime,[["any",T.any],["45",T.t45],["90",T.t90]])}${seg("h",T.fHeat,[["any",T.any],["no",T.noHeat],["yes",T.heat]])}</div>
-   <div class="grid">${show.map(l=>{const has=WQ.has("lab-"+l.id);return `<a class="card tile lb-card" href="#/lab/${l.id}">${has?`<span class="done" title="${X(T.earned)}">✅</span>`:""}<span class="ti" aria-hidden="true">${l.icon}</span><h3>${X(l.title)}</h3><p>${X(l.hook)}</p>
+   <h2 class="vh">${X(T.allLabs)}</h2><div class="grid">${show.map(l=>{const has=WQ.has("lab-"+l.id);return `<a class="card tile lb-card" href="#/lab/${l.id}">${has?`<span class="done" title="${X(T.earned)}">✅</span>`:""}<span class="ti" aria-hidden="true" data-cov="${l.id}">${l.icon}</span><h3>${X(l.title)}</h3><p>${X(l.hook)}</p>
     <span class="lb-tags"><span class="tag">${X(T.ages)} ${l.min}+</span><span class="tag">⏱ ${l.mins} min</span>${l.heat?`<span class="tag red">🔥 ${X(T.heat)}</span>`:""}<span class="tag ${has?"go":""}">${has?"✅":"🏅"} ${X(l.badge.name)}</span></span></a>`;}).join("")||`<p class="card">${X(T.none)}</p>`}</div>`;
+  WQ.$$("[data-cov]",el).forEach(s=>cover(s,s.dataset.cov));
   WQ.$$("[data-f]",el).forEach(b=>b.onclick=()=>{f[b.dataset.f]=b.dataset.v;WQ.store.setJSON("labs-f",f);render(b.dataset.f+b.dataset.v);});
   if(focus){const b=WQ.$$("[data-f]",el).find(x=>x.dataset.f+x.dataset.v===focus);b&&b.focus();}
  };
@@ -885,12 +872,12 @@ WQ.registerPage("lab",{mount(el,{args}){
  const i=LABS.indexOf(l), prev=LABS[i-1], next=LABS[i+1];
  const render=()=>{
   const when=WQ.earned()[key];
-  el.innerHTML=WQ.head(l.icon,l.title,l.hook)+`<div class="lb-chips">${tagList(l)}</div>
+  el.innerHTML=WQ.head(l.icon,l.title,l.hook)+`<span data-cov="${l.id}" hidden></span><div class="lb-chips">${tagList(l)}</div>${gateH(l)}
   ${when?`<p class="note ok">🏅 ${X(T.madeOn)} ${E(new Date(when).toLocaleDateString(WQ.lang==="bm"?"ms-MY":"en-GB",{day:"numeric",month:"long",year:"numeric"}))}. ${l.badge.icon} ${X(l.badge.name)}</p>`:""}
   <section class="card"><dl class="lb-meta"><div><dt>${X(T.waste)}</dt><dd>${X(l.waste)}</dd></div><div><dt>${X(T.product)}</dt><dd>${X(l.product)}</dd></div><div><dt>${X(T.cost)}</dt><dd>${costH(l)}</dd></div></dl></section>
   <section class="card lb-sec"><h2>🌏 ${X(T.why)}</h2><div class="lb-why"><div><h3>🌍 ${X(T.env)}</h3><p>${X(l.why.env)}</p></div><div><h3>💰 ${X(T.econ)}</h3><p>${X(l.why.econ)}</p></div><div><h3>🤝 ${X(T.soc)}</h3><p>${X(l.why.soc)}</p></div></div></section>
   <section class="card lb-sec noprint"><h2>🎬 ${X(T.video)}</h2>${l.video?`<div class="lb-vid" id="lbVid"><video controls preload="none" playsinline poster="assets/videos/${l.id}.jpg" src="assets/videos/${l.id}.mp4" title="${X(l.title)}"></video></div>
-   <p class="small muted">${l.id==="litmus"?X(T.vidLitmus)+" ":""}${X(T.vidLocal)}</p>`:l.vurl?`<p>▶️ ${ext(l.vurl,X(T.vExt))}</p><p class="small muted">${X(T.vExtN)}</p>`:`<p>🎬 ${X(T.soon)} <span class="todo">TODO: add demo video</span></p>`}</section>
+   <p class="small muted">${l.id==="litmus"?X(T.vidLitmus)+" ":""}${X(T.vidLocal)}</p>`:`<p>🎬 <b>${X(T.soon)}</b></p><p class="small muted">${X(T.soonN)}</p>`}</section>
   <section class="card lb-sec"><h2>🧺 ${X(T.mats)} <span class="lb-cnt muted" id="lbMc"></span></h2>${listH(l.mats,"m",st.m,x)}${tbl(l)}</section>
   <section class="card lb-sec"><h2>🪜 ${X(T.steps)} <span class="lb-cnt muted" id="lbSc"></span></h2>${listH(l.steps,"s",st.s,x)}
    ${l.code&&x?`<details class="lb-code"><summary>💻 ${X(T.code)}</summary><pre class="lb-pre">${E(l.code)}</pre></details>`:""}</section>
@@ -899,11 +886,12 @@ WQ.registerPage("lab",{mount(el,{args}){
   ${WQ.aud==="teacher"?`<section class="card lb-sec"><h2>🧑‍🏫 ${X(T.teach)}</h2><p>${X(l.teach)}</p></section>`:""}
   <section class="card lb-sec"><h2>🚀 ${X(T.ext)}</h2><ol>${l.ext.map(e=>`<li>${X(e)}</li>`).join("")}</ol></section>
   <section class="card lb-sec"><h2>💭 ${X(T.refl)}</h2><ul>${l.refl.map(e=>`<li>${X(e)}</li>`).join("")}</ul></section>
-  <section class="card lb-sec"><h2>🖼️ ${X(T.posters)}</h2>${l.posters.length?`<div class="lb-posters">${l.posters.map((p,j)=>`<button class="lb-thumb" data-p="${j}" aria-label="${X(T.open)}: ${X(p.cap)}"><img src="${p.src}" alt="" loading="lazy"><span>${X(p.cap)}</span></button>`).join("")}</div>`:""}<p class="small muted">${credit(l)}</p>${linksH(l)}</section>
+  <section class="card lb-sec"><h2>🖼️ ${X(T.posters)}</h2>${l.posters.length?`<div class="lb-posters">${l.posters.map((p,j)=>`<button class="lb-thumb" data-p="${j}" aria-label="${X(T.open)}: ${X(p.cap)}"><img src="${p.src}" alt="" loading="lazy"><span>${X(p.cap)}</span></button>`).join("")}</div>`:""}<p class="small muted">${credit(l)}</p></section>
   <div class="row noprint lb-actions"><button class="btn" id="lbMade"${when?" disabled":""}>${when?"✅ "+X(T.earned):"🎉 "+X(T.madeIt)}</button><button class="btn blue" id="lbPrint">🖨️ ${X(T.print)}</button><button class="btn alt" id="lbReset">↺ ${X(T.reset)}</button></div>
   <nav class="lb-nav noprint" aria-label="${X(T.allLabs)}">${prev?`<a class="btn alt" href="#/lab/${prev.id}">← ${X(T.prev)}: ${prev.icon}</a>`:"<span></span>"}<a class="btn alt" href="#/labs">🧪 ${X(T.allLabs)}</a>${next?`<a class="btn alt" href="#/lab/${next.id}">${X(T.next)}: ${next.icon} →</a>`:"<span></span>"}</nav>
   <dialog class="lb-dlg" id="lbDlg" aria-label="${X(T.posters)}"><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
    <div class="row lb-dlgbar"><button class="btn alt" data-d="-1" aria-label="${X(T.pImg)}">←</button><button class="btn alt" data-d="1" aria-label="${X(T.nImg)}">→</button><button class="btn" data-d="0">${X(T.close)}</button></div></dialog>`;
+  const cs=WQ.$("[data-cov]",el);if(cs)cover(cs,l.id);
   const counts=()=>{WQ.$("#lbMc",el).textContent=`${st.m.length}/${count(l.mats)}`;WQ.$("#lbSc",el).textContent=`${st.s.length}/${count(l.steps)}`;};
   counts();
   WQ.$$("input[data-k]",el).forEach(c=>c.onchange=()=>{const a=st[c.dataset.k],n=+c.dataset.i,j=a.indexOf(n);
@@ -931,7 +919,7 @@ function worksheet(el,l){
  el.innerHTML=`<div class="row noprint lb-wsbar"><button class="btn" id="wsP">🖨️ ${X(T.printNow)}</button><a class="btn alt" href="#/lab/${l.id}">← ${X(T.backLab)}</a></div>
  <article class="lb-ws"><div class="lb-wsk">WasteQuest · ${X(T.wsT)}</div><h1>${l.icon} ${X(l.title)}</h1><p>${X(l.hook)}</p>
   ${blank([T.name,T.cls,T.date])}
-  <p class="small">${X(T.ages)} ${l.min}+ · ⏱ ${X(l.time)} · ${X(T.sup[l.sup])}${l.heat?" · 🔥 "+X(T.heat):""}</p>
+  <p class="small">${X(T.ages)} ${l.min}+ · ⏱ ${X(l.time)} · ${X(T.sup[l.sup])}${l.heat?" · 🔥 "+X(T.heat):""}</p>${gateH(l)}
   <h2>🧺 ${X(T.mats)}</h2><ul class="lb-wsl">${l.mats.map(m=>m.h?`<li class="lb-h">${X(m.h)}</li>`:`<li>☐ ${X(m)}</li>`).join("")}</ul>
   <h2>🪜 ${X(T.steps)}</h2><ul class="lb-wsl">${l.steps.map(s=>s.h?`<li class="lb-h">${X(s.h)}</li>`:`<li>☐ <b>${++n}.</b> ${X(s)}${x&&s.x?`<span class="lb-x">${X(s.x)}</span>`:""}</li>`).join("")}</ul>
   <h2>🦺 ${X(T.safety)}</h2><div class="lb-stack">${l.safety.map(noteH).join("")}</div>
@@ -943,91 +931,15 @@ function worksheet(el,l){
  if(autoPrint){autoPrint=false;const id=setTimeout(()=>print(),400);return()=>clearTimeout(id);}
 }
 
-/* ---------- Zero-Plastic Hero 2024 showcase: #/zph  (source: "Zero-Plastic Hero by ChemE (Presentation).pptx") */
-const Z={
- t:L("Zero-Plastic Hero by ChemE 2024","Zero-Plastic Hero by ChemE 2024"),
- s:L("10 waste-to-wealth projects by UPM chemical engineering students, shown to a secondary school. Five of them are now WasteQuest labs.","10 projek sisa kepada kekayaan oleh pelajar kejuruteraan kimia UPM, dipamerkan kepada sebuah sekolah menengah. Lima daripadanya kini makmal WasteQuest."),
- banT:L("Zero-Plastic Hero 2024","Zero-Plastic Hero 2024"),banS:L("See the 10 student projects behind these labs, with their own videos and pages.","Lihat 10 projek pelajar di sebalik makmal ini, bersama video dan halaman mereka."),
- what:L("The programme","Program"),
- whatP:L("A SULAM (service-learning) programme of the UPM course ENG3104 Engineers and Society. Chemical engineering students built prototypes from plastic waste and showed school students how to separate, collect and recycle plastic, and how plastic waste can have real economic value.","Program SULAM (pembelajaran servis) bagi kursus UPM ENG3104 Jurutera dan Masyarakat. Pelajar kejuruteraan kimia membina prototaip daripada sisa plastik dan menunjukkan kepada murid sekolah cara mengasingkan, mengumpul dan mengitar semula plastik, serta bagaimana sisa plastik boleh mempunyai nilai ekonomi."),
- where:L("Where","Tempat"),whereV:L("SMK Convent (M) Kajang, Selangor","SMK Convent (M) Kajang, Selangor"),
- when:L("When","Bila"),whenV:L("13 June 2024, 1.30–4.30 pm","13 Jun 2024, 1.30–4.30 ptg"),
- who:L("Organised by","Dianjurkan oleh"),whoV:L("UPM chemical engineering students, Faculty of Engineering","Pelajar kejuruteraan kimia UPM, Fakulti Kejuruteraan"),
- impact:L("Impact","Impak"),
- i1:L("pupils and teachers reached","murid dan guru dicapai"),i2:L("UPM students and lecturers","pelajar dan pensyarah UPM"),i3:L("prototypes and modules","prototaip dan modul"),
- i4:L("JINM","JINM"),i5:L("IPs","IP"),
- proj:L("The 10 projects","10 projek"),
- lab:L("Try the lab","Cuba makmal"),
- only:L("Showcase only: melting plastic gives off toxic fumes, so there is no WasteQuest lab for this. Try Eco-Bricks (no heat) instead.","Pameran sahaja: mencairkan plastik membebaskan wasap toksik, jadi tiada makmal WasteQuest untuk ini. Cuba Eko-Bata (tanpa haba)."),
- sup:L("Advisor and supervisors","Penasihat dan penyelia"),
- adv:L("Programme advisor","Penasihat program"),
- thanks:L("Thank you to every ENG3104 2024 group, SMK Convent (M) Kajang, and the students who shared their videos and photos.","Terima kasih kepada setiap kumpulan ENG3104 2024, SMK Convent (M) Kajang, dan pelajar yang berkongsi video dan foto mereka."),
- photo:L("Photos: the student groups. No photos of school pupils are shown.","Foto: kumpulan pelajar. Tiada foto murid sekolah dipaparkan.")
-};
-const ZG=n=>L("Group "+n,"Kumpulan "+n);
-const ZP=[
- {i:"🧱",n:L("Eco-brick furniture","Perabot eko-bata"),g:ZG(8),img:"assets/zph/ecobricks.jpg",lab:"ecobrick",
-  d:L("Bottles packed hard with plastic, glued into a stool with a cushion. They costed it at RM 10.50 a stool.","Botol dipadatkan dengan plastik, dilekatkan menjadi bangku berkusyen. Kos dikira RM 10.50 sebuah bangku."),
-  ln:[[ZPH.g8,"Padlet"],[ZPH.g8yt,"YouTube"]]},
- {i:"👜",n:L("Eco-Viva bag","Beg Eco-Viva"),g:L("Eco-Viva team","Pasukan Eco-Viva"),img:"assets/zph/fused-plarn.jpg",lab:"fused",
-  d:L("Plastic bags cut into zig-zag yarn and ironed into a drawstring bag.","Beg plastik digunting menjadi benang zig-zag dan diseterika menjadi beg serut."),
-  ln:[[ZPH.ecoviva,"YouTube"]]},
- {i:"🛍️",n:L("Tote bags","Beg tote"),g:ZG(4),img:"assets/zph/ecobags.jpg",lab:"ecobrick",
-  d:L("Tough, water-resistant totes made from foil-lined plastic packaging.","Beg tote yang kuat dan kalis air daripada pembungkus plastik berlapik kerajang."),
-  ln:[[ZPH.g4tote,"Padlet"]]},
- {i:"🟫",n:L("Coasters & tiles","Pelapik cawan & jubin"),g:ZG(9),img:"assets/zph/tiles.jpg",lab:null,
-  d:L("Plastic waste shaped into hexagon tiles and bottle-cap coasters.","Sisa plastik dibentuk menjadi jubin heksagon dan pelapik cawan daripada penutup botol."),
-  ln:[[ZPH.g9,"Padlet"]]},
- {i:"🪴",n:L("Vertical garden","Taman menegak"),g:ZG(1),img:"assets/zph/vgarden-1.jpg",lab:"vgarden",
-  d:L("Hanging bottle planters on a frame, watered by an Arduino moisture sensor and pump.","Pasu botol tergantung pada rangka, disiram oleh sensor kelembapan dan pam Arduino."),
-  ln:[]},
- {i:"🛌",n:L("Sleeping bags","Beg tidur"),g:ZG(4),img:"assets/zph/sleepingbag.jpg",lab:"sleepbag",
-  d:L("Bubble wrap and cloth squares sewn into a 3-in-1 mat, blanket and sleeping bag for homeless people.","Petak balutan gelembung dan kain dijahit menjadi tikar, selimut dan beg tidur 3-dalam-1 untuk golongan gelandangan."),
-  ln:[[ZPH.sleepbag,"Padlet"],[ZPH.sleepvid,"Google Drive"]]},
- {i:"🥬",n:L("Hydroponics","Hidroponik"),g:ZG(3),img:"assets/zph/hydro-1.jpg",lab:"hydro",
-  d:L("Bottle hydroponics inside a mini rain shelter house with a roof of flattened bottles.","Hidroponik botol di dalam rumah perlindungan hujan mini berbumbung botol yang dileperkan."),
-  ln:[[ZPH.hydro,"Google Drive"]]},
- {i:"☂️",n:L("Umbrella & tote bag","Payung & beg tote"),g:ZG(7),img:"assets/zph/fused-umbrella.jpg",lab:"fused",
-  d:L("Ironed plastic bags as fabric and ironed straws as ribs: a mini umbrella that opens and closes.","Beg plastik yang diseterika sebagai fabrik dan straw yang diseterika sebagai rusuk: payung mini yang boleh dibuka dan ditutup."),
-  ln:[[ZPH.umbrella,"Google Drive"]]},
- {i:"🛟",n:L("Lifebuoy","Pelampung"),g:L("Lifebuoy team","Pasukan pelampung"),gTodo:"group number",img:"assets/zph/lifebuoy-1.jpg",lab:"lifebuoy",
-  d:L("Layers of bubble wrap rolled into a ring and covered with tarpaulin, sized for a 30 kg child. A model, not a safety device.","Lapisan balutan gelembung digulung menjadi gelang dan dibalut kanvas, bersaiz untuk kanak-kanak 30 kg. Model, bukan alat keselamatan."),
-  ln:[[ZPH.lifebuoy,"Google Drive"]]},
- {i:"🌱",n:L("Bio-pots","Bio-pasu"),g:L("Group 10 (PLASTREE)","Kumpulan 10 (PLASTREE)"),img:"assets/zph/biopots.jpg",lab:"bioplastic",
-  d:L("Plant pots made from home-made bioplastic instead of plastic.","Pasu tanaman daripada bioplastik buatan sendiri sebagai ganti plastik."),
-  ln:[[ZPH.biopots,"Padlet"]]}
-];
-const ZSUP=["Prof. Madya Dr. Norhafizah Hj. Abdullah","Prof. Madya Dr. Salmiaton Ali","Prof. Madya Datin Ir. Dr. Siti Aslina Hussain","Prof. Madya Dr. Rozita Omar","Prof. Madya Ir. Dr. Shamsul Izhar Siajam","Dr. Nordin Hj. Sabli","Dr. Shafreeza Sobri","Dr. Nur Syakina Jamali","Dr. Mohamad Faiz Mukhtar Gunam Resul","Dr. Halimatun Sakdiah Zainuddin"];
-const ZADV="Prof. Ir. Dr. Wan Azlina Wan Abdul Karim Ghani";
-const zFacts=()=>`<dl class="lb-meta"><div><dt>${X(Z.where)}</dt><dd>${X(Z.whereV)}</dd></div><div><dt>${X(Z.when)}</dt><dd>${X(Z.whenV)}</dd></div><div><dt>${X(Z.who)}</dt><dd>${X(Z.whoV)}</dd></div><div><dt>SDG</dt><dd>4 · 12 · 13 · 14 · 15</dd></div></dl>`;
-const zNums=()=>[["400",Z.i1],["80",Z.i2],["10",Z.i3],["10",Z.i4],["5",Z.i5,1]].map(([n,c,todo])=>`<div class="zp-num"><b>${n}</b><span>${X(c)}${todo?` <span class="todo">TODO: what JINM and IP stand for</span>`:""}</span></div>`).join("");
-const zGroup=z=>X(z.g)+(z.gTodo?` <span class="todo">TODO: ${E(z.gTodo)}</span>`:"");
-WQ.registerPage("zph",{mount(el){
- el.innerHTML=WQ.head("🦸",Z.t,Z.s)+`
- <section class="card lb-sec"><h2>📣 ${X(Z.what)}</h2><p>${X(Z.whatP)}</p>${zFacts()}</section>
- <section class="card lb-sec"><h2>📊 ${X(Z.impact)}</h2><div class="zp-nums">${zNums()}</div></section>
- <h2 class="zp-h">🧪 ${X(Z.proj)}</h2>
- <div class="zp-grid">${ZP.map((z,k)=>{const lab=z.lab&&get(z.lab);return `<article class="card zp-card"><img src="${z.img}" alt="${X(z.n)}" loading="lazy">
-  <h3><span aria-hidden="true">${z.i}</span> ${k+1}. ${X(z.n)}</h3><p class="small muted">${zGroup(z)} · ENG3104 2024</p><p>${X(z.d)}</p>
-  ${lab?`<a class="btn" href="#/lab/${lab.id}">${lab.icon} ${X(Z.lab)}: ${X(lab.title)}</a>`:`<p class="note danger small">⛔ ${X(Z.only)}</p>`}
-  ${z.ln.length?`<p class="small zp-ln">🔗 ${X(T.links)}: ${z.ln.map(([u,s])=>ext(u,E(s))).join(" · ")}</p>`:""}</article>`;}).join("")}</div>
- <section class="card lb-sec"><h2>🧑‍🏫 ${X(Z.sup)}</h2><p><b>${X(Z.adv)}:</b> ${E(ZADV)}</p><ul class="zp-sup">${ZSUP.map(n=>`<li>${E(n)}</li>`).join("")}</ul>
-  <p class="small muted">${X(Z.thanks)} ${X(Z.photo)}</p></section>`;
- WQ.$$("a[target=_blank]",el).forEach(a=>a.addEventListener("click",()=>WQ.track("zph-link/"+a.hostname)));
-}});
-WQ.renderZphPrint=el=>{ if(!el)return;
- el.innerHTML=`<article class="lbp zpp"><h2 class="lbp-t">🦸 ${X(Z.t)}</h2><p class="lbp-hook">${X(Z.s)}</p>
-  <p>${X(Z.whatP)}</p>${zFacts()}<div class="zp-nums">${zNums()}</div>
-  <div class="zpp-grid">${ZP.map((z,k)=>{const lab=z.lab&&get(z.lab);return `<div class="zpp-c"><img src="${z.img}" alt="${X(z.n)}"><p><b>${k+1}. ${z.i} ${X(z.n)}</b> (${zGroup(z)})<br>${X(z.d)}<br>${lab?`<i>${X(Z.lab)}: ${X(lab.title)}</i>`:`⛔ ${X(Z.only)}`}${z.ln.length?`<br><span class="zpp-u">${z.ln.map(([u])=>E(u)).join("<br>")}</span>`:""}</p></div>`;}).join("")}</div>
-  <p><b>${X(Z.adv)}:</b> ${E(ZADV)}. <b>${X(Z.sup)}:</b> ${ZSUP.map(E).join("; ")}.</p><p class="small">${X(Z.thanks)}</p></article>`;
-};
+/* Zero-Plastic Hero showcase removed in v2 (no student groups/links; its 5 labs stay). Stub kept so booklet.html does not break. */
+WQ.renderZphPrint=el=>{if(el)el.remove();};
 
 /* static A4 version for the PDF booklet */
 WQ.renderLabPrint=(el,id)=>{
  const l=get(id);if(!l||!el)return;let n=0;const p=l.posters[0];
  el.innerHTML=`<article class="lbp">
   <h2 class="lbp-t"><span aria-hidden="true">${l.icon}</span> ${X(l.title)}</h2><p class="lbp-hook">${X(l.hook)}</p>
-  <div class="lbp-chips">${tagList(l,"lbp-c")}</div>
+  <div class="lbp-chips">${tagList(l,"lbp-c")}</div>${gateH(l)}
   <p class="lbp-meta"><b>${X(T.waste)}:</b> ${X(l.waste)} · <b>${X(T.product)}:</b> ${X(l.product)} · <b>${X(T.cost)}:</b> ${costH(l)}</p>
   ${p?`<figure class="lbp-fig"><img src="${p.src}" alt="${X(p.cap)}"><figcaption>${X(p.cap)}. ${credit(l)}</figcaption></figure>`:""}
   <h3>${X(T.why)}</h3><p><b>🌍 ${X(T.env)}:</b> ${X(l.why.env)}</p><p><b>💰 ${X(T.econ)}:</b> ${X(l.why.econ)}</p><p><b>🤝 ${X(T.soc)}:</b> ${X(l.why.soc)}</p>
@@ -1039,31 +951,16 @@ WQ.renderLabPrint=(el,id)=>{
   <h3>${X(T.teach)}</h3><p>${X(l.teach)}</p>
   <h3>${X(T.ext)}</h3><ol>${l.ext.map(e=>`<li>${X(e)}</li>`).join("")}</ol>
   <h3>${X(T.refl)}</h3><ul>${l.refl.map(e=>`<li>${X(e)}</li>`).join("")}</ul>
-  <p class="lbp-vid"><b>🎬 ${X(T.vid)}:</b> ${l.video?`wastequest.github.io/#/lab/${l.id}`:l.vurl?E(l.vurl):`${X(T.soon)} <span class="todo">TODO: add demo video</span>`}${p?"":` · ${credit(l)}`}</p>
-  ${l.links?`<p class="lbp-vid"><b>🔗 ${X(T.links)}:</b> ${l.links.map(([u,en,bm])=>`${X({en,bm})}: ${E(u)}`).join(" · ")}</p>`:""}
+  <p class="lbp-vid"><b>🎬 ${X(T.vid)}:</b> ${l.video?`wastequest.github.io/#/lab/${l.id}`:X(T.soon)}${p?"":` · ${credit(l)}`}</p>
  </article>`;
 };
 
 WQ.css("labs",`
-.zp-ban{display:flex;gap:14px;align-items:center;margin:0 0 14px;text-decoration:none;color:inherit;border:3px solid var(--grass)}
-.zp-ban>span:first-child{font-size:2.2rem}.zp-ban>span:last-child{margin-left:auto;font-size:1.6rem;font-weight:800}
-.lb-lh{font-size:1.1rem;margin-top:14px}
-.lb-links{margin:4px 0;padding-left:20px;overflow-wrap:anywhere}.lb-links li+li{margin-top:4px}
-.zp-nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
-.zp-num{background:var(--soft);border-radius:16px;padding:10px 14px;display:flex;flex-direction:column}
-.zp-num b{font-family:"Baloo 2",sans-serif;font-size:2rem;line-height:1.1;color:var(--grass-d)}
-.zp-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));margin-bottom:16px}
-.card.zp-card{margin:0;display:flex;flex-direction:column;gap:6px}
-.zp-card img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--soft)}
-.zp-card h3{font-size:1.2rem;margin:4px 0 0}.zp-card p{margin:0}.zp-card .btn{align-self:flex-start;margin-top:auto}
-.zp-ln{overflow-wrap:anywhere}
-.zp-h{margin:22px 0 10px}
-.zp-sup{columns:2 220px;padding-left:20px}
 .lbp-vid{overflow-wrap:anywhere}
-.zpp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin:10px 0}
-.zpp-c{display:flex;gap:8px;break-inside:avoid;font-size:.82rem}.zpp-c img{width:34%;aspect-ratio:1;object-fit:cover;border-radius:6px;flex:none}.zpp-c p{margin:0}
-.zpp-u{font-size:.7rem;overflow-wrap:anywhere;color:#555}
 .lb-prog{margin:-4px 0 12px}
+.lb-cov{display:block;width:100%;height:auto;aspect-ratio:8/5;image-rendering:pixelated;border:3px solid #1a1932;background:#0098dc;margin:-4px 0 12px;max-width:480px}
+.lb-card .lb-cov{margin:0 0 6px;max-width:none}
+.lb-gate{margin:0 0 14px}
 .card.lb-card{margin-top:0}
 .lb-filters{display:flex;flex-wrap:wrap;gap:10px 22px;margin:12px 0 16px}
 .lb-seg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -1088,7 +985,7 @@ WQ.css("labs",`
 .lb-tick input{width:22px;height:22px;flex:none;margin:2px 0 0;accent-color:var(--grass)}
 .lb-tick:has(input:checked){background:#eafbe4}
 .lb-tick:has(input:checked)>span:last-child{opacity:.6}
-.lb-n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--grass);color:#fff;font-weight:800;display:grid;place-items:center;font-size:.9rem}
+.lb-n{flex:none;width:26px;height:26px;border-radius:50%;background:#1e6f50;color:#fff;font-weight:800;display:grid;place-items:center;font-size:.9rem}
 .lb-x{display:block;color:var(--muted);font-size:.9rem;margin-top:3px}
 .lb-x:before{content:"🔬 "}
 .lb-stack>*+*{margin-top:8px}

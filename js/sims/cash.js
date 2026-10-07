@@ -6,7 +6,10 @@
 const tx = o => WQ.t(o), kidsMode = () => WQ.aud === "kids";
 
 // ===================== EDIT HERE =====================
-// NOTE: EXAMPLE PRICES (RM) for teaching only: plausible small-scale Malaysian values, not market data.
+// SOURCES: product costs, prices and demand are invented game settings, not market data (research/v2/01_todo_prices_weights.md s.3, seen 2026-10-07).
+//   Used cooking oil buy-back RM2.50–3.00/kg: MBSJ council minutes 27 Feb 2025 (RM2.50); Johor recycler list 11 Sep 2026 (RM2.50); MBIP event 7 Feb 2026 (RM3.00).
+//   PET 500 mL bottle ≈25 g: ALPLA spec 21–28 g (same value as footprint.js).
+// NOTE: EXAMPLE PRICES (RM) for teaching only, not market data.
 // Dr Wan Azlina may adjust them. Change only this table: cost = bought materials per batch (RM),
 // units = items made per batch, price = normal selling price per item (RM), demand = [min, max] items customers buy per day.
 const PRODUCTS = [
@@ -27,7 +30,7 @@ const WASTE = {
  oil:{e:"🛢️",r:[0.2,0.8],per:false,name:{en:"Used cooking oil",bm:"Minyak masak terpakai"}},
  peels:{e:"🍊",r:[1,4],per:true,name:{en:"Fruit peels",bm:"Kulit buah"}},
  coffee:{e:"☕",r:[0.3,1.5],per:false,name:{en:"Coffee grounds (dried)",bm:"Hampas kopi (kering)"}},
- bottles:{e:"🧴",r:[0.1,0.4],per:false,name:{en:"Plastic bottles (≈35 g each)",bm:"Botol plastik (≈35 g sebiji)"}},
+ bottles:{e:"🧴",r:[0.1,0.4],per:false,name:{en:"Plastic bottles (500 mL, ≈25 g each)",bm:"Botol plastik (500 mL, ≈25 g sebiji)"}},
  wrappers:{e:"🍬",r:[0.2,1],per:false,name:{en:"Clean plastic wrappers",bm:"Pembalut plastik bersih"}},
  shirts:{e:"👕",r:[0,0.6],per:false,name:{en:"Old T-shirts (≈0.2 kg each)",bm:"Baju-T lama (≈0.2 kg sehelai)"}},
  food:{e:"🍚",r:[2,8],per:true,name:{en:"Food scraps (raw, no meat)",bm:"Sisa makanan (mentah, tanpa daging)"}}
@@ -165,7 +168,7 @@ WQ.registerGame("cash", { order: 13, kind: "sim", icon: "💰", ages: "7+",
           {en:"Value-adding: a 0.4 kg T-shirt becomes a tote worth far more per kg than compost. But compost handles the heavy, perishable waste.",bm:"Nilai tambah: baju-T 0.4 kg menjadi beg tote yang jauh lebih bernilai sekilogram berbanding kompos. Tetapi kompos mengendalikan sisa berat yang mudah reput."},
           {en:"Perishable waste must be processed quickly or it is lost to landfill.",bm:"Sisa mudah reput mesti diproses dengan cepat atau ia hilang ke tapak pelupusan."}])
           .map(l => `<li>${tx(l)}</li>`).join("")}</ul>
-        <p class="small muted">${tx({en:"Prices are example values for teaching, not market data. CO₂ savings are not shown because they depend on what each product replaces.",bm:"Harga ialah nilai contoh untuk pengajaran, bukan data pasaran. Penjimatan CO₂ tidak ditunjukkan kerana ia bergantung pada apa yang digantikan oleh setiap produk."})}</p>
+        <p class="small muted">${tx({en:"Prices are example values for teaching, not market data. Real buy-back rates vary by buyer, place and date: for example, used cooking oil fetched about RM2.50–3.00/kg at Malaysian collection points in 2025–2026. CO₂ savings are not shown because they depend on what each product replaces.",bm:"Harga ialah nilai contoh untuk pengajaran, bukan data pasaran. Kadar belian semula sebenar berbeza mengikut pembeli, tempat dan tarikh: contohnya, minyak masak terpakai dibeli kira-kira RM2.50–3.00/kg di pusat kutipan di Malaysia pada 2025–2026. Penjimatan CO₂ tidak ditunjukkan kerana ia bergantung pada apa yang digantikan oleh setiap produk."})}</p>
         ${WQ.aud === "teacher" ? `<div class="note small">🧑‍🏫 ${tx({en:"Teaching note: let groups compete, then ask each to defend one product choice using the unit-economics table. Prices are in the PRODUCTS table at the top of js/sims/cash.js.",bm:"Nota pengajaran: biarkan kumpulan bertanding, kemudian minta setiap kumpulan mempertahankan satu pilihan produk menggunakan jadual ekonomi unit. Harga terdapat dalam jadual PRODUCTS di bahagian atas js/sims/cash.js."})}</div>` : ""}
         <div class="row"><button class="btn" id="tcNew">🔁 ${tx({en:"Play again",bm:"Main lagi"})}</button><a class="btn blue" href="#/labs">🧪 ${tx({en:"Make these for real",bm:"Buat yang sebenar"})}</a><a class="btn alt" href="#/games">${tx({en:"All games",bm:"Semua permainan"})}</a></div></div>`;
     }

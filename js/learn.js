@@ -249,7 +249,6 @@ const CH = [
        : `<button class="ln-flip ${flips[i] ? "on" : ""}" data-f="${i}" aria-pressed="${!!flips[i]}"><span class="in"><span class="f" style="background:${p.c}"><span class="big">${p.i}</span>${E(t(p.n))}</span><span class="b" style="border-color:${p.c}"><b>${p.i} ${E(t(p.n))}</b>${p.b.map(b => `<span class="li">${E(t(b))}</span>`).join("")}</span></span></button>`).join("")}</div>
      <h3>${t({ en: `From waste to wealth: our ${Object.keys(LABS).length} labs`, bm: `Daripada sisa kepada kekayaan: ${Object.keys(LABS).length} makmal kami` })}</h3>
      <div class="ln-labs">${Object.keys(LABS).map(id => `<a class="ln-lab" href="#/lab/${id}"><span class="w">${E(t(LABS[id].w))}</span><span class="ar" aria-hidden="true">➜</span><span class="p">${LABS[id].i} ${E(labName(id))}</span></a>`).join("")}</div>
-     ${pr ? "" : `<p class="small">🦸 <a href="#/zph">${t({ en: "Meet the student projects behind five of these labs: Zero-Plastic Hero 2024", bm: "Kenali projek pelajar di sebalik lima makmal ini: Zero-Plastic Hero 2024" })} →</a></p>`}
      ${sciBox(t({ en: "<p>Behind each product is real science: microbes turn food waste into compost (<a href='#/game/compost'>compost sim</a>); fermentation makes eco-enzyme acidic (<a href='#/game/enzyme'>eco-enzyme sim</a>); plant pigments called anthocyanins change colour with pH (<a href='#/game/ph'>pH lab</a>); glycerol acts as a plasticiser to make starch bioplastic flexible.</p>",
        bm: "<p>Di sebalik setiap produk ada sains sebenar: mikrob menukar sisa makanan menjadi kompos (<a href='#/game/compost'>simulasi kompos</a>); penapaian menjadikan eko-enzim berasid (<a href='#/game/enzyme'>simulasi eko-enzim</a>); pigmen tumbuhan yang dipanggil antosianin berubah warna mengikut pH (<a href='#/game/ph'>makmal pH</a>); gliserol bertindak sebagai pemplastik untuk menjadikan bioplastik kanji lentur.</p>" }))}
      ${bizBox(t({ en: "<p>Green entrepreneurship starts with cheap inputs. UPM ENG3104 student teams (2024) estimated a starch bioplastic pot at about RM0.84 in materials and a tote bag from used plastic bags at about RM4.66 (student estimates, not market prices). Test your own pricing in <a href='#/game/cash'>Waste to Cash</a>. A credible W2W business also needs a safe process, a steady waste supply, quality control and honest environmental claims.</p>",
@@ -265,7 +264,7 @@ const CH = [
    body: pr => `<p class="ln-lead">${P({ kids: { en: "In Malaysia, we sort our rubbish at home. Remember the three colours: blue, orange and brown!", bm: "Di Malaysia, kita asingkan sampah di rumah. Ingat tiga warna: biru, oren dan coklat!" },
        teens: { en: "Under the Solid Waste and Public Cleansing Management Act 2007 (Act 672), separation at source is mandatory in the states and territories that adopted the Act. Recyclables are separated from other household waste for collection.", bm: "Di bawah Akta Pengurusan Sisa Pepejal dan Pembersihan Awam 2007 (Akta 672), pengasingan di punca adalah wajib di negeri dan wilayah yang menerima pakai Akta ini. Bahan kitar semula diasingkan daripada sisa isi rumah lain untuk dikutip." } })}</p>
      <p><b>${t({ en: "Where separation at source is mandatory (Act 672):", bm: "Kawasan pengasingan di punca adalah wajib (Akta 672):" })}</b></p><div class="ln-chips">${STATES.map(s => `<span class="tag go">${s[WQ.lang === "bm" ? 1 : 0]}</span>`).join(" ")}</div>
-     <p class="small muted">${t({ en: "Other states run their own programmes. Check with your local council.", bm: "Negeri lain mempunyai program sendiri. Semak dengan pihak berkuasa tempatan anda." })}</p>
+     <p class="small muted">${t({ en: "Other states run their own programmes. Selangor is working towards adopting the Act in phases; the start date is not yet confirmed, so check your council's rules.", bm: "Negeri lain mempunyai program sendiri. Selangor sedang berusaha menerima pakai Akta ini secara berperingkat; tarikh mula belum disahkan, jadi semak peraturan pihak berkuasa tempatan anda." })}</p>
      ${pr ? `<div class="ln-bins">${Object.values(BINS).map(b => `<div class="ln-binp" style="border-color:${b.c}"><h4 style="color:${b.c}">${b.i} ${E(t(b.n))}</h4><p>✅ ${E(t(b.y))}</p><p>❌ ${E(t(b.n2))}</p></div>`).join("")}</div>`
      : `<div class="ln-bins" role="group">${Object.entries(BINS).map(([k, b]) => `<button class="ln-bin" data-b="${k}" aria-pressed="${k === binSel}" style="background:${b.c}"><span class="bi">${b.i}</span>${E(t(b.n))}</button>`).join("")}</div><div class="card ln-binpanel" id="lnBin" aria-live="polite"></div>`}
      <div class="note ok ln-box"><b>${t({ en: "3 easy steps", bm: "3 langkah mudah" })}</b><div>1️⃣ ${t({ en: "Rinse", bm: "Bilas" })} · 2️⃣ ${t({ en: "Dry", bm: "Keringkan" })} · 3️⃣ ${t({ en: "Separate into the right bin", bm: "Asingkan ke tong yang betul" })}. ${t({ en: "Food waste and dirty items go with general waste, or better, into compost. Batteries, e-waste and medicine go to special collection points.", bm: "Sisa makanan dan barang kotor dimasukkan bersama sisa am, atau lebih baik, dijadikan kompos. Bateri, e-sisa dan ubat dihantar ke pusat kutipan khas." })}</div></div>
@@ -332,10 +331,13 @@ WQ.addBadge("learn", { icon: "📘", name: { en: "Waste-Wise Scholar", bm: "Cend
 
 WQ.css("learn", `
 .ln-nav{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
-.ln-nav a{display:inline-flex;align-items:center;gap:6px;background:#fff;border-radius:999px;padding:6px 12px 6px 6px;font-weight:800;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);font-size:.9rem}
-.ln-nav a[aria-current=page]{outline:3px solid var(--grass)}
-.ln-nav .n{width:26px;height:26px;border-radius:50%;background:#c9d3dd;color:#fff;display:grid;place-items:center;font-size:.8rem;flex:none}
-.ln-nav a.done .n{background:var(--grass)}
+.ln-nav a{display:inline-flex;align-items:center;gap:6px;background:#f9e6cf;border:3px solid #1a1932;border-radius:0;padding:5px 10px 5px 5px;font-family:"Pixelify Sans",Nunito,sans-serif;font-weight:600;text-decoration:none;color:#1a1932;box-shadow:3px 3px 0 rgba(26,25,50,.35);font-size:.9rem}
+.ln-nav a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 rgba(26,25,50,.35)}
+.ln-nav a[aria-current=page]{background:#1a1932;color:#fff}
+.ln-nav .n{width:24px;height:24px;border:2px solid #1a1932;border-radius:0;background:#c9d3dd;color:#1a1932;display:grid;place-items:center;font-size:.8rem;flex:none}
+.ln-nav a.done .n{background:#5ac54f}
+.ln-check{margin-top:14px;background:#f9e6cf;border:3px solid #1a1932;border-radius:0;box-shadow:4px 4px 0 rgba(26,25,50,.35)}.ln-check h3{font-family:"Pixelify Sans",Nunito,sans-serif;margin:0 0 8px}
+@media (prefers-reduced-motion:reduce){.ln-nav a:hover{transform:none}}
 .ln-prog{display:flex;align-items:center;gap:10px;margin:0 0 14px}.ln-prog .meter{flex:1;max-width:340px}
 .ln-chap h2{font-size:clamp(1.4rem,3.4vw,2rem);display:flex;gap:10px;align-items:center}
 .ln-chap h3{font-size:1.15rem;margin:14px 0 6px}.ln-chap h4{margin:0 0 4px}
@@ -433,7 +435,8 @@ WQ.registerPage("learn", { mount(el, { args }) {
       ${TCH() ? box("warn ln-tn", U.tnote, E(t(ch.note))) : ""}
       ${qcHTML(ch)}
       <div class="ln-foot">${cur > 0 ? `<a class="btn alt" href="#/learn/${cur}">${t(U.prev)}</a>` : "<span></span>"}${cur < CH.length - 1 ? `<a class="btn" href="#/learn/${cur + 2}">${t(U.next)}</a>` : `<a class="btn" href="#/games">🎮 ${t({ en: "Go to the games", bm: "Ke permainan" })}</a>`}</div>
-    </article>${nDone === CH.length ? `<div class="note ok" style="margin-top:14px">🏅 ${t(U.allDone)}</div>` : ""}</div>`;
+    </article>${nDone === CH.length ? `<div class="note ok" style="margin-top:14px">🏅 ${t(U.allDone)}</div>` : ""}
+    <section class="card ln-check" aria-labelledby="lnCheckH"><h3 id="lnCheckH">📊 ${t({ en: "How much did you learn?", bm: "Berapa banyak yang anda pelajari?" })}</h3><div class="ln-chips"><a class="btn" href="#/check/post">${t({ en: "Take the after-play check", bm: "Ambil semakan selepas bermain" })}</a> <a class="btn alt" href="#/check/survey">${t({ en: "1-minute survey", bm: "Tinjauan 1 minit" })}</a></div></section></div>`;
   if (ch.wire) ch.wire(el);
   const qs = WQ.pick(ch.qc);
   el.querySelectorAll(".ln-q").forEach(qd => {

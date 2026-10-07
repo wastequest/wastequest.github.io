@@ -10,9 +10,9 @@ const TRACKS = {
     name: { en: "Zero-Waste Champion", bm: "Juara Sifar Sisa" }, short: { en: "Zero-Waste Champion", bm: "Juara Sifar Sisa" },
     who: { en: "Teens 13–17", bm: "Remaja 13–17" }, level: { en: "Secondary level · ages 13–17", bm: "Tahap sekolah menengah · umur 13–17" } },
   practitioner: { aud: "adults", icon: "🎓", color: "#a50d26", n: 20, pass: 80,
-    name: { en: "Waste-to-Wealth Practitioner (micro-credential, proposed)", bm: "Pengamal Sisa kepada Kekayaan (mikro-kredensial, cadangan)" },
+    name: { en: "Waste-to-Wealth Practitioner (Certificate of Completion)", bm: "Pengamal Sisa kepada Kekayaan (Sijil Penyempurnaan)" },
     short: { en: "Waste-to-Wealth Practitioner", bm: "Pengamal Sisa kepada Kekayaan" },
-    who: { en: "Adults", bm: "Dewasa" }, level: { en: "Proposed micro-credential · 20 notional learning hours (0.5 credit)", bm: "Mikro-kredensial cadangan · 20 jam pembelajaran nosional (0.5 kredit)" } }
+    who: { en: "Adults", bm: "Dewasa" }, level: { en: "Adult level · designed for 20 learning hours · non-credit", bm: "Tahap dewasa · direka untuk 20 jam pembelajaran · tanpa kredit" } }
 };
 Object.entries(TRACKS).forEach(([id, t]) => WQ.addBadge("cert-" + id, { icon: t.icon, name: t.short,
   desc: { en: "Certificate earned", bm: "Sijil diperoleh" } }));
@@ -28,7 +28,7 @@ const T = {
   rQuest:(n,p)=>`Final quest: ${n} questions, pass mark ${p}%`,rGame:"Game badges",rAll:"Badges (any)",rLab:"Lab badges",rPitch:"W2W product pitch (portfolio)",
   last:(p,d)=>`Last attempt: ${p}% on ${d}`,passed:(p,d)=>`Passed with ${p}% on ${d}`,notYet:"Not attempted yet",
   take:"Take the final quest",get:"🎓 Get my certificate",toGo:"Still to do",play:"Play games →",labs:"Go to labs →",pitch:"Open the pitch form →",retake:"Take the quest →",
-  mc:"Proposed micro-credential: 20 notional learning hours (0.5 credit, where 1 Malaysian credit = 40 hours), designed with reference to the MQA Guidelines to Good Practices: Micro-credentials (2020). It is a pilot and not yet a formal qualification.",
+  mc:"Certificate of Completion, designed for 20 notional learning hours. Non-credit: no MQA accreditation, academic credit or credit transfer is claimed. A formal UPM micro-credential would be a separate route that needs UPM approval.",
   // quest
   qT:t=>`Final quest: ${t}`,qInfo:(n,p)=>`${n} questions · no timer · pass mark ${p}%. Each answer is locked once you choose it. You see the results and explanations at the end.`,
   qOf:(i,n)=>`Question ${i} of ${n}`,next:"Next ▶",finish:"Finish and see results ▶",locked:"Answer locked.",
@@ -59,7 +59,7 @@ const T = {
   rQuest:(n,p)=>`Misi akhir: ${n} soalan, markah lulus ${p}%`,rGame:"Lencana permainan",rAll:"Lencana (apa-apa)",rLab:"Lencana makmal",rPitch:"Pembentangan produk W2W (portfolio)",
   last:(p,d)=>`Cubaan terakhir: ${p}% pada ${d}`,passed:(p,d)=>`Lulus dengan ${p}% pada ${d}`,notYet:"Belum dicuba",
   take:"Ambil misi akhir",get:"🎓 Dapatkan sijil saya",toGo:"Perlu diselesaikan",play:"Main permainan →",labs:"Ke makmal →",pitch:"Buka borang pembentangan →",retake:"Ambil misi →",
-  mc:"Mikro-kredensial cadangan: 20 jam pembelajaran nosional (0.5 kredit, dengan 1 kredit Malaysia = 40 jam), direka bentuk dengan merujuk Garis Panduan Amalan Baik MQA: Mikro-kredensial (2020). Ia masih perintis dan belum menjadi kelayakan rasmi.",
+  mc:"Sijil Penyempurnaan, direka untuk 20 jam pembelajaran nosional. Tanpa kredit: tiada akreditasi MQA, kredit akademik atau pemindahan kredit dituntut. Mikro-kredensial rasmi UPM ialah laluan berasingan yang memerlukan kelulusan UPM.",
   qT:t=>`Misi akhir: ${t}`,qInfo:(n,p)=>`${n} soalan · tiada had masa · markah lulus ${p}%. Jawapan dikunci sebaik sahaja dipilih. Keputusan dan penerangan dipaparkan di akhir.`,
   qOf:(i,n)=>`Soalan ${i} daripada ${n}`,next:"Seterusnya ▶",finish:"Tamat dan lihat keputusan ▶",locked:"Jawapan dikunci.",
   resT:"Keputusan anda",pass:"Lulus! 🎉",fail:"Belum lulus",need:p=>`Anda perlu ${p}% untuk lulus.`,again:"Cuba lagi",practise:"Berlatih dalam Kuiz Kilat Eko",hub:"Kembali ke sijil",
@@ -85,11 +85,11 @@ const T = {
 const C = { // certificate wording, both languages always available (primary = current language)
   en:{title:"CERTIFICATE OF COMPLETION",certify:"This is to certify that",done:"has completed the WasteQuest Waste-to-Wealth Educational Module learning track",
     score:(p,m,d)=>`Final quest score ${p}% (pass mark ${m}%) · ${d}`,code:"Verification code",
-    foot:{practitioner:"Designed with reference to the MQA Guidelines to Good Practices: Micro-credentials (2020). Valid with the facilitator-verified W2W portfolio sheet.",
+    foot:{practitioner:"Non-credit Certificate of Completion; no MQA accreditation or academic credit is claimed. Valid with the facilitator-verified W2W portfolio sheet.",
           other:"Issued through WasteQuest, Universiti Putra Malaysia. The code can be checked on the WasteQuest Certificate page."}},
   bm:{title:"SIJIL PENYEMPURNAAN",certify:"Dengan ini disahkan bahawa",done:"telah menamatkan laluan pembelajaran Modul Pendidikan Sisa kepada Kekayaan WasteQuest",
     score:(p,m,d)=>`Skor misi akhir ${p}% (markah lulus ${m}%) · ${d}`,code:"Kod pengesahan",
-    foot:{practitioner:"Direka bentuk dengan merujuk Garis Panduan Amalan Baik MQA: Mikro-kredensial (2020). Sah bersama helaian portfolio W2W yang disahkan fasilitator.",
+    foot:{practitioner:"Sijil Penyempurnaan tanpa kredit; tiada akreditasi MQA atau kredit akademik dituntut. Sah bersama helaian portfolio W2W yang disahkan fasilitator.",
           other:"Dikeluarkan melalui WasteQuest, Universiti Putra Malaysia. Kod boleh disemak di halaman Sijil WasteQuest."}}
 };
 const SIGNER = "Prof. Ir. Dr. Wan Azlina Wan Ab Karim Ghani";
@@ -269,7 +269,7 @@ WQ.registerPage("cert", { mount(el, { args, relang }) {
   const earned = Object.keys(WQ.earned()).filter(k => WQ.badges[k] || k.startsWith("lab-")).length;
   el.innerHTML = WQ.head("🏅", { en: T.en.title, bm: T.bm.title }, { en: T.en.sub, bm: T.bm.sub }) +
     `<p class="row"><span class="pill">🏅 ${earned} ${l.badges}</span><a href="#/badges" class="small">${l.seeBadges}</a><span class="small muted">${l.device}</span></p>
-    <div class="cr-grid">${Object.entries(TRACKS).map(([id, t]) => { const s = status(id);
+    <h2 class="vh">${WQ.t({ en: "Certificate tracks", bm: "Laluan sijil" })}</h2><div class="cr-grid">${Object.entries(TRACKS).map(([id, t]) => { const s = status(id);
       return `<section class="card cr-card" style="--c:${t.color}" aria-labelledby="crh-${id}">${id === mine ? `<span class="tag go cr-for">${l.forYou}</span>` : ""}
         <span class="ci" aria-hidden="true">${t.icon}</span><div><h3 id="crh-${id}">${WQ.esc(WQ.t(t.name))}</h3><span class="tag">${WQ.esc(WQ.t(t.who))}</span></div>
         <ul>${s.reqs.map(reqLine).join("")}</ul>

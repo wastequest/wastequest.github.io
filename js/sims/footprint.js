@@ -2,11 +2,12 @@
 SOURCES:
  - Malaysia 1.17 kg/person/day and household composition %: SWCorp, via The Star, 2 Jan 2024 (as given in SPEC.md).
  - SWCorp separation-at-source bins: blue = paper, orange = plastic & metal, brown = glass.
- - Item weights are typical rounded values (assumptions for teaching, shown to users with "≈"):
-   PET drink bottle ≈25 g (500 mL ≈15–20 g, 1.5 L ≈30–35 g; mixed average); 330 mL aluminium can ≈14 g;
-   HDPE carrier bag ≈6 g (typical 5–8 g); plastic takeaway container with lid ≈20 g; paper/carton item ≈100 g
-   (e.g. a cereal box or a few sheets of newspaper); glass jar/bottle ≈250 g; used disposable diaper ≈200 g;
-   plate of leftover food ≈100 g; bowl of peels/kitchen scraps ≈200 g.
+ - Item weights = rounded example values for named item types, not Malaysian averages (research/v2/01_todo_prices_weights.md s.4, seen 2026-10-07):
+   500 mL PET drink bottle 25 g (ALPLA spec 21–28 g); 500 mL PP takeaway container + lid 22 g (Paras 21.64 g, Cosmo 27 g);
+   HDPE carrier bag 8 g (UK government-hosted bag study 8.12 g); 330 mL aluminium can 12 g (Cambridge packaging study 12.28 g);
+   small 250 mL glass jar 200 g (named jars 175–221 g); used baby diaper 200 g (industry summary 200–212 g);
+   plate of leftovers 100 g (school-canteen study 107 g/day, rounded lesson scenario); kitchen scraps = a defined 200 g portion;
+   paper = a 100 g bundle (about 20 A4 sheets at 80 gsm ≈5 g each).
 */
 (() => {
 const tx = o => WQ.t(o);
@@ -17,15 +18,15 @@ const CAT = {
 };
 // fate: rec = recyclable in a SWCorp bin, comp = compostable (bokashi for cooked food), hard = hard to recycle -> best reduced
 const ITEMS = [
-  {id:"bottle",e:"🧴",g:25,cat:"plastic",fate:"rec",bin:"orange",n:{en:"Plastic drink bottles",bm:"Botol minuman plastik"}},
-  {id:"box",e:"🥡",g:20,cat:"plastic",fate:"hard",n:{en:"Takeaway containers",bm:"Bekas makanan bungkus"}},
-  {id:"bag",e:"🛍️",g:6,cat:"plastic",fate:"hard",n:{en:"Plastic bags",bm:"Beg plastik"}},
+  {id:"bottle",e:"🧴",g:25,cat:"plastic",fate:"rec",bin:"orange",n:{en:"Plastic drink bottles (500 mL)",bm:"Botol minuman plastik (500 mL)"}},
+  {id:"box",e:"🥡",g:22,cat:"plastic",fate:"hard",n:{en:"Plastic takeaway containers with lids",bm:"Bekas makanan bungkus plastik bertutup"}},
+  {id:"bag",e:"🛍️",g:8,cat:"plastic",fate:"hard",n:{en:"Plastic bags",bm:"Beg plastik"}},
   {id:"left",e:"🍛",g:100,cat:"food",fate:"comp",n:{en:"Plates of leftover food",bm:"Pinggan sisa makanan"}},
-  {id:"scrap",e:"🥕",g:200,cat:"food",fate:"comp",n:{en:"Bowls of peels & kitchen scraps",bm:"Mangkuk kulit & sisa dapur"}},
-  {id:"paper",e:"📦",g:100,cat:"paper",fate:"rec",bin:"blue",n:{en:"Paper & boxes",bm:"Kertas & kotak"}},
-  {id:"can",e:"🥫",g:14,cat:"metal",fate:"rec",bin:"orange",n:{en:"Drink cans",bm:"Tin minuman"}},
-  {id:"glass",e:"🫙",g:250,cat:"glass",fate:"rec",bin:"brown",n:{en:"Glass jars & bottles",bm:"Balang & botol kaca"}},
-  {id:"diaper",e:"👶",g:200,cat:"diaper",fate:"hard",opt:true,n:{en:"Disposable diapers",bm:"Lampin pakai buang"}}
+  {id:"scrap",e:"🥕",g:200,cat:"food",fate:"comp",n:{en:"Portions of peels & kitchen scraps (200 g)",bm:"Bahagian kulit & sisa dapur (200 g)"}},
+  {id:"paper",e:"📦",g:100,cat:"paper",fate:"rec",bin:"blue",n:{en:"Bundles of paper & boxes (100 g)",bm:"Ikatan kertas & kotak (100 g)"}},
+  {id:"can",e:"🥫",g:12,cat:"metal",fate:"rec",bin:"orange",n:{en:"Aluminium drink cans (330 mL)",bm:"Tin minuman aluminium (330 mL)"}},
+  {id:"glass",e:"🫙",g:200,cat:"glass",fate:"rec",bin:"brown",n:{en:"Small glass jars (250 mL)",bm:"Balang kaca kecil (250 mL)"}},
+  {id:"diaper",e:"👶",g:200,cat:"diaper",fate:"hard",opt:true,n:{en:"Used disposable diapers",bm:"Lampin pakai buang terpakai"}}
 ];
 // cut = fraction of that item avoided; divert = item kinds kept out of landfill (composted / recycled)
 const PLEDGES = [

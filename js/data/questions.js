@@ -15,6 +15,7 @@
    - Open burning is an offence under s.29A Environmental Quality Act 1974 (Malaysia).
    - Bursa Malaysia Main Market Listing Requirements: listed issuers must include a sustainability statement in the annual report.
    - GHG Protocol Corporate Value Chain (Scope 3) Standard: "waste generated in operations" is Scope 3, category 5.
+   - Kids economy x23–x28: buy-back of aluminium cans and used cooking oil, prices vary by place/date: research/v2/01_todo_prices_weights.md s.2.
    - Eco-enzyme 1:3:10 sugar:peels:water, ~3 months, release gas: standard eco-enzyme method (Dr Rosukon Poompanvong); health/river-cleaning claims are not established by peer-reviewed evidence.
 */
 (() => {
@@ -413,13 +414,13 @@ Q("m06","ta","malaysia",["After food, which is the second-largest part of Malays
  ["Plastic is 21.9%, then paper 15.3% and disposable diapers 8.2%.","Plastik ialah 21.9%, diikuti kertas 15.3% dan lampin pakai buang 8.2%."]);
 Q("m07","ta","malaysia",["How did Malaysia’s daily solid waste change from 2005 to 2024?","Bagaimanakah sisa pepejal harian Malaysia berubah dari 2005 hingga 2024?"],
  [["It roughly doubled","Lebih kurang berganda"],["It roughly halved","Lebih kurang berkurang separuh"],["It stayed about the same","Kekal lebih kurang sama"]],
- ["Population growth and consumption doubled daily waste in under 20 years: about 19,000 to over 39,000 tonnes a day.","Pertambahan penduduk dan penggunaan menggandakan sisa harian dalam tempoh kurang 20 tahun: kira-kira 19,000 kepada lebih 39,000 tan sehari."]);
+ ["Daily waste roughly doubled in under 20 years: from about 19,000 to over 39,000 tonnes a day.","Sisa harian lebih kurang berganda dalam tempoh kurang 20 tahun: daripada kira-kira 19,000 kepada lebih 39,000 tan sehari."]);
 Q("m08","ta","malaysia",["What is Act 672?","Apakah Akta 672?"],
  [["Solid Waste and Public Cleansing Management Act 2007","Akta Pengurusan Sisa Pepejal dan Pembersihan Awam 2007"],["Environmental Quality Act 1974","Akta Kualiti Alam Sekeliling 1974"],["Street, Drainage and Building Act 1974","Akta Jalan, Parit dan Bangunan 1974"]],
  ["Act 672 governs household solid waste and public cleansing in the states that adopted it.","Akta 672 mengawal sisa pepejal isi rumah dan pembersihan awam di negeri yang menerima pakainya."]);
 Q("m09","ta","malaysia",["In which of these places is household separation at source mandatory under Act 672?","Di manakah pengasingan sisa isi rumah di punca diwajibkan di bawah Akta 672?"],
- [["Johor","Johor"],["Selangor","Selangor"],["Pulau Pinang","Pulau Pinang"],["Sarawak","Sarawak"]],
- ["Adopting areas: Johor, Melaka, Negeri Sembilan, Pahang, Perlis, Kedah, Kuala Lumpur and Putrajaya.","Kawasan yang menerima pakai: Johor, Melaka, Negeri Sembilan, Pahang, Perlis, Kedah, Kuala Lumpur dan Putrajaya."]);
+ [["Johor","Johor"],["Sabah","Sabah"],["Pulau Pinang","Pulau Pinang"],["Sarawak","Sarawak"]],
+ ["Adopting areas: Johor, Melaka, Negeri Sembilan, Pahang, Perlis, Kedah, Kuala Lumpur and Putrajaya. Selangor is working towards adopting the Act in phases; the start date is not yet confirmed, so check your council's rules.","Kawasan yang menerima pakai: Johor, Melaka, Negeri Sembilan, Pahang, Perlis, Kedah, Kuala Lumpur dan Putrajaya. Selangor sedang berusaha menerima pakai Akta ini secara berperingkat; tarikh mula belum disahkan, jadi semak peraturan pihak berkuasa tempatan anda."]);
 Q("m10","ta","malaysia",["Which item makes up a surprisingly large 8.2% of Malaysian household waste?","Barang manakah yang membentuk 8.2% sisa isi rumah Malaysia, satu jumlah yang mengejutkan?"],
  [["Disposable diapers","Lampin pakai buang"],["Face masks","Pelitup muka"],["Rubber","Getah"]],
  ["Diapers are 8.2%, far more than face masks (0.7%) or rubber (1.1%). Cloth diapers are one way to reduce this.","Lampin ialah 8.2%, jauh lebih banyak daripada pelitup muka (0.7%) atau getah (1.1%). Lampin kain ialah satu cara untuk mengurangkannya."]);
@@ -570,6 +571,24 @@ Q("x21","a","economy",["Why can waste streams such as used oil or coffee grounds
 Q("x22","ta","economy",["Your eco-soap sells at RM4.00 but costs RM4.50 to make. What does this mean?","Sabun eko anda dijual pada RM4.00 tetapi kos membuatnya RM4.50. Apakah maksudnya?"],
  [["You lose RM0.50 per bar: cut costs or raise the price","Anda rugi RM0.50 sebuku: kurangkan kos atau naikkan harga"],["You make RM0.50 profit per bar: keep going","Anda untung RM0.50 sebuku: teruskan"],["You break even: costs and sales match","Anda pulang modal: kos dan jualan sama"]],
  ["4.00 − 4.50 = −0.50, a loss. Selling more would only increase the loss.","4.00 − 4.50 = −0.50, iaitu rugi. Menjual lebih banyak hanya menambah kerugian."]);
+Q("x23","k","economy",["Which of these can a recycling centre pay you money for?","Antara berikut, yang manakah boleh dibayar oleh pusat kitar semula?"],
+ [["Clean aluminium drink cans","Tin minuman aluminium yang bersih"],["Used tissue paper","Tisu terpakai"],["Leftover rice","Sisa nasi"]],
+ ["Many recycling buy-back centres pay for aluminium cans. The price changes by place and date.","Banyak pusat belian semula kitar semula membayar untuk tin aluminium. Harganya berubah mengikut tempat dan tarikh."]);
+Q("x24","k","economy",["Used cooking oil can be collected and sold. What should you keep it in?","Minyak masak terpakai boleh dikumpul dan dijual. Di manakah anda patut menyimpannya?"],
+ [["A closed bottle, after it cools","Botol bertutup, selepas ia sejuk"],["Down the kitchen sink","Dalam sinki dapur"],["An open bowl outside","Mangkuk terbuka di luar"]],
+ ["Some collection points buy used cooking oil. Let an adult pour the cool oil into a bottle; never down the sink.","Sesetengah pusat kutipan membeli minyak masak terpakai. Minta orang dewasa tuang minyak yang sejuk ke dalam botol; jangan ke dalam sinki."]);
+Q("x25","k","economy",["Your family refills the same water bottle every day. What happens?","Keluarga anda mengisi semula botol air yang sama setiap hari. Apakah yang berlaku?"],
+ [["You save money and make less rubbish","Anda jimat wang dan kurang sampah"],["You spend more money","Anda belanja lebih banyak wang"],["You make more rubbish","Anda hasilkan lebih banyak sampah"]],
+ ["Reusing means you do not have to buy a new bottle each time.","Guna semula bermakna anda tidak perlu membeli botol baharu setiap kali."]);
+Q("x26","k","economy",["A school sells bags of compost made from garden and food scraps. This is an example of…","Sebuah sekolah menjual beg kompos daripada sisa kebun dan makanan. Ini contoh…"],
+ [["Waste to wealth","Sisa kepada kekayaan"],["Throwing money away","Membazir wang"],["Open burning","Pembakaran terbuka"]],
+ ["Turning waste into something people want to buy is waste to wealth.","Menukar sisa menjadi barang yang orang mahu beli ialah sisa kepada kekayaan."]);
+Q("x27","k","economy",["You make 5 bookmarks from old cards and sell each for RM1. How much do you get?","Anda membuat 5 penanda buku daripada kad lama dan menjual setiap satu RM1. Berapakah yang anda dapat?"],
+ [["RM5","RM5"],["RM1","RM1"],["RM10","RM10"]],
+ ["5 × RM1 = RM5.","5 × RM1 = RM5."]);
+Q("x28","k","economy",["Why should recyclables be clean before you take them to a recycling centre?","Mengapakah bahan kitar semula perlu bersih sebelum dibawa ke pusat kitar semula?"],
+ [["Dirty items are worth less or get rejected","Barang kotor kurang nilainya atau ditolak"],["Clean items are heavier","Barang bersih lebih berat"],["Dirt makes them shiny","Kotoran menjadikannya berkilat"]],
+ ["Food and dirt lower the quality and price of recyclables.","Sisa makanan dan kotoran menurunkan kualiti dan harga bahan kitar semula."]);
 
 /* ---------------- build WQ.questions ---------------- */
 // Correct answer is authored first; move it to a fixed, id-based slot so positions vary for every consumer.
