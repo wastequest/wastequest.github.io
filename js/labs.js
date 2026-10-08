@@ -30,7 +30,7 @@ const D=(en,bm)=>({en,bm,lv:"danger"}), W=(en,bm)=>({en,bm,lv:"warn"});
 const P=(src,en,bm)=>({src,cap:{en,bm}});
 
 // labs with the 2026 narrated video (assets/videos/v2/<id>_<en|bm>.mp4 + <id>.jpg); add ids as new renders land
-const V2=new Set("candle petfood treasure litmus odour watering enzyme ecobrick compost bioplastic hydro".split(" "));
+const V2=new Set("candle petfood treasure litmus odour watering enzyme ecobrick compost bioplastic vgarden hydro fused lifebuoy sleepbag".split(" "));
 const LABS=[
 /* ---------------------------------------------------------------- 1 CANDLE */
 {id:"candle",icon:"🕯️",min:10,mins:60,diff:2,sup:"adult",heat:true,sdgs:[6,12,13],video:"1dHTYvQAr7l-fZWAZLZ1TFl_Dmsw00Bt-",
